@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/XChainLinearTransaction.json",
+  "title": "XChainLinearTransaction",
+  "type": "object",
+  "properties": {
+    "txHash": {
+      "type": "string",
+      "description": "Unique ID for this transaction.",
+      "examples": [
+        "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c"
+      ]
+    },
+    "chainFormat": {
+      "type": "string",
+      "description": "Represents chain format this transaction is included in.",
+      "enum": [
+        "non-linear",
+        "linear"
+      ],
+      "examples": [
+        "non-linear"
+      ]
+    },
+    "timestamp": {
+      "type": "number",
+      "description": "Latest timestamp in seconds this transaction was accepted out of the same transaction accepted in other vertices.",
+      "examples": [
+        1600762738
+      ]
+    },
+    "txType": {
+      "examples": [
+        "BaseTx"
+      ],
+      "$ref": "#/components/schemas/XChainTransactionType"
+    },
+    "memo": {
+      "type": "string",
+      "description": "Hex encoded memo bytes for this transaction.",
+      "examples": [
+        "0x546865204176616c616e6368652050726f6a656374"
+      ]
+    },
+    "consumedUtxos": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Utxo"
+      }
+    },
+    "emittedUtxos": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Utxo"
+      }
+    },
+    "amountUnlocked": {
+      "description": "Assets unlocked by inputs of this transaction.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AssetAmount"
+      }
+    },
+    "amountCreated": {
+      "description": "Assets created by outputs of this transaction.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AssetAmount"
+      }
+    },
+    "sourceChain": {
+      "type": "string",
+      "description": "Source chain for an atomic transaction.",
+      "examples": [
+        "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM"
+      ]
+    },
+    "destinationChain": {
+      "type": "string",
+      "description": "Destination chain for an atomic transaction.",
+      "examples": [
+        "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM"
+      ]
+    },
+    "assetCreated": {
+      "description": "AssetAmount details of the asset created in CreateAssetTx",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/XChainAssetDetails"
+        }
+      ]
+    },
+    "blockHeight": {
+      "type": "number",
+      "description": "Height of the block this transaction belongs to.",
+      "examples": [
+        1005
+      ]
+    },
+    "blockHash": {
+      "type": "string",
+      "description": "Hash of the block this transaction belongs to.",
+      "examples": [
+        "82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S"
+      ]
+    }
+  },
+  "required": [
+    "txHash",
+    "chainFormat",
+    "timestamp",
+    "txType",
+    "memo",
+    "consumedUtxos",
+    "emittedUtxos",
+    "amountUnlocked",
+    "amountCreated",
+    "blockHeight",
+    "blockHash"
+  ]
+}

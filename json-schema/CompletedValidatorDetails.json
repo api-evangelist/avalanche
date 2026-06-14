@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/CompletedValidatorDetails.json",
+  "title": "CompletedValidatorDetails",
+  "type": "object",
+  "properties": {
+    "txHash": {
+      "type": "string"
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "amountStaked": {
+      "type": "string"
+    },
+    "delegationFee": {
+      "type": "string",
+      "description": "The percentage of total estimated delegator rewards allocated to validator nodes for supporting delegations."
+    },
+    "startTimestamp": {
+      "type": "number"
+    },
+    "endTimestamp": {
+      "type": "number"
+    },
+    "blsCredentials": {
+      "description": "Present for AddPermissionlessValidatorTx",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BlsCredentials"
+        }
+      ]
+    },
+    "delegatorCount": {
+      "type": "number"
+    },
+    "amountDelegated": {
+      "type": "string"
+    },
+    "rewards": {
+      "$ref": "#/components/schemas/Rewards"
+    },
+    "validationStatus": {
+      "type": "string",
+      "enum": [
+        "completed"
+      ]
+    }
+  },
+  "required": [
+    "txHash",
+    "nodeId",
+    "subnetId",
+    "amountStaked",
+    "startTimestamp",
+    "endTimestamp",
+    "delegatorCount",
+    "rewards",
+    "validationStatus"
+  ]
+}

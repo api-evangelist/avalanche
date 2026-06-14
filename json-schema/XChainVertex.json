@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/XChainVertex.json",
+  "title": "XChainVertex",
+  "type": "object",
+  "properties": {
+    "vertexHash": {
+      "type": "string"
+    },
+    "parentHashes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "vertexHeight": {
+      "type": "number"
+    },
+    "vertexIndex": {
+      "type": "number"
+    },
+    "vertexTimestamp": {
+      "type": "number"
+    },
+    "txCount": {
+      "type": "number"
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "vertexSizeBytes": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "vertexHash",
+    "parentHashes",
+    "vertexHeight",
+    "vertexIndex",
+    "vertexTimestamp",
+    "txCount",
+    "transactions",
+    "vertexSizeBytes"
+  ]
+}

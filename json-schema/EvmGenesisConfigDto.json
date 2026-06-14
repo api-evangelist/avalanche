@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/EvmGenesisConfigDto.json",
+  "title": "EvmGenesisConfigDto",
+  "type": "object",
+  "properties": {
+    "berlinBlock": {
+      "type": "number",
+      "description": "Berlin block number",
+      "example": 0
+    },
+    "byzantiumBlock": {
+      "type": "number",
+      "description": "Byzantium block number",
+      "example": 0
+    },
+    "chainId": {
+      "type": "number",
+      "description": "Chain ID",
+      "example": 43114
+    },
+    "constantinopleBlock": {
+      "type": "number",
+      "description": "Constantinople block number",
+      "example": 0
+    },
+    "eip150Block": {
+      "type": "number",
+      "description": "EIP-150 block number",
+      "example": 0
+    },
+    "eip150Hash": {
+      "type": "string",
+      "description": "EIP-150 hash",
+      "example": "0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0"
+    },
+    "eip155Block": {
+      "type": "number",
+      "description": "EIP-155 block number",
+      "example": 0
+    },
+    "eip158Block": {
+      "type": "number",
+      "description": "EIP-158 block number",
+      "example": 0
+    },
+    "feeConfig": {
+      "description": "Fee configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisFeeConfigDto"
+        }
+      ]
+    },
+    "homesteadBlock": {
+      "type": "number",
+      "description": "Homestead block number",
+      "example": 0
+    },
+    "istanbulBlock": {
+      "type": "number",
+      "description": "Istanbul block number",
+      "example": 0
+    },
+    "londonBlock": {
+      "type": "number",
+      "description": "London block number",
+      "example": 0
+    },
+    "muirGlacierBlock": {
+      "type": "number",
+      "description": "Muir Glacier block number",
+      "example": 0
+    },
+    "petersburgBlock": {
+      "type": "number",
+      "description": "Petersburg block number",
+      "example": 0
+    },
+    "subnetEVMTimestamp": {
+      "type": "number",
+      "description": "Subnet EVM timestamp",
+      "example": 0
+    },
+    "allowFeeRecipients": {
+      "type": "boolean",
+      "description": "Allow fee recipients",
+      "example": false
+    },
+    "warpConfig": {
+      "description": "Warp configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisWarpConfigDto"
+        }
+      ]
+    },
+    "txAllowListConfig": {
+      "description": "Transaction allow list configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisAllowListConfigDto"
+        }
+      ]
+    },
+    "contractDeployerAllowListConfig": {
+      "description": "Contract deployer allow list configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisAllowListConfigDto"
+        }
+      ]
+    },
+    "contractNativeMinterConfig": {
+      "description": "Contract native minter configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisAllowListConfigDto"
+        }
+      ]
+    },
+    "feeManagerConfig": {
+      "description": "Fee manager configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisAllowListConfigDto"
+        }
+      ]
+    },
+    "rewardManagerConfig": {
+      "description": "Reward manager configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisAllowListConfigDto"
+        }
+      ]
+    }
+  }
+}

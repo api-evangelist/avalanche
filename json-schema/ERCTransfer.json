@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ERCTransfer.json",
+  "title": "ERCTransfer",
+  "type": "object",
+  "properties": {
+    "transactionHash": {
+      "type": "string",
+      "description": "Transaction hash",
+      "examples": [
+        "0xfd91150d236ec5c3b1ee325781affad5b0b4d7eb0187c84c220ab115eaa563e8"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Transfer type",
+      "examples": [
+        "ERC20"
+      ]
+    },
+    "from": {
+      "type": "string",
+      "description": "Sender address",
+      "examples": [
+        "0x737F6b0b8A04e8462d0fC7076451298F0dA9a972"
+      ]
+    },
+    "to": {
+      "type": "string",
+      "description": "Recipient address",
+      "examples": [
+        "0x40E832C3Df9562DfaE5A86A4849F27F687A9B46B"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "Amount transferred",
+      "examples": [
+        "3331009129"
+      ]
+    },
+    "tokenId": {
+      "type": "string",
+      "description": "Token Id",
+      "examples": [
+        "2"
+      ]
+    },
+    "blockTimestamp": {
+      "type": "number",
+      "description": "Block timestamp",
+      "examples": [
+        1640995200
+      ]
+    },
+    "logIndex": {
+      "type": "number",
+      "description": "Log index",
+      "examples": [
+        5
+      ]
+    },
+    "erc20Token": {
+      "description": "erc20 Token details",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ERCToken"
+        }
+      ]
+    },
+    "erc721Token": {
+      "description": "erc721 Token details",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ERCToken"
+        }
+      ]
+    },
+    "erc1155Token": {
+      "description": "erc1155 Token details",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ERCToken"
+        }
+      ]
+    }
+  },
+  "required": [
+    "transactionHash",
+    "type",
+    "from",
+    "to",
+    "value",
+    "blockTimestamp",
+    "logIndex"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Erc721TransferDetails.json",
+  "title": "Erc721TransferDetails",
+  "type": "object",
+  "properties": {
+    "from": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "to": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "logIndex": {
+      "type": "number"
+    },
+    "erc721Token": {
+      "$ref": "#/components/schemas/Erc721Token"
+    }
+  },
+  "required": [
+    "from",
+    "to",
+    "logIndex",
+    "erc721Token"
+  ]
+}

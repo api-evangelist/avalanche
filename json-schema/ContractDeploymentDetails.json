@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ContractDeploymentDetails.json",
+  "title": "ContractDeploymentDetails",
+  "type": "object",
+  "properties": {
+    "txHash": {
+      "type": "string"
+    },
+    "deployerAddress": {
+      "type": "string",
+      "description": "The address that initiated the transaction which deployed this contract."
+    },
+    "deployerContractAddress": {
+      "type": "string",
+      "description": "The contract address which deployed this contract via smart contract. This field is only populated when the contract was deployed as part of smart contract execution."
+    }
+  },
+  "required": [
+    "txHash",
+    "deployerAddress"
+  ]
+}

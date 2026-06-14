@@ -1,0 +1,27 @@
+{
+  "description": "List ERC-20 token balances for an address on C-Chain",
+  "operation": "GET /v1/chains/{chainId}/addresses/{address}/balances:listErc20",
+  "request": {
+    "path": "/v1/chains/43114/addresses/0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6/balances:listErc20",
+    "parameters": {
+      "chainId": "43114",
+      "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6",
+      "pageSize": 10
+    }
+  },
+  "response": {
+    "erc20TokenBalances": [
+      {
+        "balance": "500000000",
+        "erc20Token": {
+          "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6",
+          "name": "USD Coin",
+          "symbol": "USDC",
+          "decimals": 6,
+          "chainId": "43114"
+        },
+        "chainId": "43114"
+      }
+    ]
+  }
+}

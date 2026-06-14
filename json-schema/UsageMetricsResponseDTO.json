@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/UsageMetricsResponseDTO.json",
+  "title": "UsageMetricsResponseDTO",
+  "type": "object",
+  "properties": {
+    "aggregateDuration": {
+      "type": "string",
+      "description": "Duration in which the metrics value is aggregated"
+    },
+    "orgId": {
+      "type": "string",
+      "description": "Org ID for which the metrics are aggregated"
+    },
+    "metrics": {
+      "description": "Metrics values",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metric"
+      }
+    }
+  },
+  "required": [
+    "aggregateDuration",
+    "orgId",
+    "metrics"
+  ]
+}

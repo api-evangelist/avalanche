@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PrimaryNetworkRpcUsageMetricsResponseDTO.json",
+  "title": "PrimaryNetworkRpcUsageMetricsResponseDTO",
+  "type": "object",
+  "properties": {
+    "aggregateDuration": {
+      "type": "string",
+      "description": "Duration in which the metrics value is aggregated"
+    },
+    "metrics": {
+      "description": "Metrics values",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/RpcMetrics"
+      }
+    },
+    "network": {
+      "type": "string",
+      "description": "Network type for which the metrics are aggregated",
+      "enum": [
+        "mainnet",
+        "testnet"
+      ],
+      "examples": [
+        "mainnet"
+      ]
+    }
+  },
+  "required": [
+    "aggregateDuration",
+    "metrics",
+    "network"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/LogsFormatMetadata.json",
+  "title": "LogsFormatMetadata",
+  "type": "object",
+  "properties": {
+    "ipAddress": {
+      "type": "string",
+      "description": "The IP address of the client that made the request."
+    },
+    "host": {
+      "type": "string",
+      "description": "The host for the request made by the client."
+    },
+    "userAgent": {
+      "type": "string",
+      "description": "The user agent of the client that made the request."
+    }
+  },
+  "required": [
+    "ipAddress",
+    "host",
+    "userAgent"
+  ]
+}

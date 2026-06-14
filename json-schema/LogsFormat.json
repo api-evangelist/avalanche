@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/LogsFormat.json",
+  "title": "LogsFormat",
+  "type": "object",
+  "properties": {
+    "orgId": {
+      "type": "string",
+      "description": "The organization id of the request."
+    },
+    "logId": {
+      "type": "string",
+      "description": "The unique log id of the request."
+    },
+    "eventTimestamp": {
+      "type": "number",
+      "description": "The timestamp of the request."
+    },
+    "apiKeyId": {
+      "type": "string",
+      "description": "The apiKey used to make the request."
+    },
+    "apiKeyAlias": {
+      "type": "string",
+      "description": "The alias of the apiKey used to make the request."
+    },
+    "hostRegion": {
+      "type": "string",
+      "description": "The region of the host for the request made by the client."
+    },
+    "requestType": {
+      "examples": [
+        "rpc"
+      ],
+      "$ref": "#/components/schemas/RequestType"
+    },
+    "requestPath": {
+      "type": "string",
+      "description": "The path of the request made by the client."
+    },
+    "apiCreditsConsumed": {
+      "type": "number",
+      "description": "The number of API credits consumed by the request."
+    },
+    "requestDurationMsecs": {
+      "type": "number",
+      "description": "The duration of the request in milliseconds."
+    },
+    "responseCode": {
+      "type": "number",
+      "description": "The response code of the request."
+    },
+    "chainId": {
+      "type": "string",
+      "description": "The chain id of the request."
+    },
+    "rpcMethod": {
+      "type": "string",
+      "description": "The rpc method of the request."
+    },
+    "metadata": {
+      "description": "The metadata of the request.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LogsFormatMetadata"
+        }
+      ]
+    }
+  },
+  "required": [
+    "orgId",
+    "logId",
+    "eventTimestamp",
+    "apiKeyId",
+    "apiKeyAlias",
+    "hostRegion",
+    "requestType",
+    "requestPath",
+    "apiCreditsConsumed",
+    "requestDurationMsecs",
+    "responseCode",
+    "metadata"
+  ]
+}

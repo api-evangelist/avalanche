@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Erc721Token.json",
+  "title": "Erc721Token",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "A wallet or contract address in mixed-case checksum encoding.",
+      "examples": [
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "The contract name.",
+      "examples": [
+        "Wrapped AVAX"
+      ]
+    },
+    "symbol": {
+      "type": "string",
+      "description": "The contract symbol.",
+      "examples": [
+        "WAVAX"
+      ]
+    },
+    "ercType": {
+      "type": "string",
+      "enum": [
+        "ERC-721"
+      ]
+    },
+    "tokenId": {
+      "type": "string"
+    },
+    "tokenUri": {
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/Erc721TokenMetadata"
+    },
+    "ownerAddress": {
+      "type": "string",
+      "description": "A wallet or contract address in mixed-case checksum encoding.",
+      "examples": [
+        "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
+      ]
+    }
+  },
+  "required": [
+    "address",
+    "name",
+    "symbol",
+    "ercType",
+    "tokenId",
+    "tokenUri",
+    "metadata"
+  ]
+}

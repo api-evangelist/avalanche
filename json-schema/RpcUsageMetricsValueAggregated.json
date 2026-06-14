@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/RpcUsageMetricsValueAggregated.json",
+  "title": "RpcUsageMetricsValueAggregated",
+  "type": "object",
+  "properties": {
+    "totalRequests": {
+      "type": "number",
+      "description": "The total number of requests"
+    },
+    "apiCreditsUsed": {
+      "type": "number",
+      "description": "The number of API credits used"
+    },
+    "requestsPerSecond": {
+      "type": "number",
+      "description": "The number of requests per second"
+    },
+    "successRatePercent": {
+      "type": "number",
+      "description": "The success rate percentage"
+    },
+    "medianResponseTimeMsecs": {
+      "type": "number",
+      "description": "The median response time in milliseconds"
+    },
+    "invalidRequests": {
+      "type": "number",
+      "description": "The number of invalid requests"
+    },
+    "apiCreditsWasted": {
+      "type": "number",
+      "description": "The number of API credits wasted on invalid requests"
+    },
+    "groupedBy": {
+      "type": "string",
+      "description": "Column name used for data aggregation",
+      "enum": [
+        "rpcMethod",
+        "responseCode",
+        "rlBypassToken",
+        "requestPath",
+        "country",
+        "continent",
+        "userAgent",
+        "None"
+      ]
+    },
+    "groupValue": {
+      "description": "The value of the column used for data aggregation",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    }
+  },
+  "required": [
+    "totalRequests",
+    "apiCreditsUsed",
+    "requestsPerSecond",
+    "successRatePercent",
+    "medianResponseTimeMsecs",
+    "invalidRequests",
+    "apiCreditsWasted",
+    "groupedBy"
+  ]
+}

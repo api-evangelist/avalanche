@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/StakingDistribution.json",
+  "title": "StakingDistribution",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "AvalancheGo version for the validator node."
+    },
+    "amountStaked": {
+      "type": "string",
+      "description": "The total amount staked by validators using this version."
+    },
+    "validatorCount": {
+      "type": "number",
+      "description": "The number of validators using this version."
+    }
+  },
+  "required": [
+    "version",
+    "amountStaked",
+    "validatorCount"
+  ]
+}

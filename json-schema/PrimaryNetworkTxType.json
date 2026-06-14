@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PrimaryNetworkTxType.json",
+  "title": "PrimaryNetworkTxType",
+  "type": "string",
+  "enum": [
+    "AddValidatorTx",
+    "AddSubnetValidatorTx",
+    "AddDelegatorTx",
+    "CreateChainTx",
+    "CreateSubnetTx",
+    "ImportTx",
+    "ExportTx",
+    "AdvanceTimeTx",
+    "RewardValidatorTx",
+    "RemoveSubnetValidatorTx",
+    "TransformSubnetTx",
+    "AddPermissionlessValidatorTx",
+    "AddPermissionlessDelegatorTx",
+    "BaseTx",
+    "TransferSubnetOwnershipTx",
+    "ConvertSubnetToL1Tx",
+    "RegisterL1ValidatorTx",
+    "SetL1ValidatorWeightTx",
+    "DisableL1ValidatorTx",
+    "IncreaseL1ValidatorBalanceTx",
+    "UNKNOWN",
+    "CreateAssetTx",
+    "OperationTx"
+  ]
+}

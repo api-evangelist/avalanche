@@ -1,0 +1,20 @@
+{
+  "description": "Export transaction history for an address (async operation)",
+  "operation": "POST /v1/operations/transactions:export",
+  "request": {
+    "path": "/v1/operations/transactions:export",
+    "body": {
+      "addresses": [
+        "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6"
+      ],
+      "chainId": "43114",
+      "startTimestamp": 1680000000,
+      "endTimestamp": 1700000000
+    }
+  },
+  "response": {
+    "operationId": "op_abc123xyz",
+    "status": "processing",
+    "createdAt": "2026-01-01T00:00:00Z"
+  }
+}

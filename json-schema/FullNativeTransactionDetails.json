@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/FullNativeTransactionDetails.json",
+  "title": "FullNativeTransactionDetails",
+  "type": "object",
+  "properties": {
+    "blockNumber": {
+      "type": "string",
+      "description": "The block number on the chain.",
+      "examples": [
+        "339"
+      ]
+    },
+    "blockTimestamp": {
+      "type": "number",
+      "description": "The block creation (proposal) timestamp in seconds",
+      "examples": [
+        1648672486
+      ]
+    },
+    "blockTimestampMilliseconds": {
+      "type": "number",
+      "description": "The block creation (proposal) timestamp in milliseconds. Available only after Granite upgrade.",
+      "examples": [
+        1648672486000
+      ]
+    },
+    "blockMinDelayExcess": {
+      "type": "number",
+      "description": "Minimum block delay in milliseconds. Available only after Granite upgrade.",
+      "examples": [
+        7477290
+      ]
+    },
+    "blockHash": {
+      "type": "string",
+      "description": "The block hash identifier.",
+      "examples": [
+        "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c"
+      ]
+    },
+    "chainId": {
+      "type": "string",
+      "description": "The EVM chain ID on which the transaction occured.",
+      "examples": [
+        "43114"
+      ]
+    },
+    "blockIndex": {
+      "type": "number",
+      "description": "The index at which the transaction occured in the block (0-indexed).",
+      "examples": [
+        0
+      ]
+    },
+    "txHash": {
+      "type": "string",
+      "description": "The transaction hash identifier.",
+      "examples": [
+        "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4"
+      ]
+    },
+    "txStatus": {
+      "type": "string",
+      "description": "The transaction status, which is either 0 (failed) or 1 (successful).",
+      "examples": [
+        "1"
+      ]
+    },
+    "txType": {
+      "type": "number",
+      "description": "The transaction type.",
+      "examples": [
+        1
+      ]
+    },
+    "gasLimit": {
+      "type": "string",
+      "description": "The gas limit set for the transaction.",
+      "examples": [
+        "51373"
+      ]
+    },
+    "gasUsed": {
+      "type": "string",
+      "description": "The amount of gas used.",
+      "examples": [
+        "51373"
+      ]
+    },
+    "gasPrice": {
+      "type": "string",
+      "description": "The gas price denominated by the number of decimals of the native token.",
+      "examples": [
+        "470000000000"
+      ]
+    },
+    "nonce": {
+      "type": "string",
+      "description": "The nonce used by the sender of the transaction.",
+      "examples": [
+        "1"
+      ]
+    },
+    "from": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "to": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "method": {
+      "$ref": "#/components/schemas/Method"
+    },
+    "value": {
+      "type": "string",
+      "examples": [
+        "10000000000000000000"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "The data sent for the transaction."
+    },
+    "baseFeePerGas": {
+      "type": "string"
+    },
+    "maxFeePerGas": {
+      "type": "string"
+    },
+    "maxPriorityFeePerGas": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "blockNumber",
+    "blockTimestamp",
+    "blockHash",
+    "chainId",
+    "blockIndex",
+    "txHash",
+    "txStatus",
+    "txType",
+    "gasLimit",
+    "gasUsed",
+    "gasPrice",
+    "nonce",
+    "from",
+    "to",
+    "value",
+    "input",
+    "baseFeePerGas"
+  ]
+}

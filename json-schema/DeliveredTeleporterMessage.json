@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/DeliveredTeleporterMessage.json",
+  "title": "DeliveredTeleporterMessage",
+  "type": "object",
+  "properties": {
+    "messageId": {
+      "type": "string"
+    },
+    "teleporterContractAddress": {
+      "type": "string"
+    },
+    "sourceBlockchainId": {
+      "type": "string"
+    },
+    "destinationBlockchainId": {
+      "type": "string"
+    },
+    "sourceEvmChainId": {
+      "type": "string"
+    },
+    "destinationEvmChainId": {
+      "type": "string"
+    },
+    "messageNonce": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "data": {
+      "type": "string"
+    },
+    "messageExecuted": {
+      "type": "boolean"
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TeleporterReceipt"
+      }
+    },
+    "receiptDelivered": {
+      "type": "boolean"
+    },
+    "rewardDetails": {
+      "$ref": "#/components/schemas/TeleporterRewardDetails"
+    },
+    "sourceTransaction": {
+      "$ref": "#/components/schemas/TeleporterSourceTransaction"
+    },
+    "destinationTransaction": {
+      "$ref": "#/components/schemas/TeleporterDestinationTransaction"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "delivered"
+      ]
+    }
+  },
+  "required": [
+    "messageId",
+    "teleporterContractAddress",
+    "sourceBlockchainId",
+    "destinationBlockchainId",
+    "sourceEvmChainId",
+    "destinationEvmChainId",
+    "messageNonce",
+    "from",
+    "to",
+    "messageExecuted",
+    "receipts",
+    "receiptDelivered",
+    "rewardDetails",
+    "sourceTransaction",
+    "destinationTransaction",
+    "status"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PChainBalance.json",
+  "title": "PChainBalance",
+  "type": "object",
+  "properties": {
+    "unlockedUnstaked": {
+      "description": "A list of objects containing P-chain Asset basic info, amount,  and utxo count of that Asset ID.  Denotes the amount of unstaked Avax that is consumable by any transaction.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "unlockedStaked": {
+      "description": "A list of objects containing P-chain Asset basic info, amount,  and utxo count of that Asset ID.  Denotes the amount of staked Avax that is consumable by any transaction when the staking period ends.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "lockedPlatform": {
+      "description": "A list of objects containing P-chain Asset basic info, amount,  and utxo count of that Asset ID.  Denotes the amount of unstaked Avax that is locked at the platform level and not consumable by any transaction at the current time.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "lockedStakeable": {
+      "description": "A list of objects containing P-chain Asset basic info, amount,  and utxo count of that Asset ID.  Denotes the amount of unstaked Avax that is locked at the platform level and only consumeable for staking transactions.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "lockedStaked": {
+      "description": "A list of objects containing P-chain Asset basic info, amount,  and utxo count of that Asset ID.  Denotes the amount of staked Avax that will be locked when the staking period ends.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "pendingStaked": {
+      "description": "A list of objects containing P-chain Asset basic info, amount,  and utxo count of that Asset ID.  Denotes the amount of staked Avax whose staking period has not yet started.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "atomicMemoryUnlocked": {
+      "description": "A list of objects containing P-chain Asset basic info, amount and utxo count of that Asset ID. Denotes the amount of unlocked Avax in the atomic memory between P-Chain and other chain.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PChainSharedAsset"
+      }
+    },
+    "atomicMemoryLocked": {
+      "description": "A list of objects containing P-chain Asset basic info, amount and utxo count of that Asset ID. Denotes the amount of locked Avax in the atomic memory between P-Chain and other chain.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PChainSharedAsset"
+      }
+    }
+  },
+  "required": [
+    "unlockedUnstaked",
+    "unlockedStaked",
+    "lockedPlatform",
+    "lockedStakeable",
+    "lockedStaked",
+    "pendingStaked",
+    "atomicMemoryUnlocked",
+    "atomicMemoryLocked"
+  ]
+}

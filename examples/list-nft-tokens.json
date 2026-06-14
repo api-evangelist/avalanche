@@ -1,0 +1,26 @@
+{
+  "description": "List NFT tokens in a collection on C-Chain",
+  "operation": "GET /v1/chains/{chainId}/nfts/collections/{address}/tokens",
+  "request": {
+    "path": "/v1/chains/43114/nfts/collections/0xCE0EC4Da4f77bF13e2A92E4Df23B21aC7f93f23/tokens",
+    "parameters": {
+      "chainId": "43114",
+      "address": "0xCE0EC4Da4f77bF13e2A92E4Df23B21aC7f93f23",
+      "pageSize": 5
+    }
+  },
+  "response": {
+    "nftTokens": [
+      {
+        "tokenId": "1",
+        "tokenUri": "https://metadata.example.com/1",
+        "metadata": {
+          "name": "Avalanche NFT #1",
+          "description": "A sample NFT on Avalanche C-Chain",
+          "image": "https://images.example.com/1.png"
+        },
+        "ownerAddress": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6"
+      }
+    ]
+  }
+}

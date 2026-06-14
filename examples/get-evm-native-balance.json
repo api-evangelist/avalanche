@@ -1,0 +1,25 @@
+{
+  "description": "Get native AVAX balance for an address on C-Chain",
+  "operation": "GET /v1/chains/{chainId}/addresses/{address}/balances:getNative",
+  "request": {
+    "path": "/v1/chains/43114/addresses/0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6/balances:getNative",
+    "parameters": {
+      "chainId": "43114",
+      "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6"
+    }
+  },
+  "response": {
+    "nativeTokenBalance": {
+      "balance": "1000000000000000000",
+      "unlockedBalance": "1000000000000000000",
+      "lockedBalance": "0",
+      "nativeToken": {
+        "name": "Avalanche",
+        "symbol": "AVAX",
+        "decimals": 18,
+        "chainId": "43114"
+      },
+      "chainId": "43114"
+    }
+  }
+}

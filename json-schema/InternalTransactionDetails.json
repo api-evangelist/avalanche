@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/InternalTransactionDetails.json",
+  "title": "InternalTransactionDetails",
+  "type": "object",
+  "properties": {
+    "from": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "to": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "internalTxType": {
+      "$ref": "#/components/schemas/InternalTransactionOpCall"
+    },
+    "value": {
+      "type": "string",
+      "examples": [
+        "10000000000000000000"
+      ]
+    },
+    "isReverted": {
+      "type": "boolean",
+      "description": "True if the internal transaction was reverted."
+    },
+    "gasUsed": {
+      "type": "string"
+    },
+    "gasLimit": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "from",
+    "to",
+    "internalTxType",
+    "value",
+    "isReverted",
+    "gasUsed",
+    "gasLimit"
+  ]
+}

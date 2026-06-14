@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/L1ValidatorDetailsFull.json",
+  "title": "L1ValidatorDetailsFull",
+  "type": "object",
+  "properties": {
+    "validationId": {
+      "type": "string",
+      "description": "Unique L1 validation ID used network-wide to identify L1 validation until its weight is reduced to 0 i.e. removed."
+    },
+    "validationIdHex": {
+      "type": "string",
+      "description": "Unique L1 validation ID used network-wide to identify L1 validation until its weight is reduced to 0 i.e. removed. In hex format"
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "number",
+      "description": "Weight of the L1 validator used while sampling validators within the L1. A zero-weight L1 validator means it has been removed from the L1, and the validationID is no longer valid"
+    },
+    "remainingBalance": {
+      "type": "number",
+      "description": "Remaining L1 validator balance in nAVAX until inactive. It can rejoin L1 sampling by increasing balance with IncreaseL1ValidatorBalanceTx"
+    },
+    "creationTimestamp": {
+      "type": "number",
+      "description": "The timestamp of the transaction which created this L1 validator"
+    },
+    "blsCredentials": {
+      "type": "object"
+    },
+    "remainingBalanceOwner": {
+      "description": "The L1 validator owner's balance, returned after it's disabled or removed",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BalanceOwner"
+        }
+      ]
+    },
+    "deactivationOwner": {
+      "description": "Owner ddresses details which can disable or remove the L1 validator",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BalanceOwner"
+        }
+      ]
+    }
+  },
+  "required": [
+    "validationId",
+    "validationIdHex",
+    "nodeId",
+    "subnetId",
+    "weight",
+    "remainingBalance",
+    "creationTimestamp",
+    "blsCredentials",
+    "remainingBalanceOwner",
+    "deactivationOwner"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/BadRequest.json",
+  "title": "BadRequest",
+  "type": "object",
+  "properties": {
+    "message": {
+      "description": "The error message describing the reason for the exception",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "statusCode": {
+      "type": "number",
+      "description": "The HTTP status code of the response",
+      "examples": [
+        400
+      ]
+    },
+    "error": {
+      "type": "string",
+      "description": "The type of error",
+      "examples": [
+        "Bad Request"
+      ]
+    }
+  },
+  "required": [
+    "message",
+    "statusCode",
+    "error"
+  ]
+}

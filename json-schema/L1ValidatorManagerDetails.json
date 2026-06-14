@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/L1ValidatorManagerDetails.json",
+  "title": "L1ValidatorManagerDetails",
+  "type": "object",
+  "properties": {
+    "blockchainId": {
+      "type": "string"
+    },
+    "contractAddress": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "blockchainId",
+    "contractAddress"
+  ]
+}

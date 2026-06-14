@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/CurrencyCode.json",
+  "title": "CurrencyCode",
+  "type": "string",
+  "description": "ISO 4217 currency code.",
+  "enum": [
+    "usd",
+    "eur",
+    "aud",
+    "cad",
+    "chf",
+    "clp",
+    "cny",
+    "czk",
+    "dkk",
+    "gbp",
+    "hkd",
+    "huf",
+    "jpy",
+    "nzd"
+  ]
+}

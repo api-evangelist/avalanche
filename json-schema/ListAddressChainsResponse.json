@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListAddressChainsResponse.json",
+  "title": "ListAddressChainsResponse",
+  "type": "object",
+  "properties": {
+    "indexedChains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChainInfo"
+      }
+    },
+    "unindexedChains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

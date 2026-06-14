@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/AccessListData.json",
+  "title": "AccessListData",
+  "type": "object",
+  "properties": {
+    "accessAddresses": {
+      "type": "string",
+      "description": "Access Address",
+      "examples": [
+        "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7"
+      ]
+    },
+    "storageKeys": {
+      "description": "Storage keys",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "accessAddresses",
+    "storageKeys"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListContractsResponse.json",
+  "title": "ListContractsResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Erc721Contract"
+          },
+          {
+            "$ref": "#/components/schemas/Erc1155Contract"
+          },
+          {
+            "$ref": "#/components/schemas/Erc20Contract"
+          },
+          {
+            "$ref": "#/components/schemas/UnknownContract"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "ercType",
+          "mapping": {
+            "ERC-721": "#/components/schemas/Erc721Contract",
+            "ERC-1155": "#/components/schemas/Erc1155Contract",
+            "ERC-20": "#/components/schemas/Erc20Contract",
+            "UNKNOWN": "#/components/schemas/UnknownContract"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "contracts"
+  ]
+}

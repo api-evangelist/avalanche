@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PrimaryNetworkBalanceThresholdFilter.json",
+  "title": "PrimaryNetworkBalanceThresholdFilter",
+  "type": "object",
+  "properties": {
+    "balanceType": {
+      "$ref": "#/components/schemas/CommonBalanceType"
+    },
+    "balanceThreshold": {
+      "type": "string",
+      "description": "Threshold for balance corresponding to balanceType in nAVAX"
+    }
+  },
+  "required": [
+    "balanceType",
+    "balanceThreshold"
+  ]
+}

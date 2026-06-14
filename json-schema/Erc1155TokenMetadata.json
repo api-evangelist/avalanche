@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Erc1155TokenMetadata.json",
+  "title": "Erc1155TokenMetadata",
+  "type": "object",
+  "properties": {
+    "indexStatus": {
+      "examples": [
+        "indexed"
+      ],
+      "$ref": "#/components/schemas/NftTokenMetadataStatus"
+    },
+    "metadataLastUpdatedTimestamp": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "imageUri": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "animationUri": {
+      "type": "string"
+    },
+    "externalUrl": {
+      "type": "string"
+    },
+    "background": {
+      "type": "string"
+    },
+    "decimals": {
+      "type": "number"
+    },
+    "properties": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "indexStatus"
+  ]
+}

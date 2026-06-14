@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/XChainBalances.json",
+  "title": "XChainBalances",
+  "type": "object",
+  "properties": {
+    "locked": {
+      "description": "A list of objects containing X-chain Asset balance information.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "unlocked": {
+      "description": "A list of objects containing X-chain Asset balance information.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AggregatedAssetAmount"
+      }
+    },
+    "atomicMemoryUnlocked": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/XChainSharedAssetBalance"
+      }
+    },
+    "atomicMemoryLocked": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/XChainSharedAssetBalance"
+      }
+    }
+  },
+  "required": [
+    "locked",
+    "unlocked",
+    "atomicMemoryUnlocked",
+    "atomicMemoryLocked"
+  ]
+}

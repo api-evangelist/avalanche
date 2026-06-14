@@ -1,0 +1,23 @@
+{
+  "description": "List cross-chain Teleporter messages",
+  "operation": "GET /v1/teleporter/messages",
+  "request": {
+    "path": "/v1/teleporter/messages",
+    "parameters": {
+      "pageSize": 10,
+      "network": "mainnet"
+    }
+  },
+  "response": {
+    "messages": [
+      {
+        "messageId": "0xmessage123",
+        "sourceChainId": "43114",
+        "destinationChainId": "43112",
+        "status": "delivered",
+        "blockTimestamp": 1700000000,
+        "txHash": "0xtx_hash"
+      }
+    ]
+  }
+}

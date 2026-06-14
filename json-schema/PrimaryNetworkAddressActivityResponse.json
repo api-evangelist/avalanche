@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PrimaryNetworkAddressActivityResponse.json",
+  "title": "PrimaryNetworkAddressActivityResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "chainId": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/components/schemas/WebhookStatusType"
+    },
+    "createdAt": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "eventType": {
+      "$ref": "#/components/schemas/PrimaryNetworkAddressActivityEventType"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/PrimaryNetworkAddressActivityMetadata"
+    }
+  },
+  "required": [
+    "id",
+    "url",
+    "chainId",
+    "status",
+    "createdAt",
+    "name",
+    "description",
+    "eventType",
+    "metadata"
+  ]
+}

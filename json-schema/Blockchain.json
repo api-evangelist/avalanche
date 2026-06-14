@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Blockchain.json",
+  "title": "Blockchain",
+  "type": "object",
+  "properties": {
+    "createBlockTimestamp": {
+      "type": "number"
+    },
+    "createBlockNumber": {
+      "type": "string"
+    },
+    "blockchainId": {
+      "type": "string"
+    },
+    "vmId": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "blockchainName": {
+      "type": "string"
+    },
+    "evmChainId": {
+      "type": "number",
+      "description": "EVM Chain ID for the EVM-based chains. This field is extracted from genesis data, and may be present for non-EVM chains as well.",
+      "example": 43114
+    },
+    "genesisData": {
+      "description": "The genesis data of the blockchain. Can be either a parsed EvmGenesisDto object or a raw JSON string.",
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisDto"
+        },
+        {
+          "type": "string",
+          "example": "{\"chainId\": 43114}"
+        }
+      ],
+      "examples": {
+        "config": {
+          "chainId": 43114
+        }
+      }
+    }
+  },
+  "required": [
+    "createBlockTimestamp",
+    "createBlockNumber",
+    "blockchainId",
+    "vmId",
+    "subnetId",
+    "blockchainName"
+  ]
+}

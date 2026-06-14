@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListL1ValidatorsResponse.json",
+  "title": "ListL1ValidatorsResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "validators": {
+      "description": "The list of L1 validations for the given Subnet ID, NodeId or validationId",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/L1ValidatorDetailsFull"
+      }
+    },
+    "blockHeight": {
+      "type": "string",
+      "description": "Block height at which the L1 validator's remaining balance is calculated"
+    }
+  },
+  "required": [
+    "validators",
+    "blockHeight"
+  ]
+}

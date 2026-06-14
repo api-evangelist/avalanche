@@ -1,0 +1,29 @@
+{
+  "description": "Get details of a specific EVM transaction",
+  "operation": "GET /v1/chains/{chainId}/transactions/{txHash}",
+  "request": {
+    "path": "/v1/chains/43114/transactions/0xabc123def456",
+    "parameters": {
+      "chainId": "43114",
+      "txHash": "0xabc123def456"
+    }
+  },
+  "response": {
+    "transaction": {
+      "txHash": "0xabc123def456",
+      "blockNumber": "42000000",
+      "blockTimestamp": 1700000000,
+      "from": {
+        "address": "0xSender123"
+      },
+      "to": {
+        "address": "0xRecipient456"
+      },
+      "value": "1000000000000000000",
+      "gasUsed": "21000",
+      "gasPrice": "25000000000",
+      "status": "success",
+      "chainId": "43114"
+    }
+  }
+}

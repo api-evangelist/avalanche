@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListValidatorDetailsResponse.json",
+  "title": "ListValidatorDetailsResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "validators": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CompletedValidatorDetails"
+          },
+          {
+            "$ref": "#/components/schemas/ActiveValidatorDetails"
+          },
+          {
+            "$ref": "#/components/schemas/PendingValidatorDetails"
+          },
+          {
+            "$ref": "#/components/schemas/RemovedValidatorDetails"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "validationStatus",
+          "mapping": {
+            "active": "#/components/schemas/ActiveValidatorDetails",
+            "pending": "#/components/schemas/PendingValidatorDetails",
+            "completed": "#/components/schemas/CompletedValidatorDetails",
+            "removed": "#/components/schemas/RemovedValidatorDetails"
+          }
+        }
+      },
+      "description": "The list of validator Details."
+    }
+  },
+  "required": [
+    "validators"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/InternalTransactionOpCall.json",
+  "title": "InternalTransactionOpCall",
+  "type": "string",
+  "enum": [
+    "UNKNOWN",
+    "CALL",
+    "CREATE",
+    "CREATE2",
+    "CREATE3",
+    "CALLCODE",
+    "DELEGATECALL",
+    "STATICCALL"
+  ]
+}

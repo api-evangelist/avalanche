@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PrimaryNetworkAssetCap.json",
+  "title": "PrimaryNetworkAssetCap",
+  "type": "string",
+  "description": "Cap represents if an asset is a variable or fixed cap asset.",
+  "enum": [
+    "fixed",
+    "variable"
+  ]
+}

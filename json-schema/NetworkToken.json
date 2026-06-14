@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/NetworkToken.json",
+  "title": "NetworkToken",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The contract name.",
+      "examples": [
+        "Wrapped AVAX"
+      ]
+    },
+    "symbol": {
+      "type": "string",
+      "description": "The contract symbol.",
+      "examples": [
+        "WAVAX"
+      ]
+    },
+    "decimals": {
+      "type": "number",
+      "description": "The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.",
+      "examples": [
+        18
+      ]
+    },
+    "logoUri": {
+      "type": "string",
+      "description": "The logo uri for the address.",
+      "examples": [
+        "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"
+      ]
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "symbol",
+    "decimals"
+  ]
+}

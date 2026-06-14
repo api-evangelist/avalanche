@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListCollectibleBalancesResponse.json",
+  "title": "ListCollectibleBalancesResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "collectibleBalances": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Erc721TokenBalance"
+          },
+          {
+            "$ref": "#/components/schemas/Erc1155TokenBalance"
+          }
+        ]
+      },
+      "description": "The list of ERC-721 and ERC-1155 token balances for the address."
+    }
+  },
+  "required": [
+    "collectibleBalances"
+  ]
+}

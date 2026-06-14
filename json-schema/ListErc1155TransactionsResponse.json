@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListErc1155TransactionsResponse.json",
+  "title": "ListErc1155TransactionsResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Erc1155Transfer"
+      }
+    }
+  },
+  "required": [
+    "transactions"
+  ]
+}

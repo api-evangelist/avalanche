@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/GetChainResponse.json",
+  "title": "GetChainResponse",
+  "type": "object",
+  "properties": {
+    "chainId": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/components/schemas/ChainStatus"
+    },
+    "chainName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "platformChainId": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "vmId": {
+      "type": "string"
+    },
+    "vmName": {
+      "$ref": "#/components/schemas/VmName"
+    },
+    "explorerUrl": {
+      "type": "string"
+    },
+    "rpcUrl": {
+      "type": "string"
+    },
+    "wsUrl": {
+      "type": "string"
+    },
+    "isTestnet": {
+      "type": "boolean"
+    },
+    "utilityAddresses": {
+      "$ref": "#/components/schemas/UtilityAddresses"
+    },
+    "networkToken": {
+      "$ref": "#/components/schemas/NetworkToken"
+    },
+    "chainLogoUri": {
+      "type": "string"
+    },
+    "private": {
+      "type": "boolean"
+    },
+    "enabledFeatures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "nftIndexing",
+          "webhooks",
+          "teleporter"
+        ]
+      }
+    }
+  },
+  "required": [
+    "chainId",
+    "status",
+    "chainName",
+    "description",
+    "vmName",
+    "rpcUrl",
+    "isTestnet",
+    "networkToken"
+  ]
+}

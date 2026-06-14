@@ -1,0 +1,25 @@
+{
+  "description": "List current validators on Avalanche Primary Network",
+  "operation": "GET /v1/networks/{network}/validators",
+  "request": {
+    "path": "/v1/networks/mainnet/validators",
+    "parameters": {
+      "network": "mainnet",
+      "pageSize": 10
+    }
+  },
+  "response": {
+    "validators": [
+      {
+        "nodeId": "NodeID-ABC123",
+        "validationId": "validation_xyz",
+        "startTimestamp": 1600000000,
+        "endTimestamp": 1700000000,
+        "stakeAmount": "2000000000000",
+        "weight": 2000,
+        "delegationFee": "2.00",
+        "uptime": "99.99"
+      }
+    ]
+  }
+}

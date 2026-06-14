@@ -1,0 +1,27 @@
+{
+  "description": "Check the health status of the Glacier API service",
+  "operation": "GET /v1/health-check",
+  "request": {
+    "path": "/v1/health-check"
+  },
+  "response": {
+    "status": "ok",
+    "info": {
+      "database": {
+        "status": "up"
+      },
+      "redis": {
+        "status": "up"
+      }
+    },
+    "error": {},
+    "details": {
+      "database": {
+        "status": "up"
+      },
+      "redis": {
+        "status": "up"
+      }
+    }
+  }
+}

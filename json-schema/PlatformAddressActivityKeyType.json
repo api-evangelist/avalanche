@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PlatformAddressActivityKeyType.json",
+  "title": "PlatformAddressActivityKeyType",
+  "type": "string",
+  "description": "The type of key to monitor for the address activity event type.",
+  "enum": [
+    "addresses"
+  ]
+}

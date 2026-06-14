@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Metric.json",
+  "title": "Metric",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "number",
+      "description": "The timestamp of the metrics value"
+    },
+    "values": {
+      "description": "The metrics values for the timestamp",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UsageMetricsValueDTO"
+      }
+    }
+  },
+  "required": [
+    "timestamp",
+    "values"
+  ]
+}

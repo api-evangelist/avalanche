@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/EvmGenesisAllocDto.json",
+  "title": "EvmGenesisAllocDto",
+  "type": "object",
+  "properties": {
+    "balance": {
+      "type": "string",
+      "description": "Account balance in hex format",
+      "example": "0x295BE96E64066972000000"
+    },
+    "code": {
+      "type": "string",
+      "description": "Contract bytecode in hex format",
+      "example": "0x6080604052..."
+    },
+    "storage": {
+      "type": "object",
+      "description": "Contract storage slots",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ResourceLinkType.json",
+  "title": "ResourceLinkType",
+  "type": "string",
+  "enum": [
+    "Blog",
+    "CoinGecko",
+    "CoinMarketCap",
+    "Discord",
+    "Documentation",
+    "Facebook",
+    "Github",
+    "Instagram",
+    "LinkedIn",
+    "Medium",
+    "Reddit",
+    "Support",
+    "Telegram",
+    "TikTok",
+    "Twitter",
+    "Website",
+    "Whitepaper",
+    "Youtube"
+  ]
+}

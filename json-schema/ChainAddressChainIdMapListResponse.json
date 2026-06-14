@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ChainAddressChainIdMapListResponse.json",
+  "title": "ChainAddressChainIdMapListResponse",
+  "type": "object",
+  "properties": {
+    "addresses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChainAddressChainIdMap"
+      }
+    }
+  },
+  "required": [
+    "addresses"
+  ]
+}

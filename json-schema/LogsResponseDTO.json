@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/LogsResponseDTO.json",
+  "title": "LogsResponseDTO",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "The organization id of the request."
+    },
+    "logs": {
+      "description": "An array of logs representing the requests made by clients.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LogsFormat"
+      }
+    }
+  },
+  "required": [
+    "orgId",
+    "logs"
+  ]
+}

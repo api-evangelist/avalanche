@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Rewards.json",
+  "title": "Rewards",
+  "type": "object",
+  "properties": {
+    "validationRewardAmount": {
+      "type": "string"
+    },
+    "delegationRewardAmount": {
+      "type": "string"
+    },
+    "rewardAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rewardTxHash": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "validationRewardAmount",
+    "delegationRewardAmount"
+  ]
+}

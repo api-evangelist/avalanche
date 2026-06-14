@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ActiveValidatorDetails.json",
+  "title": "ActiveValidatorDetails",
+  "type": "object",
+  "properties": {
+    "txHash": {
+      "type": "string"
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "amountStaked": {
+      "type": "string"
+    },
+    "delegationFee": {
+      "type": "string",
+      "description": "The percentage of total estimated delegator rewards allocated to validator nodes for supporting delegations."
+    },
+    "startTimestamp": {
+      "type": "number"
+    },
+    "endTimestamp": {
+      "type": "number"
+    },
+    "blsCredentials": {
+      "description": "Present for AddPermissionlessValidatorTx",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BlsCredentials"
+        }
+      ]
+    },
+    "stakePercentage": {
+      "type": "number",
+      "description": "The percentage of this validator's stake amount to the total active stake."
+    },
+    "delegatorCount": {
+      "type": "number",
+      "description": "The number of delegators linked to the validator."
+    },
+    "amountDelegated": {
+      "type": "string",
+      "description": "The total amount in nAVAX delegated to the validator."
+    },
+    "uptimePerformance": {
+      "type": "number",
+      "description": "The validator's uptime percentage, as observed by our internal node and measured over time."
+    },
+    "avalancheGoVersion": {
+      "type": "string"
+    },
+    "delegationCapacity": {
+      "type": "string",
+      "description": "The amount of stake in nAVAX that can be delegated to this validator."
+    },
+    "potentialRewards": {
+      "description": "Estimated rewards for the validator if the validation is successful.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Rewards"
+        }
+      ]
+    },
+    "validationStatus": {
+      "type": "string",
+      "enum": [
+        "active"
+      ]
+    },
+    "validatorHealth": {
+      "$ref": "#/components/schemas/ValidatorHealthDetails"
+    },
+    "geolocation": {
+      "nullable": true,
+      "description": "The geographical location of the validator node, if available.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Geolocation"
+        }
+      ]
+    }
+  },
+  "required": [
+    "txHash",
+    "nodeId",
+    "subnetId",
+    "amountStaked",
+    "startTimestamp",
+    "endTimestamp",
+    "stakePercentage",
+    "delegatorCount",
+    "uptimePerformance",
+    "potentialRewards",
+    "validationStatus",
+    "validatorHealth",
+    "geolocation"
+  ]
+}

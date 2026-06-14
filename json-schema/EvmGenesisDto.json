@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/EvmGenesisDto.json",
+  "title": "EvmGenesisDto",
+  "type": "object",
+  "properties": {
+    "airdropAmount": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Airdrop amount",
+      "example": null
+    },
+    "airdropHash": {
+      "type": "string",
+      "description": "Airdrop hash",
+      "example": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "alloc": {
+      "type": "object",
+      "description": "Allocation of accounts and balances",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/EvmGenesisAllocDto"
+      },
+      "example": {
+        "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd": {
+          "balance": "0x52b7d2dcc80cd2e4000000",
+          "code": "0x6080604052...",
+          "storage": {
+            "0x0": "0x1"
+          }
+        }
+      }
+    },
+    "baseFeePerGas": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Base fee per gas",
+      "example": null
+    },
+    "blobGasUsed": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Blob gas used",
+      "example": null
+    },
+    "coinbase": {
+      "type": "string",
+      "description": "Coinbase address",
+      "example": "0x0000000000000000000000000000000000000000"
+    },
+    "config": {
+      "description": "Genesis configuration",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisConfigDto"
+        }
+      ]
+    },
+    "difficulty": {
+      "type": "string",
+      "description": "Difficulty",
+      "example": "0x0"
+    },
+    "excessBlobGas": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Excess blob gas",
+      "example": null
+    },
+    "extraData": {
+      "type": "string",
+      "description": "Extra data",
+      "example": "0x"
+    },
+    "gasLimit": {
+      "type": "string",
+      "description": "Gas limit",
+      "example": "0xb71b00"
+    },
+    "gasUsed": {
+      "type": "string",
+      "description": "Gas used",
+      "example": "0x0"
+    },
+    "mixHash": {
+      "type": "string",
+      "description": "Mix hash",
+      "example": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "nonce": {
+      "type": "string",
+      "description": "Nonce",
+      "example": "0x0"
+    },
+    "number": {
+      "type": "string",
+      "description": "Block number",
+      "example": "0x0"
+    },
+    "parentHash": {
+      "type": "string",
+      "description": "Parent hash",
+      "example": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "Block timestamp",
+      "example": "0x64f0a000"
+    }
+  }
+}

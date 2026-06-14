@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/LastActivityTimestamp.json",
+  "title": "LastActivityTimestamp",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "number",
+      "description": "Unix timestamp in seconds at which the last activity occurred."
+    },
+    "blockNumber": {
+      "type": "string",
+      "description": "Block height at which the last activity occurred."
+    },
+    "txHash": {
+      "type": "string",
+      "description": "Transaction hash of the transaction that created or consumed the address' UTXOs."
+    },
+    "utxoId": {
+      "type": "string",
+      "description": "UTXO ID of the UTXO that was created or consumed."
+    },
+    "isConsumed": {
+      "type": "boolean",
+      "description": "Whether the last activity was a consumption of an existing UTXO."
+    },
+    "chainName": {
+      "$ref": "#/components/schemas/PrimaryNetworkChainName"
+    },
+    "network": {
+      "$ref": "#/components/schemas/PrimaryNetworkType"
+    }
+  },
+  "required": [
+    "timestamp",
+    "blockNumber",
+    "txHash",
+    "utxoId",
+    "isConsumed",
+    "chainName",
+    "network"
+  ]
+}

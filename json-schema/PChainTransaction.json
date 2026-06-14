@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PChainTransaction.json",
+  "title": "PChainTransaction",
+  "type": "object",
+  "properties": {
+    "txHash": {
+      "type": "string",
+      "description": "A P-Chain transaction hash.",
+      "examples": [
+        "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP"
+      ]
+    },
+    "txType": {
+      "examples": [
+        "AddDelegatorTx"
+      ],
+      "$ref": "#/components/schemas/PChainTransactionType"
+    },
+    "blockTimestamp": {
+      "type": "number",
+      "description": "The block creation (proposal) timestamp in seconds",
+      "examples": [
+        1648672486
+      ]
+    },
+    "blockNumber": {
+      "type": "string",
+      "description": "The height of the block in which the transaction was included"
+    },
+    "blockHash": {
+      "type": "string"
+    },
+    "consumedUtxos": {
+      "description": "The consumed UTXOs of the transaction",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PChainUtxo"
+      }
+    },
+    "emittedUtxos": {
+      "description": "The newly created UTXOs of the transaction",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PChainUtxo"
+      }
+    },
+    "sourceChain": {
+      "type": "string",
+      "description": "Source chain for an atomic transaction.",
+      "examples": [
+        "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM"
+      ]
+    },
+    "destinationChain": {
+      "type": "string",
+      "description": "Destination chain for an atomic transaction.",
+      "examples": [
+        "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM"
+      ]
+    },
+    "value": {
+      "description": "A list of objects containing P-chain Asset basic info and the amount of that Asset ID. The amount of nAVAX present in the newly created UTXOs of the transaction",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AssetAmount"
+      }
+    },
+    "amountBurned": {
+      "description": "A list of objects containing P-chain Asset basic info and the amount of that Asset ID. The nAVAX amount burned in a transaction, partially or fully contributing to the transaction fee",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AssetAmount"
+      }
+    },
+    "amountStaked": {
+      "description": "A list of objects containing P-chain Asset basic info and the amount of that Asset ID. Present for AddValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AssetAmount"
+      }
+    },
+    "amountL1ValidatorBalanceBurned": {
+      "description": "A list of objects containing P-chain Asset basic info and the amount of that Asset ID. The amount of nAVAX locked for pay-as-you-go continuous fees to sustain L1 validation.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AssetAmount"
+      }
+    },
+    "startTimestamp": {
+      "type": "number",
+      "description": "Present for AddValidatorTx, AddSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx"
+    },
+    "endTimestamp": {
+      "type": "number",
+      "description": "Present for AddValidatorTx, AddSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx"
+    },
+    "delegationFeePercent": {
+      "type": "string",
+      "description": "The percentage of total estimated delegator rewards allocated to validator nodes for supporting delegations. Present for AddValidatorTx, AddPermissionlessValidatorTx"
+    },
+    "nodeId": {
+      "type": "string",
+      "description": "The NodeID of the validator node linked to the stake transaction. Present for AddValidatorTx, AddSubnetValidatorTx, RemoveSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx"
+    },
+    "subnetId": {
+      "type": "string",
+      "description": "Present for AddValidatorTx, AddSubnetValidatorTx, RemoveSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx, CreateChainTx, CreateSubnetTx"
+    },
+    "l1ValidatorManagerDetails": {
+      "description": "Details of the L1's validator manager contract and blockchain. Present for the ConvertSubnetToL1Tx which transforms a subnet into L1",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/L1ValidatorManagerDetails"
+        }
+      ]
+    },
+    "l1ValidatorDetails": {
+      "description": "Details of L1 validators registered or changed in the current transaction. The details reflect the state at the time of the transaction, not in real-time",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/L1ValidatorDetailsTransaction"
+      }
+    },
+    "estimatedReward": {
+      "type": "string",
+      "description": "Estimated reward from the staking transaction, if successful. Present for AddValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx"
+    },
+    "rewardTxHash": {
+      "type": "string",
+      "description": "Reward transaction hash for the completed validations or delegations"
+    },
+    "rewardAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "memo": {
+      "type": "string"
+    },
+    "stakingTxHash": {
+      "type": "string",
+      "description": "Staking transaction corresponding to the RewardValidatorTx"
+    },
+    "subnetOwnershipInfo": {
+      "description": "Subnet owner details for the CreateSubnetTx or TransferSubnetOwnershipTx",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SubnetOwnershipInfo"
+        }
+      ]
+    },
+    "blsCredentials": {
+      "description": "Public Key and PoP of new validator registrations. Present for AddPermissionlessValidatorTx",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BlsCredentials"
+        }
+      ]
+    },
+    "blockchainInfo": {
+      "description": "Details of the blockchain that was created in the CreateChainTx",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BlockchainInfo"
+        }
+      ]
+    }
+  },
+  "required": [
+    "txHash",
+    "txType",
+    "blockTimestamp",
+    "blockNumber",
+    "blockHash",
+    "consumedUtxos",
+    "emittedUtxos",
+    "value",
+    "amountBurned",
+    "amountStaked",
+    "amountL1ValidatorBalanceBurned"
+  ]
+}

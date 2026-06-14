@@ -1,0 +1,45 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "avax": "https://developers.avacloud.io/ontology#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://glacier-api.avax.network/v1",
+  "name": "Avalanche Data API (Glacier)",
+  "description": "Query on-chain data from Avalanche networks \u2014 EVM balances, ERC-20/ERC-721/ERC-1155 tokens, transactions, blocks, NFT metadata, UTXOs, validators, staking rewards, and interchain messaging across 100+ L1s.",
+  "documentation": "https://developers.avacloud.io/data-api/overview",
+  "termsOfService": "https://www.avacloud.io/terms-of-service",
+  "provider": {
+    "@type": "Organization",
+    "name": "Ava Labs",
+    "url": "https://www.avacloud.io/",
+    "sameAs": [
+      "https://github.com/ava-labs",
+      "https://x.com/avax"
+    ]
+  },
+  "hasAPI": [
+    {
+      "@type": "WebAPI",
+      "name": "Avalanche Metrics API",
+      "url": "https://developers.avacloud.io/metrics-api/overview"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "Avalanche RPC API",
+      "url": "https://build.avax.network/docs/api-reference/data-api/usage"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "Avalanche Webhooks API",
+      "url": "https://developers.avacloud.io/webhooks-api/overview"
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://docs.avacloud.io/getting-started/plans"
+  },
+  "softwareVersion": "3.1.0",
+  "availableLanguage": "en",
+  "license": "https://www.avacloud.io/terms-of-service"
+}

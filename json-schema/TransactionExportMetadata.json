@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/TransactionExportMetadata.json",
+  "title": "TransactionExportMetadata",
+  "type": "object",
+  "properties": {
+    "code": {
+      "$ref": "#/components/schemas/OperationStatusCode"
+    },
+    "downloadUrl": {
+      "type": "string",
+      "description": "File download URL. Provided only for COMPLETED and COMPLETED_WITH_WARNING operations."
+    },
+    "nextDate": {
+      "type": "string",
+      "description": "The next date (YYYY-MM-DD) to use as the firstDate in follow up requests if a request results in a transaction history exceeding the max size and has been reported as `COMPLETED_WITH_WARNING` with the warning 'WarnTruncatedExport'."
+    }
+  }
+}

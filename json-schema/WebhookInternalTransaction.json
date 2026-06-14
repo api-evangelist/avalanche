@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/WebhookInternalTransaction.json",
+  "title": "WebhookInternalTransaction",
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "string",
+      "description": "Sender address",
+      "examples": [
+        "0x737F6b0b8A04e8462d0fC7076451298F0dA9a972"
+      ]
+    },
+    "to": {
+      "type": "string",
+      "description": "Recipient address",
+      "examples": [
+        "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7"
+      ]
+    },
+    "internalTxType": {
+      "type": "string",
+      "description": "Internal transaction type",
+      "examples": [
+        "call"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "Value transferred",
+      "examples": [
+        "50000000000000000"
+      ]
+    },
+    "gasUsed": {
+      "type": "string",
+      "description": "Gas used",
+      "examples": [
+        "44038"
+      ]
+    },
+    "gasLimit": {
+      "type": "string",
+      "description": "Gas limit",
+      "examples": [
+        "50000"
+      ]
+    },
+    "transactionHash": {
+      "type": "string",
+      "description": "Transaction hash",
+      "examples": [
+        "0xfd91150d236ec5c3b1ee325781affad5b0b4d7eb0187c84c220ab115eaa563e8"
+      ]
+    }
+  },
+  "required": [
+    "from",
+    "to",
+    "internalTxType",
+    "value",
+    "gasUsed",
+    "gasLimit",
+    "transactionHash"
+  ]
+}

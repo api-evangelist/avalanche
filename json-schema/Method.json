@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Method.json",
+  "title": "Method",
+  "type": "object",
+  "properties": {
+    "callType": {
+      "examples": [
+        "CONTRACT_CALL"
+      ],
+      "$ref": "#/components/schemas/TransactionMethodType"
+    },
+    "methodHash": {
+      "type": "string",
+      "description": "The contract method hash identifier. The method hash is only set if the `callType` is `CONTRACT_CALL`.",
+      "examples": [
+        "0xa9059cbb"
+      ]
+    },
+    "methodName": {
+      "type": "string",
+      "description": "The contract method name including parameter types. If the `callType` is `NATIVE_TRANSFER` this is set to 'Native Transfer'. If the `callType` is `CONTRACT_CREATION` this is set to 'Contract Created'.",
+      "examples": [
+        "transfer(address,uint256)"
+      ]
+    }
+  },
+  "required": [
+    "callType",
+    "methodHash"
+  ]
+}

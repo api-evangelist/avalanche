@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PendingIcmMessage.json",
+  "title": "PendingIcmMessage",
+  "type": "object",
+  "properties": {
+    "messageId": {
+      "type": "string"
+    },
+    "icmContractAddress": {
+      "type": "string"
+    },
+    "sourceBlockchainId": {
+      "type": "string"
+    },
+    "destinationBlockchainId": {
+      "type": "string"
+    },
+    "sourceEvmChainId": {
+      "type": "string"
+    },
+    "destinationEvmChainId": {
+      "type": "string"
+    },
+    "messageNonce": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "data": {
+      "type": "string"
+    },
+    "messageExecuted": {
+      "type": "boolean"
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IcmReceipt"
+      }
+    },
+    "receiptDelivered": {
+      "type": "boolean"
+    },
+    "rewardDetails": {
+      "$ref": "#/components/schemas/IcmRewardDetails"
+    },
+    "sourceTransaction": {
+      "$ref": "#/components/schemas/IcmSourceTransaction"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending"
+      ]
+    }
+  },
+  "required": [
+    "messageId",
+    "icmContractAddress",
+    "sourceBlockchainId",
+    "destinationBlockchainId",
+    "sourceEvmChainId",
+    "destinationEvmChainId",
+    "messageNonce",
+    "from",
+    "to",
+    "messageExecuted",
+    "receipts",
+    "receiptDelivered",
+    "rewardDetails",
+    "sourceTransaction",
+    "status"
+  ]
+}

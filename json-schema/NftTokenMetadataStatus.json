@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/NftTokenMetadataStatus.json",
+  "title": "NftTokenMetadataStatus",
+  "type": "string",
+  "description": "The metadata indexing status of the nft.",
+  "enum": [
+    "UNKNOWN",
+    "MISSING_TOKEN",
+    "INVALID_TOKEN_URI",
+    "INVALID_TOKEN_URI_SCHEME",
+    "UNREACHABLE_TOKEN_URI",
+    "THROTTLED_TOKEN_URI",
+    "METADATA_CONTENT_TOO_LARGE",
+    "INVALID_METADATA",
+    "INVALID_METADATA_JSON",
+    "INDEXED",
+    "UNINDEXED"
+  ]
+}

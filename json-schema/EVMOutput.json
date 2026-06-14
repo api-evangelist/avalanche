@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/EVMOutput.json",
+  "title": "EVMOutput",
+  "type": "object",
+  "properties": {
+    "toAddress": {
+      "type": "string",
+      "description": "EVM address to which the asset is imported in ImportTx",
+      "examples": [
+        "0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c"
+      ]
+    },
+    "asset": {
+      "description": "AssetAmount details for the asset being transferred.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AssetAmount"
+        }
+      ]
+    }
+  },
+  "required": [
+    "toAddress",
+    "asset"
+  ]
+}

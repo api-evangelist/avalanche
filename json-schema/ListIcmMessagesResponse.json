@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListIcmMessagesResponse.json",
+  "title": "ListIcmMessagesResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PendingIcmMessage"
+          },
+          {
+            "$ref": "#/components/schemas/DeliveredIcmMessage"
+          },
+          {
+            "$ref": "#/components/schemas/DeliveredSourceNotIndexedIcmMessage"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "status",
+          "mapping": {
+            "pending": "#/components/schemas/PendingIcmMessage",
+            "delivered": "#/components/schemas/DeliveredIcmMessage",
+            "delivered_source_not_indexed": "#/components/schemas/DeliveredSourceNotIndexedIcmMessage"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "messages"
+  ]
+}

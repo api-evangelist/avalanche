@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListWebhooksResponse.json",
+  "title": "ListWebhooksResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "webhooks": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/EVMAddressActivityResponse"
+          },
+          {
+            "$ref": "#/components/schemas/PrimaryNetworkAddressActivityResponse"
+          },
+          {
+            "$ref": "#/components/schemas/ValidatorActivityResponse"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "webhooks"
+  ]
+}

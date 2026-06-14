@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/TransactionEvent.json",
+  "title": "TransactionEvent",
+  "type": "object",
+  "properties": {
+    "transaction": {
+      "description": "Transaction details",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Transaction"
+        }
+      ]
+    },
+    "logs": {
+      "description": "Array of log events",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Log"
+      }
+    }
+  },
+  "required": [
+    "transaction"
+  ]
+}

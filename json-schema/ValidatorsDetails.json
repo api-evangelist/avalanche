@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ValidatorsDetails.json",
+  "title": "ValidatorsDetails",
+  "type": "object",
+  "properties": {
+    "validatorCount": {
+      "type": "number"
+    },
+    "totalAmountStaked": {
+      "type": "string"
+    },
+    "estimatedAnnualStakingReward": {
+      "type": "string",
+      "description": "Total potential rewards from currently active validations and delegations."
+    },
+    "stakingDistributionByVersion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StakingDistribution"
+      }
+    },
+    "stakingRatio": {
+      "type": "string",
+      "description": "Ratio of total active stake amount to the current supply."
+    }
+  },
+  "required": [
+    "validatorCount",
+    "totalAmountStaked",
+    "estimatedAnnualStakingReward",
+    "stakingDistributionByVersion",
+    "stakingRatio"
+  ]
+}

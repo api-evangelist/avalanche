@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/EvmGenesisFeeConfigDto.json",
+  "title": "EvmGenesisFeeConfigDto",
+  "type": "object",
+  "properties": {
+    "baseFeeChangeDenominator": {
+      "type": "number",
+      "description": "Base fee change denominator",
+      "example": 36
+    },
+    "blockGasCostStep": {
+      "type": "number",
+      "description": "Block gas cost step",
+      "example": 200000
+    },
+    "gasLimit": {
+      "type": "number",
+      "description": "Gas limit",
+      "example": 12000000
+    },
+    "maxBlockGasCost": {
+      "type": "number",
+      "description": "Maximum block gas cost",
+      "example": 1000000
+    },
+    "minBaseFee": {
+      "type": "number",
+      "description": "Minimum base fee",
+      "example": 25000000000
+    },
+    "minBlockGasCost": {
+      "type": "number",
+      "description": "Minimum block gas cost",
+      "example": 0
+    },
+    "targetBlockRate": {
+      "type": "number",
+      "description": "Target block rate",
+      "example": 2
+    },
+    "targetGas": {
+      "type": "number",
+      "description": "Target gas",
+      "example": 60000000
+    }
+  }
+}

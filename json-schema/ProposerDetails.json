@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ProposerDetails.json",
+  "title": "ProposerDetails",
+  "type": "object",
+  "properties": {
+    "proposerId": {
+      "type": "string"
+    },
+    "proposerParentId": {
+      "type": "string"
+    },
+    "proposerNodeId": {
+      "type": "string"
+    },
+    "proposerPChainHeight": {
+      "type": "number"
+    },
+    "proposerTimestamp": {
+      "type": "number"
+    }
+  }
+}

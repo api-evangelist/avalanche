@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/NetworkTokenInfo.json",
+  "title": "NetworkTokenInfo",
+  "type": "object",
+  "properties": {
+    "tokenName": {
+      "type": "string",
+      "description": "Token name",
+      "examples": [
+        "TetherToken"
+      ]
+    },
+    "tokenSymbol": {
+      "type": "string",
+      "description": "Token symbol",
+      "examples": [
+        "USDt"
+      ]
+    },
+    "tokenDecimals": {
+      "type": "number",
+      "description": "Token decimals",
+      "examples": [
+        6
+      ]
+    },
+    "valueWithDecimals": {
+      "type": "string",
+      "description": "Value including decimals",
+      "examples": [
+        "3331.009129"
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListTeleporterMessagesResponse.json",
+  "title": "ListTeleporterMessagesResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PendingTeleporterMessage"
+          },
+          {
+            "$ref": "#/components/schemas/DeliveredTeleporterMessage"
+          },
+          {
+            "$ref": "#/components/schemas/DeliveredSourceNotIndexedIcmMessage"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "status",
+          "mapping": {
+            "pending": "#/components/schemas/PendingTeleporterMessage",
+            "delivered": "#/components/schemas/DeliveredTeleporterMessage",
+            "delivered_source_not_indexed": "#/components/schemas/DeliveredSourceNotIndexedIcmMessage"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "messages"
+  ]
+}

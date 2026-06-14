@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ResourceLink.json",
+  "title": "ResourceLink",
+  "type": "object",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/ResourceLinkType"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "url"
+  ]
+}

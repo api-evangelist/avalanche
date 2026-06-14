@@ -1,0 +1,1434 @@
+{
+  "vocabularyId": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/vocabulary/avalanche-data-api.json",
+  "name": "Avalanche Data API Vocabulary",
+  "description": "Terms, concepts, and data models used in the Avalanche Data API (Glacier)",
+  "version": "1.0.0",
+  "source": "https://glacier-api.avax.network/api-json",
+  "terms": [
+    {
+      "term": "EVM Chains",
+      "type": "category",
+      "description": "Find information about indexed EVM-compatible chains, such as the Avalanche C-Chain."
+    },
+    {
+      "term": "EVM Blocks",
+      "type": "category",
+      "description": "Find information about blocks on EVM-compatible chains, such as the Avalanche C-Chain."
+    },
+    {
+      "term": "EVM Transactions",
+      "type": "category",
+      "description": "Find information about transactions on EVM-compatible chains, such as the Avalanche C-Chain."
+    },
+    {
+      "term": "EVM Balances",
+      "type": "category",
+      "description": "Find information about balances on EVM-compatible chains, such as the Avalanche C-Chain."
+    },
+    {
+      "term": "EVM Contracts",
+      "type": "category",
+      "description": "Find information about contracts on EVM-compatible chains, such as the Avalanche C-Chain."
+    },
+    {
+      "term": "Primary Network",
+      "type": "category",
+      "description": "Operations related to Primary Network on the Avalanche network"
+    },
+    {
+      "term": "Primary Network Blocks",
+      "type": "category",
+      "description": "Find information about blocks on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+    },
+    {
+      "term": "Primary Network Vertices",
+      "type": "category",
+      "description": "Find information about vertices on Avalanche's X-Chain."
+    },
+    {
+      "term": "Primary Network Transactions",
+      "type": "category",
+      "description": "Find information about transactions on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+    },
+    {
+      "term": "Primary Network Balances",
+      "type": "category",
+      "description": "Find information about balances on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+    },
+    {
+      "term": "Primary Network UTXOs",
+      "type": "category",
+      "description": "Find information about utxos on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain."
+    },
+    {
+      "term": "Primary Network Rewards",
+      "type": "category",
+      "description": "Find information about rewards on Avalanche's Primary Network."
+    },
+    {
+      "term": "NFTs",
+      "type": "category",
+      "description": "Operations related to NFTs on the Avalanche network"
+    },
+    {
+      "term": "Operations",
+      "type": "category",
+      "description": "Operations related to Operations on the Avalanche network"
+    },
+    {
+      "term": "Health Check",
+      "type": "category",
+      "description": "Operations related to Health Check on the Avalanche network"
+    },
+    {
+      "term": "Teleporter",
+      "type": "category",
+      "description": "Find information about Teleporter transactions."
+    },
+    {
+      "term": "Interchain Messaging",
+      "type": "category",
+      "description": "Find information about Interchain Messaging transactions."
+    },
+    {
+      "term": "Webhooks",
+      "type": "category",
+      "description": "Manage webhooks and get notified for various onchain activities."
+    },
+    {
+      "term": "RPC",
+      "type": "category",
+      "description": "Interact with chain nodes using JSON-RPC."
+    },
+    {
+      "term": "Data API Usage Metrics",
+      "type": "category",
+      "description": "Usage metrics and logs for the Data API."
+    },
+    {
+      "term": "Signature Aggregator",
+      "type": "category",
+      "description": "Request signatures for a Warp message from Subnet validators"
+    },
+    {
+      "term": "Notifications",
+      "type": "category",
+      "description": "Get notifications for validator status and activity issues."
+    },
+    {
+      "term": "AVAX Supply",
+      "type": "category",
+      "description": "Find information about AVAX supply."
+    },
+    {
+      "term": "HealthIndicatorResultDto",
+      "type": "dataModel",
+      "description": "Data model for HealthIndicatorResultDto"
+    },
+    {
+      "term": "HealthCheckResultDto",
+      "type": "dataModel",
+      "description": "Data model for HealthCheckResultDto"
+    },
+    {
+      "term": "BadRequest",
+      "type": "dataModel",
+      "description": "Data model for BadRequest"
+    },
+    {
+      "term": "Unauthorized",
+      "type": "dataModel",
+      "description": "Data model for Unauthorized"
+    },
+    {
+      "term": "Forbidden",
+      "type": "dataModel",
+      "description": "Data model for Forbidden"
+    },
+    {
+      "term": "NotFound",
+      "type": "dataModel",
+      "description": "Data model for NotFound"
+    },
+    {
+      "term": "TooManyRequests",
+      "type": "dataModel",
+      "description": "Data model for TooManyRequests"
+    },
+    {
+      "term": "InternalServerError",
+      "type": "dataModel",
+      "description": "Data model for InternalServerError"
+    },
+    {
+      "term": "BadGateway",
+      "type": "dataModel",
+      "description": "Data model for BadGateway"
+    },
+    {
+      "term": "ServiceUnavailable",
+      "type": "dataModel",
+      "description": "Data model for ServiceUnavailable"
+    },
+    {
+      "term": "ChainStatus",
+      "type": "dataModel",
+      "description": "Status of chain nodes. Chain nodes can become temporarily `UNAVAILABLE` for several reasons, such as validator stake falling below threshold. If chain nodes are `UNAVAILABLE`, requests that rely on data from the chain nodes may return 503 errors."
+    },
+    {
+      "term": "VmName",
+      "type": "dataModel",
+      "description": "Data model for VmName"
+    },
+    {
+      "term": "UtilityAddresses",
+      "type": "dataModel",
+      "description": "Data model for UtilityAddresses"
+    },
+    {
+      "term": "NetworkToken",
+      "type": "dataModel",
+      "description": "Data model for NetworkToken"
+    },
+    {
+      "term": "ChainInfo",
+      "type": "dataModel",
+      "description": "Data model for ChainInfo"
+    },
+    {
+      "term": "ListAddressChainsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListAddressChainsResponse"
+    },
+    {
+      "term": "Network",
+      "type": "dataModel",
+      "description": "Data model for Network"
+    },
+    {
+      "term": "TransactionStatus",
+      "type": "dataModel",
+      "description": "Data model for TransactionStatus"
+    },
+    {
+      "term": "RichAddress",
+      "type": "dataModel",
+      "description": "Data model for RichAddress"
+    },
+    {
+      "term": "TransactionMethodType",
+      "type": "dataModel",
+      "description": "The contract call type. NATIVE_TRANSFER indicates a transfer of the native token without any smart-contract interaction. CONTRACT_CALL indicates a smart-contract interaction. CONTRACT_CREATION indicates a smart-contract creation."
+    },
+    {
+      "term": "Method",
+      "type": "dataModel",
+      "description": "Data model for Method"
+    },
+    {
+      "term": "NativeTransaction",
+      "type": "dataModel",
+      "description": "Data model for NativeTransaction"
+    },
+    {
+      "term": "ListNativeTransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListNativeTransactionsResponse"
+    },
+    {
+      "term": "EvmBlock",
+      "type": "dataModel",
+      "description": "Data model for EvmBlock"
+    },
+    {
+      "term": "ListEvmBlocksResponse",
+      "type": "dataModel",
+      "description": "Data model for ListEvmBlocksResponse"
+    },
+    {
+      "term": "NftTokenMetadataStatus",
+      "type": "dataModel",
+      "description": "The metadata indexing status of the nft."
+    },
+    {
+      "term": "Erc721TokenMetadata",
+      "type": "dataModel",
+      "description": "Data model for Erc721TokenMetadata"
+    },
+    {
+      "term": "Erc721Token",
+      "type": "dataModel",
+      "description": "Data model for Erc721Token"
+    },
+    {
+      "term": "Erc1155TokenMetadata",
+      "type": "dataModel",
+      "description": "Data model for Erc1155TokenMetadata"
+    },
+    {
+      "term": "Erc1155Token",
+      "type": "dataModel",
+      "description": "Data model for Erc1155Token"
+    },
+    {
+      "term": "ListNftTokens",
+      "type": "dataModel",
+      "description": "Data model for ListNftTokens"
+    },
+    {
+      "term": "OperationStatusCode",
+      "type": "dataModel",
+      "description": "Data model for OperationStatusCode"
+    },
+    {
+      "term": "TransactionExportMetadata",
+      "type": "dataModel",
+      "description": "Data model for TransactionExportMetadata"
+    },
+    {
+      "term": "OperationType",
+      "type": "dataModel",
+      "description": "Data model for OperationType"
+    },
+    {
+      "term": "OperationStatus",
+      "type": "dataModel",
+      "description": "Data model for OperationStatus"
+    },
+    {
+      "term": "OperationStatusResponse",
+      "type": "dataModel",
+      "description": "Data model for OperationStatusResponse"
+    },
+    {
+      "term": "EVMOperationType",
+      "type": "dataModel",
+      "description": "Data model for EVMOperationType"
+    },
+    {
+      "term": "EvmNetworkOptions",
+      "type": "dataModel",
+      "description": "Data model for EvmNetworkOptions"
+    },
+    {
+      "term": "CreateEvmTransactionExportRequest",
+      "type": "dataModel",
+      "description": "Data model for CreateEvmTransactionExportRequest"
+    },
+    {
+      "term": "PrimaryNetworkOperationType",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkOperationType"
+    },
+    {
+      "term": "PrimaryNetworkOptions",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkOptions"
+    },
+    {
+      "term": "CreatePrimaryNetworkTransactionExportRequest",
+      "type": "dataModel",
+      "description": "Data model for CreatePrimaryNetworkTransactionExportRequest"
+    },
+    {
+      "term": "PChainTransactionType",
+      "type": "dataModel",
+      "description": "Data model for PChainTransactionType"
+    },
+    {
+      "term": "PrimaryNetworkAssetType",
+      "type": "dataModel",
+      "description": "Type of asset like SECP256K1 or NFT."
+    },
+    {
+      "term": "AssetAmount",
+      "type": "dataModel",
+      "description": "Data model for AssetAmount"
+    },
+    {
+      "term": "RewardType",
+      "type": "dataModel",
+      "description": "Data model for RewardType"
+    },
+    {
+      "term": "UtxoType",
+      "type": "dataModel",
+      "description": "Indicates whether the UTXO is staked or transferable"
+    },
+    {
+      "term": "PChainUtxo",
+      "type": "dataModel",
+      "description": "Data model for PChainUtxo"
+    },
+    {
+      "term": "L1ValidatorManagerDetails",
+      "type": "dataModel",
+      "description": "Data model for L1ValidatorManagerDetails"
+    },
+    {
+      "term": "L1ValidatorDetailsTransaction",
+      "type": "dataModel",
+      "description": "Data model for L1ValidatorDetailsTransaction"
+    },
+    {
+      "term": "SubnetOwnershipInfo",
+      "type": "dataModel",
+      "description": "Data model for SubnetOwnershipInfo"
+    },
+    {
+      "term": "BlsCredentials",
+      "type": "dataModel",
+      "description": "Data model for BlsCredentials"
+    },
+    {
+      "term": "BlockchainInfo",
+      "type": "dataModel",
+      "description": "Data model for BlockchainInfo"
+    },
+    {
+      "term": "PChainTransaction",
+      "type": "dataModel",
+      "description": "Data model for PChainTransaction"
+    },
+    {
+      "term": "XChainTransactionType",
+      "type": "dataModel",
+      "description": "Type of transaction."
+    },
+    {
+      "term": "UtxoCredential",
+      "type": "dataModel",
+      "description": "Data model for UtxoCredential"
+    },
+    {
+      "term": "Utxo",
+      "type": "dataModel",
+      "description": "Data model for Utxo"
+    },
+    {
+      "term": "PrimaryNetworkAssetCap",
+      "type": "dataModel",
+      "description": "Cap represents if an asset is a variable or fixed cap asset."
+    },
+    {
+      "term": "XChainAssetDetails",
+      "type": "dataModel",
+      "description": "Data model for XChainAssetDetails"
+    },
+    {
+      "term": "TransactionVertexDetail",
+      "type": "dataModel",
+      "description": "Data model for TransactionVertexDetail"
+    },
+    {
+      "term": "XChainNonLinearTransaction",
+      "type": "dataModel",
+      "description": "Data model for XChainNonLinearTransaction"
+    },
+    {
+      "term": "XChainLinearTransaction",
+      "type": "dataModel",
+      "description": "Data model for XChainLinearTransaction"
+    },
+    {
+      "term": "EVMInput",
+      "type": "dataModel",
+      "description": "Data model for EVMInput"
+    },
+    {
+      "term": "CChainExportTransaction",
+      "type": "dataModel",
+      "description": "Data model for CChainExportTransaction"
+    },
+    {
+      "term": "EVMOutput",
+      "type": "dataModel",
+      "description": "Data model for EVMOutput"
+    },
+    {
+      "term": "CChainImportTransaction",
+      "type": "dataModel",
+      "description": "Data model for CChainImportTransaction"
+    },
+    {
+      "term": "BlockchainId",
+      "type": "dataModel",
+      "description": "Data model for BlockchainId"
+    },
+    {
+      "term": "PrimaryNetworkChainName",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkChainName"
+    },
+    {
+      "term": "PrimaryNetworkChainInfo",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkChainInfo"
+    },
+    {
+      "term": "ListPChainTransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListPChainTransactionsResponse"
+    },
+    {
+      "term": "ListXChainTransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListXChainTransactionsResponse"
+    },
+    {
+      "term": "ListCChainAtomicTransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListCChainAtomicTransactionsResponse"
+    },
+    {
+      "term": "PrimaryNetworkTxType",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkTxType"
+    },
+    {
+      "term": "SortOrder",
+      "type": "dataModel",
+      "description": "Data model for SortOrder"
+    },
+    {
+      "term": "PChainId",
+      "type": "dataModel",
+      "description": "Data model for PChainId"
+    },
+    {
+      "term": "PendingReward",
+      "type": "dataModel",
+      "description": "Data model for PendingReward"
+    },
+    {
+      "term": "ListPendingRewardsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListPendingRewardsResponse"
+    },
+    {
+      "term": "CurrencyCode",
+      "type": "dataModel",
+      "description": "ISO 4217 currency code."
+    },
+    {
+      "term": "Money",
+      "type": "dataModel",
+      "description": "Data model for Money"
+    },
+    {
+      "term": "AssetWithPriceInfo",
+      "type": "dataModel",
+      "description": "Data model for AssetWithPriceInfo"
+    },
+    {
+      "term": "HistoricalReward",
+      "type": "dataModel",
+      "description": "Data model for HistoricalReward"
+    },
+    {
+      "term": "ListHistoricalRewardsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListHistoricalRewardsResponse"
+    },
+    {
+      "term": "ListPChainUtxosResponse",
+      "type": "dataModel",
+      "description": "Data model for ListPChainUtxosResponse"
+    },
+    {
+      "term": "ListUtxosResponse",
+      "type": "dataModel",
+      "description": "Data model for ListUtxosResponse"
+    },
+    {
+      "term": "UtxosSortByOption",
+      "type": "dataModel",
+      "description": "Data model for UtxosSortByOption"
+    },
+    {
+      "term": "PrimaryNetworkAddressesBodyDto",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkAddressesBodyDto"
+    },
+    {
+      "term": "PrimaryNetworkType",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkType"
+    },
+    {
+      "term": "LastActivityTimestamp",
+      "type": "dataModel",
+      "description": "Data model for LastActivityTimestamp"
+    },
+    {
+      "term": "AggregatedAssetAmount",
+      "type": "dataModel",
+      "description": "Data model for AggregatedAssetAmount"
+    },
+    {
+      "term": "PChainSharedAsset",
+      "type": "dataModel",
+      "description": "Data model for PChainSharedAsset"
+    },
+    {
+      "term": "PChainBalance",
+      "type": "dataModel",
+      "description": "Data model for PChainBalance"
+    },
+    {
+      "term": "ListPChainBalancesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListPChainBalancesResponse"
+    },
+    {
+      "term": "XChainSharedAssetBalance",
+      "type": "dataModel",
+      "description": "Data model for XChainSharedAssetBalance"
+    },
+    {
+      "term": "XChainBalances",
+      "type": "dataModel",
+      "description": "Data model for XChainBalances"
+    },
+    {
+      "term": "ListXChainBalancesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListXChainBalancesResponse"
+    },
+    {
+      "term": "CChainSharedAssetBalance",
+      "type": "dataModel",
+      "description": "Data model for CChainSharedAssetBalance"
+    },
+    {
+      "term": "CChainAtomicBalances",
+      "type": "dataModel",
+      "description": "Data model for CChainAtomicBalances"
+    },
+    {
+      "term": "ListCChainAtomicBalancesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListCChainAtomicBalancesResponse"
+    },
+    {
+      "term": "ProposerDetails",
+      "type": "dataModel",
+      "description": "Data model for ProposerDetails"
+    },
+    {
+      "term": "GetPrimaryNetworkBlockResponse",
+      "type": "dataModel",
+      "description": "Data model for GetPrimaryNetworkBlockResponse"
+    },
+    {
+      "term": "PrimaryNetworkBlock",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkBlock"
+    },
+    {
+      "term": "ListPrimaryNetworkBlocksResponse",
+      "type": "dataModel",
+      "description": "Data model for ListPrimaryNetworkBlocksResponse"
+    },
+    {
+      "term": "XChainId",
+      "type": "dataModel",
+      "description": "Data model for XChainId"
+    },
+    {
+      "term": "XChainVertex",
+      "type": "dataModel",
+      "description": "Data model for XChainVertex"
+    },
+    {
+      "term": "ListXChainVerticesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListXChainVerticesResponse"
+    },
+    {
+      "term": "BlockchainIds",
+      "type": "dataModel",
+      "description": "Data model for BlockchainIds"
+    },
+    {
+      "term": "ChainAddressChainIdMap",
+      "type": "dataModel",
+      "description": "Data model for ChainAddressChainIdMap"
+    },
+    {
+      "term": "ChainAddressChainIdMapListResponse",
+      "type": "dataModel",
+      "description": "Data model for ChainAddressChainIdMapListResponse"
+    },
+    {
+      "term": "EvmGenesisFeeConfigDto",
+      "type": "dataModel",
+      "description": "Data model for EvmGenesisFeeConfigDto"
+    },
+    {
+      "term": "EvmGenesisWarpConfigDto",
+      "type": "dataModel",
+      "description": "Data model for EvmGenesisWarpConfigDto"
+    },
+    {
+      "term": "EvmGenesisAllowListConfigDto",
+      "type": "dataModel",
+      "description": "Data model for EvmGenesisAllowListConfigDto"
+    },
+    {
+      "term": "EvmGenesisConfigDto",
+      "type": "dataModel",
+      "description": "Data model for EvmGenesisConfigDto"
+    },
+    {
+      "term": "EvmGenesisDto",
+      "type": "dataModel",
+      "description": "Data model for EvmGenesisDto"
+    },
+    {
+      "term": "EvmGenesisAllocDto",
+      "type": "dataModel",
+      "description": "Data model for EvmGenesisAllocDto"
+    },
+    {
+      "term": "StakingDistribution",
+      "type": "dataModel",
+      "description": "Data model for StakingDistribution"
+    },
+    {
+      "term": "ValidatorsDetails",
+      "type": "dataModel",
+      "description": "Data model for ValidatorsDetails"
+    },
+    {
+      "term": "DelegatorsDetails",
+      "type": "dataModel",
+      "description": "Data model for DelegatorsDetails"
+    },
+    {
+      "term": "GetNetworkDetailsResponse",
+      "type": "dataModel",
+      "description": "Data model for GetNetworkDetailsResponse"
+    },
+    {
+      "term": "Blockchain",
+      "type": "dataModel",
+      "description": "Data model for Blockchain"
+    },
+    {
+      "term": "ListBlockchainsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListBlockchainsResponse"
+    },
+    {
+      "term": "Subnet",
+      "type": "dataModel",
+      "description": "Data model for Subnet"
+    },
+    {
+      "term": "ListSubnetsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListSubnetsResponse"
+    },
+    {
+      "term": "SortByOption",
+      "type": "dataModel",
+      "description": "Data model for SortByOption"
+    },
+    {
+      "term": "ValidationStatusType",
+      "type": "dataModel",
+      "description": "Data model for ValidationStatusType"
+    },
+    {
+      "term": "Rewards",
+      "type": "dataModel",
+      "description": "Data model for Rewards"
+    },
+    {
+      "term": "CompletedValidatorDetails",
+      "type": "dataModel",
+      "description": "Data model for CompletedValidatorDetails"
+    },
+    {
+      "term": "ValidatorHealthDetails",
+      "type": "dataModel",
+      "description": "Data model for ValidatorHealthDetails"
+    },
+    {
+      "term": "Geolocation",
+      "type": "dataModel",
+      "description": "Data model for Geolocation"
+    },
+    {
+      "term": "ActiveValidatorDetails",
+      "type": "dataModel",
+      "description": "Data model for ActiveValidatorDetails"
+    },
+    {
+      "term": "PendingValidatorDetails",
+      "type": "dataModel",
+      "description": "Data model for PendingValidatorDetails"
+    },
+    {
+      "term": "RemovedValidatorDetails",
+      "type": "dataModel",
+      "description": "Data model for RemovedValidatorDetails"
+    },
+    {
+      "term": "ListValidatorDetailsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListValidatorDetailsResponse"
+    },
+    {
+      "term": "DelegationStatusType",
+      "type": "dataModel",
+      "description": "Data model for DelegationStatusType"
+    },
+    {
+      "term": "CompletedDelegatorDetails",
+      "type": "dataModel",
+      "description": "Data model for CompletedDelegatorDetails"
+    },
+    {
+      "term": "ActiveDelegatorDetails",
+      "type": "dataModel",
+      "description": "Data model for ActiveDelegatorDetails"
+    },
+    {
+      "term": "PendingDelegatorDetails",
+      "type": "dataModel",
+      "description": "Data model for PendingDelegatorDetails"
+    },
+    {
+      "term": "ListDelegatorDetailsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListDelegatorDetailsResponse"
+    },
+    {
+      "term": "BalanceOwner",
+      "type": "dataModel",
+      "description": "Data model for BalanceOwner"
+    },
+    {
+      "term": "L1ValidatorDetailsFull",
+      "type": "dataModel",
+      "description": "Data model for L1ValidatorDetailsFull"
+    },
+    {
+      "term": "ListL1ValidatorsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListL1ValidatorsResponse"
+    },
+    {
+      "term": "TeleporterReceipt",
+      "type": "dataModel",
+      "description": "Data model for TeleporterReceipt"
+    },
+    {
+      "term": "TeleporterRewardDetails",
+      "type": "dataModel",
+      "description": "Data model for TeleporterRewardDetails"
+    },
+    {
+      "term": "TeleporterSourceTransaction",
+      "type": "dataModel",
+      "description": "Data model for TeleporterSourceTransaction"
+    },
+    {
+      "term": "PendingTeleporterMessage",
+      "type": "dataModel",
+      "description": "Data model for PendingTeleporterMessage"
+    },
+    {
+      "term": "TeleporterDestinationTransaction",
+      "type": "dataModel",
+      "description": "Data model for TeleporterDestinationTransaction"
+    },
+    {
+      "term": "DeliveredTeleporterMessage",
+      "type": "dataModel",
+      "description": "Data model for DeliveredTeleporterMessage"
+    },
+    {
+      "term": "DeliveredSourceNotIndexedTeleporterMessage",
+      "type": "dataModel",
+      "description": "Data model for DeliveredSourceNotIndexedTeleporterMessage"
+    },
+    {
+      "term": "NextPageToken",
+      "type": "dataModel",
+      "description": "Data model for NextPageToken"
+    },
+    {
+      "term": "ListTeleporterMessagesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListTeleporterMessagesResponse"
+    },
+    {
+      "term": "IcmReceipt",
+      "type": "dataModel",
+      "description": "Data model for IcmReceipt"
+    },
+    {
+      "term": "IcmRewardDetails",
+      "type": "dataModel",
+      "description": "Data model for IcmRewardDetails"
+    },
+    {
+      "term": "IcmSourceTransaction",
+      "type": "dataModel",
+      "description": "Data model for IcmSourceTransaction"
+    },
+    {
+      "term": "PendingIcmMessage",
+      "type": "dataModel",
+      "description": "Data model for PendingIcmMessage"
+    },
+    {
+      "term": "IcmDestinationTransaction",
+      "type": "dataModel",
+      "description": "Data model for IcmDestinationTransaction"
+    },
+    {
+      "term": "DeliveredIcmMessage",
+      "type": "dataModel",
+      "description": "Data model for DeliveredIcmMessage"
+    },
+    {
+      "term": "DeliveredSourceNotIndexedIcmMessage",
+      "type": "dataModel",
+      "description": "Data model for DeliveredSourceNotIndexedIcmMessage"
+    },
+    {
+      "term": "ListIcmMessagesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListIcmMessagesResponse"
+    },
+    {
+      "term": "TimeIntervalGranularityExtended",
+      "type": "dataModel",
+      "description": "Data model for TimeIntervalGranularityExtended"
+    },
+    {
+      "term": "UsageMetricsGroupByEnum",
+      "type": "dataModel",
+      "description": "Data model for UsageMetricsGroupByEnum"
+    },
+    {
+      "term": "UsageMetricsValueDTO",
+      "type": "dataModel",
+      "description": "Data model for UsageMetricsValueDTO"
+    },
+    {
+      "term": "Metric",
+      "type": "dataModel",
+      "description": "Data model for Metric"
+    },
+    {
+      "term": "UsageMetricsResponseDTO",
+      "type": "dataModel",
+      "description": "Data model for UsageMetricsResponseDTO"
+    },
+    {
+      "term": "RequestType",
+      "type": "dataModel",
+      "description": "The type of request made by the client."
+    },
+    {
+      "term": "LogsFormatMetadata",
+      "type": "dataModel",
+      "description": "Data model for LogsFormatMetadata"
+    },
+    {
+      "term": "LogsFormat",
+      "type": "dataModel",
+      "description": "Data model for LogsFormat"
+    },
+    {
+      "term": "LogsResponseDTO",
+      "type": "dataModel",
+      "description": "Data model for LogsResponseDTO"
+    },
+    {
+      "term": "SubnetRpcTimeIntervalGranularity",
+      "type": "dataModel",
+      "description": "Data model for SubnetRpcTimeIntervalGranularity"
+    },
+    {
+      "term": "RpcUsageMetricsGroupByEnum",
+      "type": "dataModel",
+      "description": "Data model for RpcUsageMetricsGroupByEnum"
+    },
+    {
+      "term": "RpcUsageMetricsValueAggregated",
+      "type": "dataModel",
+      "description": "Data model for RpcUsageMetricsValueAggregated"
+    },
+    {
+      "term": "RpcMetrics",
+      "type": "dataModel",
+      "description": "Data model for RpcMetrics"
+    },
+    {
+      "term": "SubnetRpcUsageMetricsResponseDTO",
+      "type": "dataModel",
+      "description": "Data model for SubnetRpcUsageMetricsResponseDTO"
+    },
+    {
+      "term": "PrimaryNetworkRpcTimeIntervalGranularity",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkRpcTimeIntervalGranularity"
+    },
+    {
+      "term": "PrimaryNetworkRpcMetricsGroupByEnum",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkRpcMetricsGroupByEnum"
+    },
+    {
+      "term": "PrimaryNetworkRpcUsageMetricsResponseDTO",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkRpcUsageMetricsResponseDTO"
+    },
+    {
+      "term": "WebhookStatusType",
+      "type": "dataModel",
+      "description": "Data model for WebhookStatusType"
+    },
+    {
+      "term": "AddressActivityEventType",
+      "type": "dataModel",
+      "description": "Data model for AddressActivityEventType"
+    },
+    {
+      "term": "AddressActivityMetadata",
+      "type": "dataModel",
+      "description": "Data model for AddressActivityMetadata"
+    },
+    {
+      "term": "EVMAddressActivityResponse",
+      "type": "dataModel",
+      "description": "Data model for EVMAddressActivityResponse"
+    },
+    {
+      "term": "PrimaryNetworkAddressActivityEventType",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkAddressActivityEventType"
+    },
+    {
+      "term": "PlatformAddressActivityKeyType",
+      "type": "dataModel",
+      "description": "The type of key to monitor for the address activity event type."
+    },
+    {
+      "term": "PrimaryNetworkAddressActivitySubEventType",
+      "type": "dataModel",
+      "description": "Array of address activity sub-event types"
+    },
+    {
+      "term": "PrimaryNetworkAddressActivitySubEvents",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkAddressActivitySubEvents"
+    },
+    {
+      "term": "CommonBalanceType",
+      "type": "dataModel",
+      "description": "Type of balance to monitor"
+    },
+    {
+      "term": "PrimaryNetworkBalanceThresholdFilter",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkBalanceThresholdFilter"
+    },
+    {
+      "term": "PrimaryNetworkAddressActivityMetadata",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkAddressActivityMetadata"
+    },
+    {
+      "term": "PrimaryNetworkAddressActivityResponse",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkAddressActivityResponse"
+    },
+    {
+      "term": "ValidatorActivityEventType",
+      "type": "dataModel",
+      "description": "Data model for ValidatorActivityEventType"
+    },
+    {
+      "term": "ValidatorActivityKeyType",
+      "type": "dataModel",
+      "description": "The type of key to monitor for the validator activity event type."
+    },
+    {
+      "term": "ValidatorActivitySubEvents",
+      "type": "dataModel",
+      "description": "Data model for ValidatorActivitySubEvents"
+    },
+    {
+      "term": "ValidatorActivityMetadata",
+      "type": "dataModel",
+      "description": "Data model for ValidatorActivityMetadata"
+    },
+    {
+      "term": "ValidatorActivityResponse",
+      "type": "dataModel",
+      "description": "Data model for ValidatorActivityResponse"
+    },
+    {
+      "term": "EVMAddressActivityRequest",
+      "type": "dataModel",
+      "description": "Data model for EVMAddressActivityRequest"
+    },
+    {
+      "term": "PrimaryNetworkAddressActivityRequest",
+      "type": "dataModel",
+      "description": "Data model for PrimaryNetworkAddressActivityRequest"
+    },
+    {
+      "term": "ValidatorActivityRequest",
+      "type": "dataModel",
+      "description": "Data model for ValidatorActivityRequest"
+    },
+    {
+      "term": "ERCToken",
+      "type": "dataModel",
+      "description": "Data model for ERCToken"
+    },
+    {
+      "term": "ERCTransfer",
+      "type": "dataModel",
+      "description": "Data model for ERCTransfer"
+    },
+    {
+      "term": "WebhookInternalTransaction",
+      "type": "dataModel",
+      "description": "Data model for WebhookInternalTransaction"
+    },
+    {
+      "term": "AccessListData",
+      "type": "dataModel",
+      "description": "Data model for AccessListData"
+    },
+    {
+      "term": "NetworkTokenInfo",
+      "type": "dataModel",
+      "description": "Data model for NetworkTokenInfo"
+    },
+    {
+      "term": "Transaction",
+      "type": "dataModel",
+      "description": "Data model for Transaction"
+    },
+    {
+      "term": "Log",
+      "type": "dataModel",
+      "description": "Data model for Log"
+    },
+    {
+      "term": "TransactionEvent",
+      "type": "dataModel",
+      "description": "Data model for TransactionEvent"
+    },
+    {
+      "term": "WebhookAddressActivityResponse",
+      "type": "dataModel",
+      "description": "Data model for WebhookAddressActivityResponse"
+    },
+    {
+      "term": "WebhookStatus",
+      "type": "dataModel",
+      "description": "Data model for WebhookStatus"
+    },
+    {
+      "term": "ListWebhooksResponse",
+      "type": "dataModel",
+      "description": "Data model for ListWebhooksResponse"
+    },
+    {
+      "term": "SharedSecretsResponse",
+      "type": "dataModel",
+      "description": "Data model for SharedSecretsResponse"
+    },
+    {
+      "term": "UpdateWebhookRequest",
+      "type": "dataModel",
+      "description": "Data model for UpdateWebhookRequest"
+    },
+    {
+      "term": "AddressesChangeRequest",
+      "type": "dataModel",
+      "description": "Data model for AddressesChangeRequest"
+    },
+    {
+      "term": "ListWebhookAddressesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListWebhookAddressesResponse"
+    },
+    {
+      "term": "AvaxSupplyResponse",
+      "type": "dataModel",
+      "description": "Data model for AvaxSupplyResponse"
+    },
+    {
+      "term": "SignatureAggregatorRequest",
+      "type": "dataModel",
+      "description": "Data model for SignatureAggregatorRequest"
+    },
+    {
+      "term": "SignatureAggregationResponse",
+      "type": "dataModel",
+      "description": "Data model for SignatureAggregationResponse"
+    },
+    {
+      "term": "NativeTokenBalance",
+      "type": "dataModel",
+      "description": "Data model for NativeTokenBalance"
+    },
+    {
+      "term": "GetNativeBalanceResponse",
+      "type": "dataModel",
+      "description": "Data model for GetNativeBalanceResponse"
+    },
+    {
+      "term": "Erc20TokenBalance",
+      "type": "dataModel",
+      "description": "Data model for Erc20TokenBalance"
+    },
+    {
+      "term": "ListErc20BalancesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListErc20BalancesResponse"
+    },
+    {
+      "term": "Erc721TokenBalance",
+      "type": "dataModel",
+      "description": "Data model for Erc721TokenBalance"
+    },
+    {
+      "term": "ListErc721BalancesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListErc721BalancesResponse"
+    },
+    {
+      "term": "Erc1155TokenBalance",
+      "type": "dataModel",
+      "description": "Data model for Erc1155TokenBalance"
+    },
+    {
+      "term": "ListErc1155BalancesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListErc1155BalancesResponse"
+    },
+    {
+      "term": "ListCollectibleBalancesResponse",
+      "type": "dataModel",
+      "description": "Data model for ListCollectibleBalancesResponse"
+    },
+    {
+      "term": "GetEvmBlockResponse",
+      "type": "dataModel",
+      "description": "Data model for GetEvmBlockResponse"
+    },
+    {
+      "term": "Erc20Token",
+      "type": "dataModel",
+      "description": "Data model for Erc20Token"
+    },
+    {
+      "term": "Erc20TransferDetails",
+      "type": "dataModel",
+      "description": "Data model for Erc20TransferDetails"
+    },
+    {
+      "term": "Erc721TransferDetails",
+      "type": "dataModel",
+      "description": "Data model for Erc721TransferDetails"
+    },
+    {
+      "term": "Erc1155TransferDetails",
+      "type": "dataModel",
+      "description": "Data model for Erc1155TransferDetails"
+    },
+    {
+      "term": "InternalTransactionOpCall",
+      "type": "dataModel",
+      "description": "Data model for InternalTransactionOpCall"
+    },
+    {
+      "term": "InternalTransactionDetails",
+      "type": "dataModel",
+      "description": "Data model for InternalTransactionDetails"
+    },
+    {
+      "term": "NetworkTokenDetails",
+      "type": "dataModel",
+      "description": "Data model for NetworkTokenDetails"
+    },
+    {
+      "term": "FullNativeTransactionDetails",
+      "type": "dataModel",
+      "description": "Data model for FullNativeTransactionDetails"
+    },
+    {
+      "term": "TransactionDirectionType",
+      "type": "dataModel",
+      "description": "Data model for TransactionDirectionType"
+    },
+    {
+      "term": "TeleporterMessageInfo",
+      "type": "dataModel",
+      "description": "Data model for TeleporterMessageInfo"
+    },
+    {
+      "term": "GetTransactionResponse",
+      "type": "dataModel",
+      "description": "Data model for GetTransactionResponse"
+    },
+    {
+      "term": "ImageAsset",
+      "type": "dataModel",
+      "description": "Data model for ImageAsset"
+    },
+    {
+      "term": "ResourceLinkType",
+      "type": "dataModel",
+      "description": "Data model for ResourceLinkType"
+    },
+    {
+      "term": "ResourceLink",
+      "type": "dataModel",
+      "description": "Data model for ResourceLink"
+    },
+    {
+      "term": "ContractDeploymentDetails",
+      "type": "dataModel",
+      "description": "Data model for ContractDeploymentDetails"
+    },
+    {
+      "term": "UnknownContract",
+      "type": "dataModel",
+      "description": "Data model for UnknownContract"
+    },
+    {
+      "term": "PricingProviders",
+      "type": "dataModel",
+      "description": "Data model for PricingProviders"
+    },
+    {
+      "term": "Erc20Contract",
+      "type": "dataModel",
+      "description": "Data model for Erc20Contract"
+    },
+    {
+      "term": "Erc721Contract",
+      "type": "dataModel",
+      "description": "Data model for Erc721Contract"
+    },
+    {
+      "term": "Erc1155Contract",
+      "type": "dataModel",
+      "description": "Data model for Erc1155Contract"
+    },
+    {
+      "term": "ListContractsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListContractsResponse"
+    },
+    {
+      "term": "DataListChainsResponse",
+      "type": "dataModel",
+      "description": "Data model for DataListChainsResponse"
+    },
+    {
+      "term": "ApiFeature",
+      "type": "dataModel",
+      "description": "Data model for ApiFeature"
+    },
+    {
+      "term": "ListChainsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListChainsResponse"
+    },
+    {
+      "term": "GetChainResponse",
+      "type": "dataModel",
+      "description": "Data model for GetChainResponse"
+    },
+    {
+      "term": "Erc20Transfer",
+      "type": "dataModel",
+      "description": "Data model for Erc20Transfer"
+    },
+    {
+      "term": "Erc721Transfer",
+      "type": "dataModel",
+      "description": "Data model for Erc721Transfer"
+    },
+    {
+      "term": "Erc1155Transfer",
+      "type": "dataModel",
+      "description": "Data model for Erc1155Transfer"
+    },
+    {
+      "term": "ListTransfersResponse",
+      "type": "dataModel",
+      "description": "Data model for ListTransfersResponse"
+    },
+    {
+      "term": "TransactionDetails",
+      "type": "dataModel",
+      "description": "Data model for TransactionDetails"
+    },
+    {
+      "term": "ListTransactionDetailsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListTransactionDetailsResponse"
+    },
+    {
+      "term": "Erc20TokenV2",
+      "type": "dataModel",
+      "description": "Data model for Erc20TokenV2"
+    },
+    {
+      "term": "Erc20TransferDetailsV2",
+      "type": "dataModel",
+      "description": "Data model for Erc20TransferDetailsV2"
+    },
+    {
+      "term": "TransactionDetailsV2",
+      "type": "dataModel",
+      "description": "Data model for TransactionDetailsV2"
+    },
+    {
+      "term": "ListTransactionDetailsResponseV2",
+      "type": "dataModel",
+      "description": "Data model for ListTransactionDetailsResponseV2"
+    },
+    {
+      "term": "ListErc20TransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListErc20TransactionsResponse"
+    },
+    {
+      "term": "ListErc721TransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListErc721TransactionsResponse"
+    },
+    {
+      "term": "ListErc1155TransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListErc1155TransactionsResponse"
+    },
+    {
+      "term": "InternalTransaction",
+      "type": "dataModel",
+      "description": "Data model for InternalTransaction"
+    },
+    {
+      "term": "ListInternalTransactionsResponse",
+      "type": "dataModel",
+      "description": "Data model for ListInternalTransactionsResponse"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ERCToken.json",
+  "title": "ERCToken",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Token contract address",
+      "examples": [
+        "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Token name",
+      "examples": [
+        "TetherToken"
+      ]
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Token symbol",
+      "examples": [
+        "USDt"
+      ]
+    },
+    "decimals": {
+      "type": "number",
+      "description": "Token decimals",
+      "examples": [
+        6
+      ]
+    },
+    "valueWithDecimals": {
+      "type": "string",
+      "description": "Value including decimals",
+      "examples": [
+        "3331.009129"
+      ]
+    }
+  },
+  "required": [
+    "address",
+    "name",
+    "symbol",
+    "decimals",
+    "valueWithDecimals"
+  ]
+}

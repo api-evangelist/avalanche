@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/TeleporterMessageInfo.json",
+  "title": "TeleporterMessageInfo",
+  "type": "object",
+  "properties": {
+    "teleporterMessageId": {
+      "type": "string"
+    },
+    "direction": {
+      "$ref": "#/components/schemas/TransactionDirectionType"
+    },
+    "sourceChainId": {
+      "type": "string",
+      "description": "chain id of the source chain. valid only for destination transactions"
+    },
+    "destinationChainId": {
+      "type": "string",
+      "description": "chain id of the destination chain. valid only for source transactions"
+    }
+  },
+  "required": [
+    "teleporterMessageId",
+    "direction"
+  ]
+}

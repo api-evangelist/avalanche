@@ -1,0 +1,26 @@
+{
+  "description": "Create a webhook to receive address activity notifications",
+  "operation": "POST /v1/webhooks",
+  "request": {
+    "path": "/v1/webhooks",
+    "body": {
+      "url": "https://your-server.com/webhook-handler",
+      "chainId": "43114",
+      "eventType": "address_activity",
+      "includeLogs": true,
+      "metadata": {
+        "addresses": [
+          "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6"
+        ]
+      }
+    }
+  },
+  "response": {
+    "id": "wh_abc123",
+    "url": "https://your-server.com/webhook-handler",
+    "chainId": "43114",
+    "eventType": "address_activity",
+    "status": "active",
+    "createdAt": "2026-01-01T00:00:00Z"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PrimaryNetworkAddressActivityMetadata.json",
+  "title": "PrimaryNetworkAddressActivityMetadata",
+  "type": "object",
+  "properties": {
+    "eventSignatures": {
+      "description": "Array of hexadecimal strings of the event signatures.",
+      "examples": [
+        [
+          "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64"
+        ]
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keyType": {
+      "$ref": "#/components/schemas/PlatformAddressActivityKeyType"
+    },
+    "keys": {
+      "description": "Array of keys like addresses corresponding to the keyType being monitored. For PrimaryNetworkAddressActivity event, an array of multiple addresses can be provided. The maximum number of 'addresses' you can track depends on the Data API plan you are subscribed to.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subEvents": {
+      "description": "Sub-events to monitor",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PrimaryNetworkAddressActivitySubEvents"
+        }
+      ]
+    },
+    "balanceThresholdFilter": {
+      "description": "Balance threshold filter",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PrimaryNetworkBalanceThresholdFilter"
+        }
+      ]
+    }
+  },
+  "required": [
+    "keyType",
+    "keys",
+    "subEvents"
+  ]
+}

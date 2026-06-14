@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/WebhookAddressActivityResponse.json",
+  "title": "WebhookAddressActivityResponse",
+  "type": "object",
+  "properties": {
+    "webhookId": {
+      "type": "string",
+      "description": "Webhook ID",
+      "examples": [
+        "401da7d9-d6d7-46c8-b431-72ff1e1543f4"
+      ]
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Event type",
+      "enum": [
+        "address_activity"
+      ],
+      "examples": [
+        "address_activity"
+      ]
+    },
+    "messageId": {
+      "type": "string",
+      "description": "Message ID",
+      "examples": [
+        "bc9732db-2430-4296-afc3-c51267beb14a"
+      ]
+    },
+    "event": {
+      "description": "Event details",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TransactionEvent"
+        }
+      ]
+    }
+  },
+  "required": [
+    "webhookId",
+    "eventType",
+    "messageId",
+    "event"
+  ]
+}

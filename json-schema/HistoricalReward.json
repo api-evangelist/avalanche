@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/HistoricalReward.json",
+  "title": "HistoricalReward",
+  "type": "object",
+  "properties": {
+    "addresses": {
+      "description": "An array of P-Chain wallet addresses.",
+      "examples": [
+        [
+          "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
+        ]
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "txHash": {
+      "type": "string"
+    },
+    "amountStaked": {
+      "type": "string"
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "startTimestamp": {
+      "type": "number"
+    },
+    "endTimestamp": {
+      "type": "number"
+    },
+    "rewardType": {
+      "$ref": "#/components/schemas/RewardType"
+    },
+    "utxoId": {
+      "type": "string"
+    },
+    "outputIndex": {
+      "type": "number"
+    },
+    "reward": {
+      "$ref": "#/components/schemas/AssetWithPriceInfo"
+    },
+    "rewardTxHash": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "addresses",
+    "txHash",
+    "amountStaked",
+    "nodeId",
+    "startTimestamp",
+    "endTimestamp",
+    "rewardType",
+    "utxoId",
+    "outputIndex",
+    "reward",
+    "rewardTxHash"
+  ]
+}

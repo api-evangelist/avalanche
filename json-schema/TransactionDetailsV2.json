@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/TransactionDetailsV2.json",
+  "title": "TransactionDetailsV2",
+  "type": "object",
+  "properties": {
+    "nativeTransaction": {
+      "description": "The native (top-level) transaction details.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NativeTransaction"
+        }
+      ]
+    },
+    "erc20Transfers": {
+      "description": "The list of ERC-20 transfers.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Erc20TransferDetailsV2"
+      }
+    },
+    "erc721Transfers": {
+      "description": "The list of ERC-721 transfers.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Erc721TransferDetails"
+      }
+    },
+    "erc1155Transfers": {
+      "description": "The list of ERC-1155 transfers.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Erc1155TransferDetails"
+      }
+    },
+    "internalTransactions": {
+      "description": "The list of internal transactions. Note that this list only includes CALL and CALLCODE internal transactions that had a non-zero value and CREATE/CREATE2/CREATE3  calls. Use a client provider to recieve a full debug trace of the transaction.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InternalTransactionDetails"
+      }
+    }
+  },
+  "required": [
+    "nativeTransaction"
+  ]
+}

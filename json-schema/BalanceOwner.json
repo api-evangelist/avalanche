@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/BalanceOwner.json",
+  "title": "BalanceOwner",
+  "type": "object",
+  "properties": {
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "threshold": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "addresses",
+    "threshold"
+  ]
+}

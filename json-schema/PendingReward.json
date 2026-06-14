@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PendingReward.json",
+  "title": "PendingReward",
+  "type": "object",
+  "properties": {
+    "addresses": {
+      "description": "An array of P-Chain wallet addresses.",
+      "examples": [
+        [
+          "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
+        ]
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "txHash": {
+      "type": "string"
+    },
+    "amountStaked": {
+      "type": "string"
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "startTimestamp": {
+      "type": "number"
+    },
+    "endTimestamp": {
+      "type": "number"
+    },
+    "rewardType": {
+      "$ref": "#/components/schemas/RewardType"
+    },
+    "progress": {
+      "type": "number"
+    },
+    "estimatedReward": {
+      "description": "An object containing P-chain Asset basic info and the amount of that Asset ID.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AssetAmount"
+        }
+      ]
+    }
+  },
+  "required": [
+    "addresses",
+    "txHash",
+    "amountStaked",
+    "nodeId",
+    "startTimestamp",
+    "endTimestamp",
+    "rewardType",
+    "progress",
+    "estimatedReward"
+  ]
+}

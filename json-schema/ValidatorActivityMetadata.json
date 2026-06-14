@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ValidatorActivityMetadata.json",
+  "title": "ValidatorActivityMetadata",
+  "type": "object",
+  "properties": {
+    "eventSignatures": {
+      "description": "Array of hexadecimal strings of the event signatures.",
+      "examples": [
+        [
+          "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64"
+        ]
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keyType": {
+      "$ref": "#/components/schemas/ValidatorActivityKeyType"
+    },
+    "keys": {
+      "description": "Array of keys like NodeID or SubnetID corresponding to the keyType being monitored. ValidatorActivity event will only accept a single key",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subEvents": {
+      "description": "Sub-events to monitor",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ValidatorActivitySubEvents"
+        }
+      ]
+    },
+    "nodeIds": {
+      "description": "Array of node IDs to filter the events",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subnetIds": {
+      "description": "Array of subnet IDs to filter the events",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "l1ValidatorFeeBalanceThreshold": {
+      "type": "string",
+      "description": "L1 validator fee balance threshold in nAVAX"
+    }
+  },
+  "required": [
+    "keyType",
+    "keys",
+    "subEvents"
+  ]
+}

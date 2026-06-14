@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/PrimaryNetworkAssetType.json",
+  "title": "PrimaryNetworkAssetType",
+  "type": "string",
+  "description": "Type of asset like SECP256K1 or NFT.",
+  "enum": [
+    "secp256k1",
+    "nft"
+  ]
+}

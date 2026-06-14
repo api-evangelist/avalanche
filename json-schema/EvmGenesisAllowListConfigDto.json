@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/EvmGenesisAllowListConfigDto.json",
+  "title": "EvmGenesisAllowListConfigDto",
+  "type": "object",
+  "properties": {
+    "blockTimestamp": {
+      "type": "number",
+      "description": "Block timestamp",
+      "example": 0
+    },
+    "adminAddresses": {
+      "description": "Admin addresses",
+      "example": [
+        "0x1234..."
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "managerAddresses": {
+      "description": "Manager addresses",
+      "example": [
+        "0x5678..."
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "enabledAddresses": {
+      "description": "Enabled addresses",
+      "example": [
+        "0x9abc..."
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

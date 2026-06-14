@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Erc20TransferDetails.json",
+  "title": "Erc20TransferDetails",
+  "type": "object",
+  "properties": {
+    "from": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "to": {
+      "$ref": "#/components/schemas/RichAddress"
+    },
+    "logIndex": {
+      "type": "number"
+    },
+    "value": {
+      "type": "string",
+      "examples": [
+        "10000000000000000000"
+      ]
+    },
+    "erc20Token": {
+      "$ref": "#/components/schemas/Erc20Token"
+    }
+  },
+  "required": [
+    "from",
+    "to",
+    "logIndex",
+    "value",
+    "erc20Token"
+  ]
+}

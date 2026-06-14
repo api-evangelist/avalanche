@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/AvaxSupplyResponse.json",
+  "title": "AvaxSupplyResponse",
+  "type": "object",
+  "properties": {
+    "circulatingSupply": {
+      "type": "string",
+      "description": "The circulating supply of AVAX.",
+      "example": "454257251.7149865026656081965"
+    },
+    "totalSupply": {
+      "type": "string",
+      "description": "The total supply of AVAX.",
+      "example": "454257251.7149865026656081965"
+    },
+    "totalPBurned": {
+      "type": "string",
+      "description": "Represents the total amount of AVAX burned on the P-Chain. This value includes AVAX lost when the sum of input UTXOs exceeds the sum of output UTXOs\u2014potentially by more than the expected transaction fee, such as in malformed or improperly constructed transactions\u2014as well as all L1 validator fees that have been burned to date.",
+      "example": "15039.56226661934233308491042"
+    },
+    "totalCBurned": {
+      "type": "string",
+      "description": "Represents the total amount of AVAX burned on the C-Chain. This value includes the total amount of AVAX burned on the C-Chain in evm txns and the total amount of AVAX burned on the C-Chain in atomic txns.",
+      "example": "4868917.656222642629429578983"
+    },
+    "totalXBurned": {
+      "type": "string",
+      "description": "The total X-chain burned fees of AVAX.",
+      "example": "45577.89911362119281041174838"
+    },
+    "totalStaked": {
+      "type": "string",
+      "description": "The total staked AVAX.",
+      "example": "199605247.61112"
+    },
+    "totalLocked": {
+      "type": "string",
+      "description": "The total locked AVAX.",
+      "example": "36162978.31786130001530843447"
+    },
+    "totalRewards": {
+      "type": "string",
+      "description": "The total rewards AVAX.",
+      "example": "99186786.83258938583018127214"
+    },
+    "lastUpdated": {
+      "format": "date-time",
+      "type": "string",
+      "description": "The last updated time of the AVAX supply.",
+      "example": "2025-11-05T20:15:15.678Z"
+    },
+    "genesisUnlock": {
+      "type": "string",
+      "description": "The genesis unlock amount of the AVAX supply.",
+      "example": "360000000"
+    },
+    "l1ValidatorFees": {
+      "type": "string",
+      "description": "The total L1 validator fees of AVAX.",
+      "example": "6786.673898334"
+    }
+  },
+  "required": [
+    "circulatingSupply",
+    "totalSupply",
+    "totalPBurned",
+    "totalCBurned",
+    "totalXBurned",
+    "totalStaked",
+    "totalLocked",
+    "totalRewards",
+    "lastUpdated",
+    "genesisUnlock",
+    "l1ValidatorFees"
+  ]
+}

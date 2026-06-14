@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/CompletedDelegatorDetails.json",
+  "title": "CompletedDelegatorDetails",
+  "type": "object",
+  "properties": {
+    "txHash": {
+      "type": "string"
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "rewardAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "amountDelegated": {
+      "type": "string"
+    },
+    "delegationFee": {
+      "type": "string"
+    },
+    "startTimestamp": {
+      "type": "number"
+    },
+    "endTimestamp": {
+      "type": "number"
+    },
+    "grossReward": {
+      "type": "string",
+      "description": "Total rewards distributed for the successful delegation."
+    },
+    "netReward": {
+      "type": "string",
+      "description": "Net rewards distributed to the delegator after deducting delegation fee from the gross reward for the successful delegation."
+    },
+    "delegationStatus": {
+      "type": "string",
+      "enum": [
+        "completed"
+      ]
+    }
+  },
+  "required": [
+    "txHash",
+    "nodeId",
+    "rewardAddresses",
+    "amountDelegated",
+    "delegationFee",
+    "startTimestamp",
+    "endTimestamp",
+    "grossReward",
+    "netReward",
+    "delegationStatus"
+  ]
+}

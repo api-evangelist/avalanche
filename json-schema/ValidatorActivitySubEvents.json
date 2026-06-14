@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ValidatorActivitySubEvents.json",
+  "title": "ValidatorActivitySubEvents",
+  "type": "object",
+  "properties": {
+    "validatorActivitySubEvents": {
+      "type": "array",
+      "description": "Array of validator activity sub-event types",
+      "items": {
+        "type": "string",
+        "enum": [
+          "validator_stake",
+          "delegator_stake",
+          "reward_distribution",
+          "l1_validator_balance_increased",
+          "l1_validator_disabled",
+          "l1_validator_removed",
+          "l1_validator_balance_threshold"
+        ]
+      }
+    }
+  },
+  "required": [
+    "validatorActivitySubEvents"
+  ]
+}

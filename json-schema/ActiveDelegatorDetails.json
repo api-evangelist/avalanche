@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ActiveDelegatorDetails.json",
+  "title": "ActiveDelegatorDetails",
+  "type": "object",
+  "properties": {
+    "txHash": {
+      "type": "string"
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "rewardAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "amountDelegated": {
+      "type": "string"
+    },
+    "delegationFee": {
+      "type": "string"
+    },
+    "startTimestamp": {
+      "type": "number"
+    },
+    "endTimestamp": {
+      "type": "number"
+    },
+    "estimatedGrossReward": {
+      "type": "string"
+    },
+    "estimatedNetReward": {
+      "type": "string"
+    },
+    "delegationStatus": {
+      "type": "string",
+      "enum": [
+        "active"
+      ]
+    }
+  },
+  "required": [
+    "txHash",
+    "nodeId",
+    "rewardAddresses",
+    "amountDelegated",
+    "delegationFee",
+    "startTimestamp",
+    "endTimestamp",
+    "estimatedGrossReward",
+    "estimatedNetReward",
+    "delegationStatus"
+  ]
+}

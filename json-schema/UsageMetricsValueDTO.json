@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/UsageMetricsValueDTO.json",
+  "title": "UsageMetricsValueDTO",
+  "type": "object",
+  "properties": {
+    "groupedBy": {
+      "type": "string",
+      "description": "Column name used for data aggregation",
+      "enum": [
+        "requestPath",
+        "responseCode",
+        "chainId",
+        "apiKeyId",
+        "requestType",
+        "None"
+      ]
+    },
+    "groupValue": {
+      "description": "The value of the column used for data aggregation",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    },
+    "totalRequests": {
+      "type": "number",
+      "description": "The total number of requests"
+    },
+    "requestsPerSecond": {
+      "type": "number",
+      "description": "The number of requests per second"
+    },
+    "successRatePercent": {
+      "type": "number",
+      "description": "The success rate percentage"
+    },
+    "medianResponseTimeMsecs": {
+      "type": "number",
+      "description": "The median response time in milliseconds"
+    },
+    "invalidRequests": {
+      "type": "number",
+      "description": "The number of invalid requests"
+    },
+    "apiCreditsUsed": {
+      "type": "number",
+      "description": "The number of API credits used"
+    },
+    "apiCreditsWasted": {
+      "type": "number",
+      "description": "The number of API credits wasted on invalid requests"
+    }
+  },
+  "required": [
+    "groupedBy",
+    "totalRequests",
+    "requestsPerSecond",
+    "successRatePercent",
+    "medianResponseTimeMsecs",
+    "invalidRequests",
+    "apiCreditsUsed",
+    "apiCreditsWasted"
+  ]
+}

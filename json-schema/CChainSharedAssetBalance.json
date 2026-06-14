@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/CChainSharedAssetBalance.json",
+  "title": "CChainSharedAssetBalance",
+  "type": "object",
+  "properties": {
+    "assetId": {
+      "type": "string",
+      "description": "Unique ID for an asset.",
+      "examples": [
+        "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of this asset.",
+      "examples": [
+        "Avalanche"
+      ]
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Symbol for this asset (max 4 characters).",
+      "examples": [
+        "AVAX"
+      ]
+    },
+    "denomination": {
+      "type": "number",
+      "description": "Denomination of this asset to represent fungibility.",
+      "examples": [
+        9
+      ]
+    },
+    "type": {
+      "examples": [
+        "secp256k1"
+      ],
+      "$ref": "#/components/schemas/PrimaryNetworkAssetType"
+    },
+    "amount": {
+      "type": "string",
+      "description": "Amount of the asset.",
+      "examples": [
+        "5001000"
+      ]
+    },
+    "utxoCount": {
+      "type": "number",
+      "examples": [
+        1
+      ]
+    },
+    "sharedWithChainId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "assetId",
+    "name",
+    "symbol",
+    "denomination",
+    "type",
+    "amount",
+    "utxoCount",
+    "sharedWithChainId"
+  ]
+}

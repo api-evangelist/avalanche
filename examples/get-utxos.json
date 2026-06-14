@@ -1,0 +1,35 @@
+{
+  "description": "Get UTXOs for addresses on P-Chain",
+  "operation": "GET /v1/networks/{network}/blockchains/{blockchainId}/utxos",
+  "request": {
+    "path": "/v1/networks/mainnet/blockchains/11111111111111111111111111111111LpoYY/utxos",
+    "parameters": {
+      "network": "mainnet",
+      "blockchainId": "11111111111111111111111111111111LpoYY",
+      "addresses": [
+        "P-avax1abc123"
+      ]
+    }
+  },
+  "response": {
+    "utxos": [
+      {
+        "utxo": {
+          "utxoId": {
+            "txID": "utxo_tx_id",
+            "outputIndex": 0
+          },
+          "assetID": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z",
+          "output": {
+            "addresses": [
+              "P-avax1abc123"
+            ],
+            "amount": "2000000000000",
+            "locktime": 0,
+            "threshold": 1
+          }
+        }
+      }
+    ]
+  }
+}

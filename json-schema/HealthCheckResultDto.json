@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/HealthCheckResultDto.json",
+  "title": "HealthCheckResultDto",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "error",
+        "ok",
+        "shutting_down"
+      ]
+    },
+    "info": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/components/schemas/HealthIndicatorResultDto",
+        "additionalProperties": true
+      },
+      "examples": [
+        {
+          "database": {
+            "status": "up"
+          }
+        }
+      ]
+    },
+    "error": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/components/schemas/HealthIndicatorResultDto",
+        "additionalProperties": true
+      },
+      "examples": [
+        {}
+      ]
+    },
+    "details": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/HealthIndicatorResultDto",
+        "additionalProperties": true
+      },
+      "examples": [
+        {
+          "database": {
+            "status": "up"
+          }
+        }
+      ]
+    }
+  }
+}

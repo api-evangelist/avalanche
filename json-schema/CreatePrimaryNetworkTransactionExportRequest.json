@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/CreatePrimaryNetworkTransactionExportRequest.json",
+  "title": "CreatePrimaryNetworkTransactionExportRequest",
+  "type": "object",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/PrimaryNetworkOperationType"
+    },
+    "firstDate": {
+      "type": "string",
+      "examples": [
+        "2023-05-01"
+      ]
+    },
+    "lastDate": {
+      "type": "string",
+      "examples": [
+        "2023-05-02"
+      ]
+    },
+    "startDate": {
+      "type": "string",
+      "examples": [
+        "2023-05-01"
+      ],
+      "deprecated": true
+    },
+    "endDate": {
+      "type": "string",
+      "examples": [
+        "2023-05-02"
+      ],
+      "deprecated": true
+    },
+    "options": {
+      "$ref": "#/components/schemas/PrimaryNetworkOptions"
+    }
+  },
+  "required": [
+    "type",
+    "options"
+  ]
+}

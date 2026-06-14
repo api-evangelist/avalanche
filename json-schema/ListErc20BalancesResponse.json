@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListErc20BalancesResponse.json",
+  "title": "ListErc20BalancesResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "nativeTokenBalance": {
+      "description": "The native token balance for the address.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NativeTokenBalance"
+        }
+      ]
+    },
+    "erc20TokenBalances": {
+      "description": "The list of ERC-20 token balances for the address.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Erc20TokenBalance"
+      }
+    }
+  },
+  "required": [
+    "nativeTokenBalance",
+    "erc20TokenBalances"
+  ]
+}

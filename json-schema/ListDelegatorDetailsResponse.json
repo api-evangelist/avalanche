@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/ListDelegatorDetailsResponse.json",
+  "title": "ListDelegatorDetailsResponse",
+  "type": "object",
+  "properties": {
+    "nextPageToken": {
+      "type": "string",
+      "description": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages."
+    },
+    "delegators": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CompletedDelegatorDetails"
+          },
+          {
+            "$ref": "#/components/schemas/ActiveDelegatorDetails"
+          },
+          {
+            "$ref": "#/components/schemas/PendingDelegatorDetails"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "delegationStatus",
+          "mapping": {
+            "active": "#/components/schemas/ActiveDelegatorDetails",
+            "pending": "#/components/schemas/PendingDelegatorDetails",
+            "completed": "#/components/schemas/CompletedDelegatorDetails"
+          }
+        }
+      },
+      "description": "The list of Delegator Details."
+    }
+  },
+  "required": [
+    "delegators"
+  ]
+}

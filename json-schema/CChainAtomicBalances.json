@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/CChainAtomicBalances.json",
+  "title": "CChainAtomicBalances",
+  "type": "object",
+  "properties": {
+    "atomicMemoryUnlocked": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CChainSharedAssetBalance"
+      }
+    },
+    "atomicMemoryLocked": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CChainSharedAssetBalance"
+      }
+    }
+  },
+  "required": [
+    "atomicMemoryUnlocked",
+    "atomicMemoryLocked"
+  ]
+}

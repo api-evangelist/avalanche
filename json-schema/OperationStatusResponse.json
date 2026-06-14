@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/OperationStatusResponse.json",
+  "title": "OperationStatusResponse",
+  "type": "object",
+  "properties": {
+    "operationId": {
+      "type": "string"
+    },
+    "operationType": {
+      "$ref": "#/components/schemas/OperationType"
+    },
+    "operationStatus": {
+      "$ref": "#/components/schemas/OperationStatus"
+    },
+    "message": {
+      "type": "string"
+    },
+    "metadata": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/TransactionExportMetadata"
+        }
+      ]
+    },
+    "createdAtTimestamp": {
+      "type": "number"
+    },
+    "updatedAtTimestamp": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "operationId",
+    "operationType",
+    "operationStatus",
+    "createdAtTimestamp",
+    "updatedAtTimestamp"
+  ]
+}

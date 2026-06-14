@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/CommonBalanceType.json",
+  "title": "CommonBalanceType",
+  "type": "string",
+  "description": "Type of balance to monitor",
+  "enum": [
+    "unlockedUnstaked",
+    "unlockedStaked",
+    "lockedPlatform",
+    "lockedStakeable",
+    "lockedStaked",
+    "pendingStaked",
+    "unlocked",
+    "locked",
+    "atomicMemoryUnlocked",
+    "atomicMemoryLocked"
+  ]
+}

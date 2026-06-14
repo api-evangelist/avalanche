@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/GetPrimaryNetworkBlockResponse.json",
+  "title": "GetPrimaryNetworkBlockResponse",
+  "type": "object",
+  "properties": {
+    "blockNumber": {
+      "type": "string"
+    },
+    "blockHash": {
+      "type": "string"
+    },
+    "parentHash": {
+      "type": "string"
+    },
+    "blockTimestamp": {
+      "type": "number"
+    },
+    "blockType": {
+      "type": "string"
+    },
+    "txCount": {
+      "type": "number"
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockSizeBytes": {
+      "type": "number"
+    },
+    "l1ValidatorsAccruedFees": {
+      "type": "number"
+    },
+    "activeL1Validators": {
+      "type": "number"
+    },
+    "currentSupply": {
+      "type": "string"
+    },
+    "proposerDetails": {
+      "$ref": "#/components/schemas/ProposerDetails"
+    }
+  },
+  "required": [
+    "blockNumber",
+    "blockHash",
+    "parentHash",
+    "blockTimestamp",
+    "blockType",
+    "txCount",
+    "transactions",
+    "blockSizeBytes"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Money.json",
+  "title": "Money",
+  "type": "object",
+  "properties": {
+    "currencyCode": {
+      "examples": [
+        "usd"
+      ],
+      "$ref": "#/components/schemas/CurrencyCode"
+    },
+    "value": {
+      "type": "number",
+      "description": "Monetary value in base 10 decimals.",
+      "examples": [
+        "42.42"
+      ]
+    }
+  },
+  "required": [
+    "currencyCode",
+    "value"
+  ]
+}

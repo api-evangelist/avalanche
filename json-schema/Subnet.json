@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/Subnet.json",
+  "title": "Subnet",
+  "type": "object",
+  "properties": {
+    "createBlockTimestamp": {
+      "type": "number"
+    },
+    "createBlockIndex": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "ownerAddresses": {
+      "deprecated": true,
+      "description": "This field is deprecated. Use subnetOwnershipInfo instead.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "threshold": {
+      "type": "number",
+      "deprecated": true,
+      "description": "This field is deprecated. Use subnetOwnershipInfo instead."
+    },
+    "locktime": {
+      "type": "number",
+      "deprecated": true,
+      "description": "This field is deprecated. Use subnetOwnershipInfo instead."
+    },
+    "subnetOwnershipInfo": {
+      "description": "Latest subnet owner details for this Subnet.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SubnetOwnershipInfo"
+        }
+      ]
+    },
+    "isL1": {
+      "type": "boolean",
+      "description": "Whether the subnet is an L1 or not."
+    },
+    "l1ConversionTransactionHash": {
+      "type": "string",
+      "description": "Transaction hash of ConvertSubnetToL1Tx which converted this Subnet to L1."
+    },
+    "l1ValidatorManagerDetails": {
+      "description": "L1 validator manager details.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/L1ValidatorManagerDetails"
+        }
+      ]
+    },
+    "blockchains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Blockchain"
+      }
+    }
+  },
+  "required": [
+    "createBlockTimestamp",
+    "createBlockIndex",
+    "subnetId",
+    "ownerAddresses",
+    "threshold",
+    "locktime",
+    "subnetOwnershipInfo",
+    "isL1",
+    "blockchains"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avalanche/main/json-schema/BlockchainInfo.json",
+  "title": "BlockchainInfo",
+  "type": "object",
+  "properties": {
+    "chainName": {
+      "type": "string"
+    },
+    "vmId": {
+      "type": "string"
+    },
+    "genesisData": {
+      "description": "The genesis data of the blockchain.  Present for CreateChainTx. EVM based chains will return the genesis data as an object. Non-EVM based chains will return the genesis data as an encoded string. The encoding depends on the VM",
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/EvmGenesisDto"
+        },
+        {
+          "type": "string",
+          "example": "{\"chainId\": 43114}"
+        }
+      ],
+      "examples": {
+        "config": {
+          "chainId": 43114
+        }
+      }
+    }
+  },
+  "required": [
+    "chainName",
+    "vmId"
+  ]
+}
