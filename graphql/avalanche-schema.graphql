@@ -1,0 +1,1087 @@
+"""
+Avalanche GraphQL Schema
+Conceptual schema derived from the Avalanche Data API (Glacier), Metrics API,
+RPC API, and Webhooks API. Covers C-Chain, P-Chain, X-Chain, and L1 subnets.
+Source: https://developers.avacloud.io / https://build.avax.network
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar BigInt
+scalar JSON
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum ChainType {
+  C_CHAIN
+  P_CHAIN
+  X_CHAIN
+  L1
+}
+
+enum TransactionType {
+  BASE_TX
+  CREATE_ASSET_TX
+  OPERATION_TX
+  IMPORT_TX
+  EXPORT_TX
+  ADD_VALIDATOR_TX
+  ADD_DELEGATOR_TX
+  ADD_SUBNET_VALIDATOR_TX
+  CREATE_CHAIN_TX
+  CREATE_SUBNET_TX
+  ADVANCE_TIME_TX
+  REWARD_VALIDATOR_TX
+  REMOVE_SUBNET_VALIDATOR_TX
+  TRANSFORM_SUBNET_TX
+  ADD_PERMISSIONLESS_VALIDATOR_TX
+  ADD_PERMISSIONLESS_DELEGATOR_TX
+  EVM_TX
+  UNKNOWN
+}
+
+enum ValidatorStatus {
+  ACTIVE
+  PENDING
+  COMPLETED
+  REMOVED
+}
+
+enum AssetType {
+  NATIVE
+  FUNGIBLE
+  NFT
+  VARIABLE_CAP
+  FIXED_CAP
+}
+
+enum NetworkType {
+  MAINNET
+  TESTNET
+  DEVNET
+}
+
+enum WebhookEventType {
+  ERC20_TRANSFER
+  ERC721_TRANSFER
+  ERC1155_TRANSFER
+  ADDRESS_ACTIVITY
+  VALIDATOR_EVENT
+  STAKING_EVENT
+  BLOCK_ADDED
+}
+
+enum MetricWindow {
+  HOUR_1
+  HOUR_6
+  HOUR_24
+  DAY_7
+  DAY_30
+}
+
+enum HealthStatus {
+  HEALTHY
+  DEGRADED
+  UNHEALTHY
+}
+
+enum RPCMethod {
+  ETH_CALL
+  ETH_GET_BALANCE
+  ETH_GET_BLOCK
+  ETH_SEND_RAW_TRANSACTION
+  PLATFORM_GET_CURRENT_VALIDATORS
+  PLATFORM_GET_PENDING_VALIDATORS
+  PLATFORM_GET_SUBNETS
+  PLATFORM_GET_BLOCKCHAINS
+  AVM_GET_TX
+  AVM_ISSUE_TX
+}
+
+# ---------------------------------------------------------------------------
+# Node & Network
+# ---------------------------------------------------------------------------
+
+"""Represents an Avalanche network node."""
+type Node {
+  id: ID!
+  nodeId: String!
+  details: NodeDetails
+  version: NodeVersion
+  peers: [Peer!]
+  health: Health
+  info: NodeInfo
+}
+
+"""Detailed runtime information about a node."""
+type NodeDetails {
+  nodeId: String!
+  networkId: String!
+  networkName: String!
+  publicIP: String
+  httpHost: String
+  httpPort: Int
+  stakingPort: Int
+  dbType: String
+  dbPath: String
+  uptime: Float
+  benchlistEnabled: Boolean
+}
+
+"""Software version information for a node."""
+type NodeVersion {
+  version: String!
+  databaseVersion: String
+  gitCommit: String
+  vmVersions: JSON
+}
+
+"""An Avalanche network (Mainnet, Fuji testnet, or devnet)."""
+type Network {
+  networkId: String!
+  networkName: String!
+  type: NetworkType!
+  chainId: String
+  description: String
+  nativeToken: NativeToken
+  subnets: [Subnet!]
+  blockchains: [Blockchain!]
+  validators: [Validator!]
+  totalStake: BigInt
+  createdAt: DateTime
+}
+
+"""Summary info about this node and the network it participates in."""
+type NodeInfo {
+  nodeId: String!
+  networkId: String!
+  networkName: String!
+  details: InfoDetails
+}
+
+"""Extended informational fields returned by the info API endpoints."""
+type InfoDetails {
+  networkID: Int!
+  networkName: String!
+  nodeVersion: String!
+  isBootstrapped: Boolean
+  isSynced: Boolean
+  txFee: BigInt
+  createAssetTxFee: BigInt
+  createSubnetTxFee: BigInt
+  createBlockchainTxFee: BigInt
+  minValidatorStake: BigInt
+  maxValidatorStake: BigInt
+  minDelegatorStake: BigInt
+  minDelegationFee: Int
+  minStakeDuration: Int
+  maxStakeDuration: Int
+}
+
+# ---------------------------------------------------------------------------
+# Subnet & Blockchain
+# ---------------------------------------------------------------------------
+
+"""An Avalanche subnet — a set of validators that agree on a set of blockchains."""
+type Subnet {
+  subnetId: ID!
+  details: SubnetDetails
+  blockchains: [Blockchain!]
+  validators: [Validator!]
+  createdAt: DateTime
+}
+
+"""Detailed metadata for a subnet."""
+type SubnetDetails {
+  subnetId: String!
+  threshold: Int
+  locktime: BigInt
+  controlKeys: [String!]
+  isPermissioned: Boolean
+  elasticSubnetId: String
+}
+
+"""An Avalanche blockchain instance belonging to a subnet."""
+type Blockchain {
+  blockchainId: ID!
+  name: String!
+  subnetId: String!
+  details: BlockchainDetails
+  chainType: ChainType!
+  latestBlock: Block
+}
+
+"""Detailed metadata for a blockchain."""
+type BlockchainDetails {
+  blockchainId: String!
+  name: String!
+  subnetId: String!
+  vmId: String!
+  fxIds: [String!]
+  isActive: Boolean
+  createdAt: DateTime
+}
+
+"""Generic reference to any chain (C/P/X or L1)."""
+type Chain {
+  chainId: String!
+  chainType: ChainType!
+  networkId: String!
+  name: String
+}
+
+# ---------------------------------------------------------------------------
+# Block
+# ---------------------------------------------------------------------------
+
+"""A block on any Avalanche chain."""
+type Block {
+  blockId: ID!
+  blockHash: BlockHash
+  blockNumber: BlockNumber
+  parentHash: String
+  networkId: String!
+  blockchainId: String!
+  timestamp: DateTime!
+  txCount: Int!
+  transactions: [Transaction!]
+  gasUsed: BigInt
+  gasLimit: BigInt
+  baseFeePerGas: BigInt
+  size: Int
+  details: BlockDetails
+}
+
+"""Detailed fields for an EVM block."""
+type BlockDetails {
+  blockHash: String!
+  blockNumber: BigInt!
+  parentHash: String!
+  stateRoot: String
+  receiptsRoot: String
+  miner: String
+  difficulty: BigInt
+  totalDifficulty: BigInt
+  extraData: String
+  gasLimit: BigInt!
+  gasUsed: BigInt!
+  baseFeePerGas: BigInt
+  timestamp: DateTime!
+  transactionCount: Int!
+  logsBloom: String
+}
+
+"""A block's hash identifier."""
+type BlockHash {
+  hash: String!
+  blockchainId: String!
+}
+
+"""A block's numeric height."""
+type BlockNumber {
+  number: BigInt!
+  blockchainId: String!
+}
+
+# ---------------------------------------------------------------------------
+# Transaction
+# ---------------------------------------------------------------------------
+
+"""A transaction on any Avalanche chain."""
+type Transaction {
+  txHash: String!
+  txType: TransactionType!
+  networkId: String!
+  blockchainId: String!
+  blockHash: String
+  blockNumber: BigInt
+  timestamp: DateTime
+  memo: String
+  details: TransactionDetails
+  inputs: [Input!]
+  outputs: [Output!]
+  status: String
+  fee: BigInt
+}
+
+"""Detailed fields for a transaction."""
+type TransactionDetails {
+  txHash: String!
+  txType: TransactionType!
+  from: String
+  to: String
+  value: BigInt
+  gasPrice: BigInt
+  maxFeePerGas: BigInt
+  maxPriorityFeePerGas: BigInt
+  gasLimit: BigInt
+  gasUsed: BigInt
+  nonce: BigInt
+  input: String
+  contractAddress: String
+  logs: [EVMLog!]
+  status: Int
+  cumulativeGasUsed: BigInt
+  effectiveGasPrice: BigInt
+}
+
+"""A signed transaction ready for submission."""
+type SignedTransaction {
+  txHash: String
+  signedTx: String!
+  txType: TransactionType
+  networkId: String
+}
+
+"""An unsigned transaction awaiting signatures."""
+type UnsignedTransaction {
+  unsignedTx: String!
+  txType: TransactionType
+  networkId: String
+  fee: BigInt
+}
+
+# ---------------------------------------------------------------------------
+# Asset
+# ---------------------------------------------------------------------------
+
+"""An Avalanche asset (AVAX or any custom asset on the X-Chain)."""
+type Asset {
+  assetId: ID!
+  networkId: String!
+  details: AssetDetails
+  description: AssetDescription
+  assetType: AssetType
+}
+
+"""Technical details for an asset."""
+type AssetDetails {
+  assetId: String!
+  name: String!
+  symbol: String!
+  denomination: Int!
+  assetType: AssetType!
+  initialStates: JSON
+  minters: [String!]
+  threshold: Int
+}
+
+"""Human-readable description of an asset."""
+type AssetDescription {
+  name: String!
+  symbol: String!
+  denomination: Int!
+  assetType: AssetType!
+  description: String
+  assetId: String!
+}
+
+"""The native AVAX token."""
+type NativeToken {
+  name: String!
+  symbol: String!
+  denomination: Int!
+  totalSupply: BigInt
+  stakedAmount: BigInt
+  circulatingSupply: BigInt
+}
+
+"""An ERC-20, ERC-721, or ERC-1155 token on the C-Chain."""
+type Token {
+  address: String!
+  networkId: String!
+  name: String
+  symbol: String
+  decimals: Int
+  totalSupply: BigInt
+  details: TokenDetails
+}
+
+"""Detailed token contract metadata."""
+type TokenDetails {
+  address: String!
+  name: String!
+  symbol: String!
+  decimals: Int!
+  totalSupply: BigInt
+  deployer: String
+  deployedAt: DateTime
+  logoUri: String
+  tokenStandard: String
+}
+
+# ---------------------------------------------------------------------------
+# UTXO & Ledger
+# ---------------------------------------------------------------------------
+
+"""An unspent transaction output on the P-Chain or X-Chain."""
+type UTXO {
+  utxoId: ID!
+  txHash: String!
+  outputIndex: Int!
+  assetId: String!
+  details: UTXODetails
+  address: String
+  amount: BigInt
+  locktime: BigInt
+  threshold: Int
+}
+
+"""Detailed fields for a UTXO."""
+type UTXODetails {
+  utxoId: String!
+  txHash: String!
+  outputIndex: Int!
+  assetId: String!
+  amount: BigInt!
+  locktime: BigInt
+  threshold: Int!
+  addresses: [String!]!
+  isConsumed: Boolean
+  consumedByTxHash: String
+}
+
+"""A transaction input referencing a previously unspent output."""
+type Input {
+  txHash: String!
+  outputIndex: Int!
+  assetId: String!
+  amount: BigInt
+  addresses: [String!]
+  signatures: [String!]
+}
+
+"""A transaction output creating a new UTXO or EVM transfer."""
+type Output {
+  txHash: String
+  outputIndex: Int
+  assetId: String!
+  amount: BigInt!
+  addresses: [String!]!
+  locktime: BigInt
+  threshold: Int
+  outputType: String
+}
+
+# ---------------------------------------------------------------------------
+# Address
+# ---------------------------------------------------------------------------
+
+"""A wallet or contract address on any Avalanche chain."""
+type Address {
+  address: ID!
+  networkId: String!
+  balances: [AddressBalance!]
+  transactions: [Transaction!]
+  utxos: [UTXO!]
+  nfts: [NFT!]
+  isContract: Boolean
+  contractType: String
+}
+
+"""Token or native balance for an address on a given chain."""
+type AddressBalance {
+  address: String!
+  networkId: String!
+  assetId: String
+  tokenAddress: String
+  balance: BigInt!
+  symbol: String
+  decimals: Int
+  chainType: ChainType
+}
+
+# ---------------------------------------------------------------------------
+# Staking
+# ---------------------------------------------------------------------------
+
+"""A staker on the Avalanche P-Chain."""
+type Staker {
+  nodeId: String!
+  networkId: String!
+  details: StakerDetails
+  delegations: [Delegation!]
+  rewards: [Reward!]
+}
+
+"""Staker details including stake amounts and timing."""
+type StakerDetails {
+  nodeId: String!
+  txHash: String!
+  startTime: DateTime!
+  endTime: DateTime!
+  stakeAmount: BigInt!
+  potentialReward: BigInt
+  delegationFee: Float
+  uptime: Float
+  connected: Boolean
+}
+
+"""A delegation assigned to a validator."""
+type Delegation {
+  txHash: String!
+  nodeId: String!
+  delegatorAddress: String
+  details: DelegationDetails
+  reward: Reward
+}
+
+"""Delegation details with timing and amount."""
+type DelegationDetails {
+  txHash: String!
+  nodeId: String!
+  startTime: DateTime!
+  endTime: DateTime!
+  stakeAmount: BigInt!
+  potentialReward: BigInt
+  rewardOwner: String
+}
+
+"""A network validator."""
+type Validator {
+  nodeId: ID!
+  networkId: String!
+  details: ValidatorDetails
+  status: ValidatorStatus!
+  delegations: [Delegation!]
+  stakingPeriod: StakingPeriod
+  uptime: Float
+}
+
+"""Detailed validator information."""
+type ValidatorDetails {
+  nodeId: String!
+  txHash: String!
+  startTime: DateTime!
+  endTime: DateTime!
+  stakeAmount: BigInt!
+  potentialReward: BigInt
+  delegationFee: Float
+  delegatorCount: Int
+  delegatorWeight: BigInt
+  uptime: Float
+  connected: Boolean
+  subnetId: String
+}
+
+"""A staking time window."""
+type StakingPeriod {
+  startTime: DateTime!
+  endTime: DateTime!
+  durationSeconds: Int!
+  remainingSeconds: Int
+}
+
+# ---------------------------------------------------------------------------
+# Rewards
+# ---------------------------------------------------------------------------
+
+"""A staking reward paid to a validator or delegator."""
+type Reward {
+  txHash: String!
+  nodeId: String
+  details: RewardDetails
+  timestamp: DateTime
+}
+
+"""Reward details including amount and recipient."""
+type RewardDetails {
+  txHash: String!
+  nodeId: String
+  amount: BigInt!
+  assetId: String!
+  recipient: String
+  rewardType: String
+  timestamp: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Peers
+# ---------------------------------------------------------------------------
+
+"""A peer node connected to this node."""
+type Peer {
+  nodeId: String!
+  ip: String
+  publicIP: String
+  details: PeerDetails
+  lastSent: DateTime
+  lastReceived: DateTime
+}
+
+"""Detailed peer connection metadata."""
+type PeerDetails {
+  nodeId: String!
+  ip: String!
+  publicIP: String
+  version: String
+  lastSent: DateTime
+  lastReceived: DateTime
+  benched: [String!]
+  observedUptime: Float
+}
+
+# ---------------------------------------------------------------------------
+# Health
+# ---------------------------------------------------------------------------
+
+"""Node health aggregate."""
+type Health {
+  status: HealthStatus!
+  checks: [HealthCheck!]
+  timestamp: DateTime!
+}
+
+"""An individual health check result."""
+type HealthCheck {
+  name: String!
+  status: HealthStatus!
+  message: String
+  timestamp: DateTime
+  errorMessage: String
+}
+
+# ---------------------------------------------------------------------------
+# Keystore & Keys
+# ---------------------------------------------------------------------------
+
+"""A keystore attached to a node."""
+type Keystore {
+  users: [String!]
+}
+
+"""A keychain holding key/address pairs for signing."""
+type Keychain {
+  keys: [KeychainEntry!]
+}
+
+"""A single key/address entry in a keychain."""
+type KeychainEntry {
+  publicKey: String!
+  address: String!
+}
+
+# ---------------------------------------------------------------------------
+# Platform & Infrastructure
+# ---------------------------------------------------------------------------
+
+"""Top-level Platform Chain (P-Chain) context."""
+type Platform {
+  networkId: String!
+  subnets: [Subnet!]
+  blockchains: [Blockchain!]
+  validators: [Validator!]
+  pendingValidators: [Validator!]
+  minValidatorStake: BigInt
+  maxValidatorStake: BigInt
+  minDelegatorStake: BigInt
+  txFee: BigInt
+}
+
+"""The AVAX token with live supply metrics."""
+type AVAX {
+  symbol: String!
+  denomination: Int!
+  totalSupply: BigInt!
+  stakedAmount: BigInt
+  circulatingSupply: BigInt
+  price: Float
+}
+
+"""An API key for accessing AvaCloud services."""
+type APIKey {
+  keyId: ID!
+  name: String!
+  createdAt: DateTime!
+  lastUsedAt: DateTime
+  scopes: [String!]
+}
+
+"""An RPC endpoint descriptor."""
+type RPC {
+  url: String!
+  networkId: String!
+  chainType: ChainType!
+  method: RPCMethod
+  latencyMs: Float
+}
+
+"""A WebSocket endpoint for streaming chain data."""
+type WebSocket {
+  url: String!
+  networkId: String!
+  chainType: ChainType
+  isConnected: Boolean
+}
+
+"""A registered webhook subscription."""
+type Webhook {
+  webhookId: ID!
+  url: String!
+  networkId: String!
+  eventType: WebhookEventType!
+  filters: JSON
+  isActive: Boolean!
+  createdAt: DateTime!
+  lastTriggeredAt: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Metrics
+# ---------------------------------------------------------------------------
+
+"""Aggregate on-chain metrics for a network."""
+type ChainMetrics {
+  networkId: String!
+  window: MetricWindow!
+  throughput: ThroughputMetrics
+  gas: GasMetrics
+  staking: StakingMetrics
+  addresses: AddressMetrics
+  contracts: ContractMetrics
+  dataPoints: [MetricDataPoint!]
+}
+
+"""Transaction throughput metrics."""
+type ThroughputMetrics {
+  tps: Float!
+  peakTps: Float
+  avgBlockTime: Float
+  txCount: BigInt!
+}
+
+"""Gas usage and price metrics."""
+type GasMetrics {
+  gasUsed: BigInt!
+  avgGasPrice: BigInt
+  baseFee: BigInt
+  priorityFee: BigInt
+}
+
+"""Staking participation metrics."""
+type StakingMetrics {
+  totalStake: BigInt!
+  validatorCount: Int!
+  delegatorCount: Int!
+  stakingRatio: Float
+}
+
+"""Address growth metrics."""
+type AddressMetrics {
+  totalAddresses: BigInt!
+  activeAddresses: BigInt
+  newAddresses: BigInt
+}
+
+"""Smart contract deployment metrics."""
+type ContractMetrics {
+  totalContracts: BigInt!
+  newContracts: BigInt
+  uniqueDeployers: BigInt
+}
+
+"""A single time-series data point for a metric."""
+type MetricDataPoint {
+  timestamp: DateTime!
+  value: Float!
+  label: String
+}
+
+# ---------------------------------------------------------------------------
+# NFT
+# ---------------------------------------------------------------------------
+
+"""An ERC-721 or ERC-1155 non-fungible token."""
+type NFT {
+  tokenId: String!
+  contractAddress: String!
+  networkId: String!
+  owner: String
+  metadata: NFTMetadata
+  collection: NFTCollection
+  transfers: [NFTTransfer!]
+}
+
+"""Metadata associated with an NFT."""
+type NFTMetadata {
+  name: String
+  description: String
+  image: String
+  externalUrl: String
+  attributes: JSON
+  tokenUri: String
+}
+
+"""An NFT collection (contract)."""
+type NFTCollection {
+  contractAddress: ID!
+  networkId: String!
+  name: String
+  symbol: String
+  tokenStandard: String
+  totalSupply: BigInt
+  floorPrice: Float
+  nfts: [NFT!]
+}
+
+"""A transfer event for an NFT."""
+type NFTTransfer {
+  txHash: String!
+  logIndex: Int
+  from: String!
+  to: String!
+  tokenId: String!
+  contractAddress: String!
+  timestamp: DateTime
+  blockNumber: BigInt
+}
+
+# ---------------------------------------------------------------------------
+# Interchain Messaging
+# ---------------------------------------------------------------------------
+
+"""A cross-chain (Avalanche Warp) message."""
+type InterchainMessage {
+  messageId: ID!
+  sourceNetworkId: String!
+  destinationNetworkId: String!
+  sourceAddress: String
+  destinationAddress: String
+  payload: String
+  status: String
+  sentAt: DateTime
+  deliveredAt: DateTime
+}
+
+"""An asset transfer between two Avalanche chains."""
+type InterchainTransfer {
+  txHash: String!
+  sourceNetworkId: String!
+  destinationNetworkId: String!
+  assetId: String!
+  amount: BigInt!
+  sender: String
+  recipient: String
+  timestamp: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# EVM Types
+# ---------------------------------------------------------------------------
+
+"""An EVM-specific transaction with full receipt data."""
+type EVMTransaction {
+  txHash: ID!
+  blockHash: String!
+  blockNumber: BigInt!
+  from: String!
+  to: String
+  value: BigInt!
+  gasPrice: BigInt
+  maxFeePerGas: BigInt
+  maxPriorityFeePerGas: BigInt
+  gas: BigInt!
+  gasUsed: BigInt
+  nonce: BigInt!
+  input: String
+  contractAddress: String
+  status: Int
+  logs: [EVMLog!]
+  timestamp: DateTime
+}
+
+"""An event log emitted by a smart contract."""
+type EVMLog {
+  logIndex: Int!
+  txHash: String!
+  blockNumber: BigInt!
+  address: String!
+  topics: [String!]!
+  data: String!
+  removed: Boolean
+}
+
+"""An EVM-compatible block."""
+type EVMBlock {
+  blockHash: ID!
+  blockNumber: BigInt!
+  parentHash: String!
+  timestamp: DateTime!
+  miner: String
+  gasLimit: BigInt!
+  gasUsed: BigInt!
+  baseFeePerGas: BigInt
+  transactions: [EVMTransaction!]
+  transactionCount: Int!
+  size: Int
+}
+
+"""A deployed smart contract."""
+type EVMContract {
+  address: ID!
+  networkId: String!
+  deployer: String
+  deployTxHash: String
+  deployedAt: DateTime
+  bytecode: String
+  abi: JSON
+  isVerified: Boolean
+  name: String
+}
+
+# ---------------------------------------------------------------------------
+# Pagination
+# ---------------------------------------------------------------------------
+
+"""Cursor-based pagination info."""
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+  nextPageToken: String
+}
+
+"""Generic paginated connection wrapper."""
+type Connection {
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+input CreateWebhookInput {
+  url: String!
+  networkId: String!
+  eventType: WebhookEventType!
+  filters: JSON
+}
+
+input SubmitTransactionInput {
+  networkId: String!
+  signedTx: String!
+}
+
+input CreateAPIKeyInput {
+  name: String!
+  scopes: [String!]
+}
+
+# ---------------------------------------------------------------------------
+# Root Types
+# ---------------------------------------------------------------------------
+
+type Query {
+  "Fetch a node by its Avalanche node ID."
+  node(nodeId: String!): Node
+
+  "Fetch a network by ID (e.g. 1 for Mainnet, 5 for Fuji)."
+  network(networkId: String!): Network
+
+  "Fetch a block by hash or number on a given chain."
+  block(networkId: String!, blockchainId: String!, blockId: String!): Block
+
+  "Fetch an EVM block."
+  evmBlock(networkId: String!, blockNumber: BigInt!): EVMBlock
+
+  "Fetch a transaction by hash."
+  transaction(networkId: String!, txHash: String!): Transaction
+
+  "Fetch an EVM transaction by hash."
+  evmTransaction(networkId: String!, txHash: String!): EVMTransaction
+
+  "Fetch an address with balances and activity."
+  address(networkId: String!, address: String!): Address
+
+  "Fetch an asset by its ID."
+  asset(networkId: String!, assetId: String!): Asset
+
+  "Fetch a validator by node ID."
+  validator(networkId: String!, nodeId: String!): Validator
+
+  "List current validators on a network."
+  validators(networkId: String!, subnetId: String, pageSize: Int, pageToken: String): [Validator!]
+
+  "List pending validators."
+  pendingValidators(networkId: String!, subnetId: String): [Validator!]
+
+  "Fetch a subnet by ID."
+  subnet(subnetId: String!): Subnet
+
+  "List all subnets."
+  subnets(networkId: String, pageSize: Int, pageToken: String): [Subnet!]
+
+  "Fetch a blockchain by ID."
+  blockchain(blockchainId: String!): Blockchain
+
+  "List blockchains, optionally filtered by subnet."
+  blockchains(networkId: String, subnetId: String): [Blockchain!]
+
+  "Fetch UTXOs for a list of addresses."
+  utxos(networkId: String!, addresses: [String!]!, assetId: String, sourceChain: String, pageSize: Int, pageToken: String): [UTXO!]
+
+  "Fetch an NFT by contract address and token ID."
+  nft(networkId: String!, contractAddress: String!, tokenId: String!): NFT
+
+  "Fetch an NFT collection."
+  nftCollection(networkId: String!, contractAddress: String!): NFTCollection
+
+  "Fetch chain metrics for a given time window."
+  chainMetrics(networkId: String!, window: MetricWindow!): ChainMetrics
+
+  "Fetch interchain messages between two networks."
+  interchainMessages(sourceNetworkId: String!, destinationNetworkId: String!, pageSize: Int, pageToken: String): [InterchainMessage!]
+
+  "Fetch node health."
+  health: Health
+
+  "Fetch node info."
+  nodeInfo: NodeInfo
+
+  "Fetch a token by contract address."
+  token(networkId: String!, address: String!): Token
+
+  "Fetch registered webhooks."
+  webhooks(networkId: String): [Webhook!]
+
+  "Fetch platform-level data."
+  platform(networkId: String!): Platform
+
+  "Fetch AVAX supply data."
+  avax(networkId: String!): AVAX
+}
+
+type Mutation {
+  "Submit a signed transaction to an Avalanche chain."
+  submitTransaction(input: SubmitTransactionInput!): SignedTransaction
+
+  "Create a webhook subscription."
+  createWebhook(input: CreateWebhookInput!): Webhook
+
+  "Delete a webhook subscription."
+  deleteWebhook(webhookId: ID!): Boolean
+
+  "Create an API key."
+  createAPIKey(input: CreateAPIKeyInput!): APIKey
+}
+
+type Subscription {
+  "Stream new blocks as they are added."
+  blockAdded(networkId: String!, blockchainId: String): Block
+
+  "Stream new transactions, optionally filtered by address."
+  transactionAdded(networkId: String!, address: String): Transaction
+
+  "Stream EVM logs matching a filter."
+  evmLogAdded(networkId: String!, contractAddress: String, topics: [String!]): EVMLog
+
+  "Stream validator status changes."
+  validatorStatusChanged(networkId: String!, nodeId: String): Validator
+}
