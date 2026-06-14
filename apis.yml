@@ -1,0 +1,150 @@
+name: Avalanche
+description: Avalanche is a high-performance blockchain platform offering REST APIs via the Glacier/Data API for querying transactions, addresses, NFTs, token balances, and cross-chain activity on the Avalanche C-Chain, P-Chain, X-Chain, and over 100 L1 subnets. The AvaCloud developer platform also exposes Metrics, RPC, and Webhooks APIs.
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Blockchain
+  - Web3
+  - Avalanche
+  - NFT
+  - DeFi
+  - Cross-Chain
+created: '2026-06-13'
+modified: '2026-06-13'
+url: https://raw.githubusercontent.com/api-evangelist/avalanche/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - name: Avalanche Data API (Glacier)
+    description: Query on-chain data from Avalanche networks — EVM balances, ERC-20/ERC-721/ERC-1155 tokens, transactions, blocks, NFT metadata, UTXOs, validators, staking rewards, and interchain messaging across 100+ L1s.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.avacloud.io/data-api/overview
+    baseURL: https://glacier-api.avax.network/v1
+    tags:
+      - Blockchain
+      - Transactions
+      - Balances
+      - NFT
+      - UTXOs
+      - Validators
+    properties:
+      - type: Documentation
+        url: https://developers.avacloud.io/data-api/overview
+      - type: OpenAPI
+        url: https://glacier-api.avax.network/api
+      - type: Authentication
+        url: https://developers.avacloud.io/data-api/usage-guide
+      - type: RateLimits
+        url: https://developers.avacloud.io/data-api/rate-limits
+      - type: Plans
+        url: plans/data-api.yml
+      - type: RateLimits
+        url: rate-limits/data-api.yml
+      - type: FinOps
+        url: finops/data-api.yml
+    contact:
+      - FN: Ava Labs Support
+        url: https://support.avax.network/
+        email: support@avax.network
+  - name: Avalanche Metrics API
+    description: Access chain throughput metrics, gas consumption, TPS, gas prices, cumulative address growth, contract deployment counts, staking metrics, validator and delegator information, and rolling-window analytics for Avalanche networks.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.avacloud.io/metrics-api/overview
+    baseURL: https://glacier-api.avax.network/v1
+    tags:
+      - Metrics
+      - Analytics
+      - Staking
+      - Blockchain
+    properties:
+      - type: Documentation
+        url: https://developers.avacloud.io/metrics-api/overview
+      - type: RateLimits
+        url: https://developers.avacloud.io/data-api/rate-limits
+      - type: Plans
+        url: plans/data-api.yml
+      - type: RateLimits
+        url: rate-limits/data-api.yml
+      - type: FinOps
+        url: finops/data-api.yml
+    contact:
+      - FN: Ava Labs Support
+        url: https://support.avax.network/
+        email: support@avax.network
+  - name: Avalanche RPC API
+    description: Remote procedure calls for Avalanche Platform Chain operations including UTXO queries, transaction submission, validator lookups, staking information, subnet and blockchain details, and fee estimates.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://build.avax.network/docs/api-reference/data-api/usage
+    baseURL: https://glacier-api.avax.network/v1
+    tags:
+      - RPC
+      - Platform Chain
+      - Validators
+      - Staking
+    properties:
+      - type: Documentation
+        url: https://build.avax.network/docs/api-reference/data-api/usage
+      - type: Plans
+        url: plans/data-api.yml
+      - type: RateLimits
+        url: rate-limits/data-api.yml
+      - type: FinOps
+        url: finops/data-api.yml
+    contact:
+      - FN: Ava Labs Support
+        url: https://support.avax.network/
+        email: support@avax.network
+  - name: Avalanche Webhooks API
+    description: Subscribe to real-time push notifications for Avalanche on-chain events including ERC-20 and ERC-721 token transfers, address activity on C-Chain/P-Chain/X-Chain, validator events, and staking activities.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.avacloud.io/webhooks-api/overview
+    baseURL: https://glacier-api.avax.network/v1
+    tags:
+      - Webhooks
+      - Events
+      - Notifications
+      - Blockchain
+    properties:
+      - type: Documentation
+        url: https://developers.avacloud.io/webhooks-api/overview
+      - type: RateLimits
+        url: https://developers.avacloud.io/data-api/rate-limits
+      - type: Plans
+        url: plans/data-api.yml
+      - type: RateLimits
+        url: rate-limits/data-api.yml
+      - type: FinOps
+        url: finops/data-api.yml
+    contact:
+      - FN: Ava Labs Support
+        url: https://support.avax.network/
+        email: support@avax.network
+common:
+  - type: Portal
+    url: https://developers.avacloud.io/
+  - type: Documentation
+    url: https://build.avax.network/docs/api-reference/data-api/usage
+  - type: SDK
+    url: https://github.com/ava-labs/avalanche-sdk-typescript
+  - type: GitHubOrg
+    url: https://github.com/ava-labs
+  - type: Pricing
+    url: https://docs.avacloud.io/getting-started/plans
+  - type: Status
+    url: https://status.avax.network/
+  - type: Blog
+    url: https://www.avacloud.io/blog
+  - type: Discord
+    url: https://discord.gg/avax
+  - type: X
+    url: https://x.com/avax
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/ava-labs
+  - type: TermsOfService
+    url: https://www.avacloud.io/terms-of-service
+  - type: PrivacyPolicy
+    url: https://www.avacloud.io/privacy-policy
+  - type: SignUp
+    url: https://app.avacloud.io/
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+    email: info@apievangelist.com

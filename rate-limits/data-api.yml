@@ -1,0 +1,67 @@
+name: AvaCloud API Rate Limits
+description: AvaCloud uses a Compute Unit (CU) system to enforce rate limits across the Data API, Metrics API, RPC API, and Webhooks API. Each API request consumes a number of CUs based on the complexity of the operation. Rate limits apply collectively across both the Data and Webhooks APIs, with usage from each counting toward your total CU limit.
+url: https://developers.avacloud.io/data-api/rate-limits
+rateLimits:
+  tiers:
+    - plan: Unauthenticated
+      perMinute: 6000
+      perDay: 1200000
+      unit: compute-units
+    - plan: Free
+      perMinute: 8000
+      perDay: 2000000
+      unit: compute-units
+    - plan: Base
+      perMinute: 10000
+      perDay: 3750000
+      unit: compute-units
+    - plan: Growth
+      perMinute: 14000
+      perDay: 11200000
+      unit: compute-units
+    - plan: Pro
+      perMinute: 20000
+      perDay: 25000000
+      unit: compute-units
+    - plan: Enterprise
+      perMinute: custom
+      perDay: custom
+      unit: compute-units
+  computeUnitWeights:
+    - weight: Free
+      cost: 1
+      description: Minimal-cost operations (e.g., health checks, simple lookups)
+    - weight: Small
+      cost: 10
+      description: Low-cost operations (e.g., simple balance queries)
+    - weight: Medium
+      cost: 20
+      description: Medium-cost operations (e.g., transaction history pages)
+    - weight: Large
+      cost: 50
+      description: Higher-cost operations (e.g., NFT metadata retrieval)
+    - weight: XL
+      cost: 100
+      description: Expensive operations (e.g., complex cross-chain queries)
+    - weight: XXL
+      cost: 200
+      description: Most expensive operations (e.g., large export operations)
+  headers:
+    - name: ratelimit-limit
+      description: The CU quota for your current rate limit window
+    - name: ratelimit-remaining
+      description: The number of CUs remaining before the limit resets
+    - name: ratelimit-policy
+      description: Identifies your current subscription plan tier
+    - name: ratelimit-reset
+      description: Seconds until the rate limit quota resets (returned on 429)
+    - name: retry-after
+      description: Seconds to wait before retrying after a 429 response
+  errorCodes:
+    - code: 429
+      description: Too Many Requests — rate limit exceeded. Implement exponential backoff. Failure to discontinue requests may result in a temporary block.
+  notes:
+    - Rate limits apply collectively across both Webhooks and Data APIs.
+    - Pagination tokens expire after 24 hours.
+    - Exceeding limits returns HTTP 429 with retry-after and ratelimit-reset headers.
+    - Exponential backoff is strongly recommended when receiving 429 responses.

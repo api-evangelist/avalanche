@@ -1,0 +1,113 @@
+name: AvaCloud API Plans
+description: AvaCloud offers tiered subscription plans for access to the Glacier Data API, Metrics API, RPC API, and Webhooks API. Plans are differentiated by compute unit (CU) rate limits per minute and per day. Unauthenticated access is supported with reduced limits. Paid plans unlock higher throughput and L1 infrastructure features.
+url: https://docs.avacloud.io/getting-started/plans
+plans:
+  - name: Unauthenticated
+    description: Free access without an API key. Suitable for lightweight exploration and testing with reduced rate limits. No account required.
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    rateLimit:
+      perMinute: 6000
+      perDay: 1200000
+      unit: compute-units
+    features:
+      - No API key required
+      - Access to Data API and Webhooks API
+      - Rate limits apply across both Data and Webhooks APIs
+  - name: Free
+    description: Free authenticated plan available after creating an AvaCloud account and generating an API key. Provides higher CU limits than unauthenticated access.
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    rateLimit:
+      perMinute: 8000
+      perDay: 2000000
+      unit: compute-units
+    features:
+      - API key via AvaCloud portal
+      - Access to Data API, Metrics API, RPC API, and Webhooks API
+      - Rate limits shared across Data and Webhooks APIs
+  - name: Base
+    description: Entry-level paid plan for developers building production applications on Avalanche.
+    price: null
+    currency: USD
+    billingCycle: monthly
+    rateLimit:
+      perMinute: 10000
+      perDay: 3750000
+      unit: compute-units
+    features:
+      - Higher CU limits than Free tier
+      - Access to all API surfaces
+      - Rate limits shared across Data and Webhooks APIs
+  - name: Growth
+    description: Mid-tier plan for scaling projects needing additional throughput and flexibility.
+    price: null
+    currency: USD
+    billingCycle: monthly
+    rateLimit:
+      perMinute: 14000
+      perDay: 11200000
+      unit: compute-units
+    features:
+      - Significantly higher daily CU allowance
+      - Access to all API surfaces
+      - Advanced scalability features
+  - name: Pro
+    description: High-throughput plan for production-grade applications with demanding API usage patterns.
+    price: null
+    currency: USD
+    billingCycle: monthly
+    rateLimit:
+      perMinute: 20000
+      perDay: 25000000
+      unit: compute-units
+    features:
+      - Highest standard CU limits
+      - Priority support
+      - Access to all API surfaces
+  - name: Enterprise (L1 Starter)
+    description: Managed L1 blockchain infrastructure plan for early-stage projects. Includes dedicated nodes, explorer, and tooling for launching a custom L1 on Avalanche.
+    price: 1999
+    currency: USD
+    billingCycle: monthly
+    rateLimit:
+      perMinute: custom
+      perDay: custom
+      unit: compute-units
+    features:
+      - Managed L1 blockchain infrastructure
+      - Chain and explorer storage included
+      - ICM transaction and validator fees
+      - Dedicated support
+      - Testnet available at $999/month
+  - name: Enterprise (L1 Pro)
+    description: Full-featured managed L1 plan for growing projects requiring advanced resources, increased scalability, and priority support.
+    price: 4999
+    currency: USD
+    billingCycle: monthly
+    rateLimit:
+      perMinute: custom
+      perDay: custom
+      unit: compute-units
+    features:
+      - Everything in L1 Starter
+      - Advanced features and flexibility
+      - Priority support
+      - Custom feature development available
+      - Testnet available at $1299/month
+  - name: Enterprise (Custom)
+    description: Fully customized plan for large organizations and mission-critical deployments. Includes personalized onboarding, dedicated support, and custom feature development.
+    price: null
+    currency: USD
+    billingCycle: custom
+    rateLimit:
+      perMinute: custom
+      perDay: custom
+      unit: compute-units
+    features:
+      - Custom pricing and SLAs
+      - Dedicated onboarding
+      - Custom infrastructure sizing
+      - Contact sales@avacloud.io

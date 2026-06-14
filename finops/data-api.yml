@@ -1,0 +1,66 @@
+name: AvaCloud API FinOps
+description: Financial operations guidance for managing and optimizing API costs on the AvaCloud platform. AvaCloud pricing is based on compute units (CUs) consumed per request, with monthly plan caps and usage-based add-ons for L1 infrastructure. Cost control strategies include selecting the right plan tier, optimizing CU-heavy request patterns, batching where possible, and monitoring daily CU consumption.
+url: https://docs.avacloud.io/getting-started/plans
+finops:
+  model: compute-units
+  description: Each API request consumes CUs based on operation complexity. CU consumption applies collectively across Data, Webhooks, Metrics, and RPC APIs within your plan's daily and per-minute caps.
+  costDrivers:
+    - name: Compute Units (CUs)
+      description: Primary cost driver. Each request has a CU weight (1–200 CUs) based on complexity. Free=1CU, Small=10CU, Medium=20CU, Large=50CU, XL=100CU, XXL=200CU.
+    - name: L1 Infrastructure Storage
+      description: For L1 managed plans, dynamic monthly charges apply for chain data storage and explorer infrastructure.
+    - name: ICM Transaction Fees
+      description: Interchain Messaging transactions and cross-L1 activities incur additional fees on L1 managed plans.
+    - name: Validator Fees
+      description: Running validators on managed L1 infrastructure incurs ongoing validator fees.
+    - name: Gas Fees
+      description: On-chain transactions executed through the platform incur network gas fees.
+    - name: Add-On Subscriptions
+      description: Optional features or expanded capacity beyond base plan limits may incur add-on charges.
+  planCosts:
+    - plan: Unauthenticated
+      monthlyFixedCost: 0
+      notes: No account required. Limited to 6,000 CU/min and 1,200,000 CU/day.
+    - plan: Free
+      monthlyFixedCost: 0
+      notes: Requires AvaCloud account and API key. 8,000 CU/min and 2,000,000 CU/day.
+    - plan: Base
+      monthlyFixedCost: null
+      notes: Pricing available in AvaCloud portal. 10,000 CU/min and 3,750,000 CU/day.
+    - plan: Growth
+      monthlyFixedCost: null
+      notes: Pricing available in AvaCloud portal. 14,000 CU/min and 11,200,000 CU/day.
+    - plan: Pro
+      monthlyFixedCost: null
+      notes: Pricing available in AvaCloud portal. 20,000 CU/min and 25,000,000 CU/day.
+    - plan: L1 Starter (Mainnet)
+      monthlyFixedCost: 1999
+      currency: USD
+      notes: Plus usage-based charges for storage, ICM, validators, gas. Testnet at $999/month.
+    - plan: L1 Pro (Mainnet)
+      monthlyFixedCost: 4999
+      currency: USD
+      notes: Plus usage-based charges. Includes advanced features and priority support. Testnet at $1,299/month.
+    - plan: Enterprise
+      monthlyFixedCost: custom
+      notes: Contact sales@avacloud.io for custom pricing and SLAs.
+  optimizationTips:
+    - tip: Use lightweight endpoints for high-frequency queries
+      description: Prefer simple balance lookups (Small=10 CUs) over complex cross-chain queries (XL=100 CUs) when possible.
+    - tip: Implement pagination efficiently
+      description: Store nextPageToken to resume paginated queries. Tokens expire after 24 hours — avoid restarting large data pulls unnecessarily.
+    - tip: Monitor CU headers
+      description: Track ratelimit-remaining and ratelimit-limit response headers to understand consumption patterns before hitting daily limits.
+    - tip: Implement exponential backoff
+      description: On 429 responses, use the retry-after header value and exponential backoff to avoid extended blocking.
+    - tip: Match plan to actual usage
+      description: Unauthenticated and Free tiers are sufficient for development. Upgrade only when daily CU caps are consistently being hit in production.
+    - tip: Batch cross-chain queries
+      description: The Data API supports over 100+ L1s. Structure queries to minimize redundant chain lookups across multiple subnets.
+  references:
+    - name: AvaCloud Plans Documentation
+      url: https://docs.avacloud.io/getting-started/plans
+    - name: Data API Rate Limits
+      url: https://developers.avacloud.io/data-api/rate-limits
+    - name: AvaCloud Portal (sign in for pricing)
+      url: https://app.avacloud.io/
