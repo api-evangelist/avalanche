@@ -4,7 +4,7 @@ description: Avalanche is a high-performance blockchain platform offering REST A
   and cross-chain activity on the Avalanche C-Chain, P-Chain, X-Chain, and over 100
   L1 subnets. The AvaCloud developer platform also exposes Metrics, RPC, and Webhooks
   APIs.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Blockchain
 - Web3
@@ -21,7 +21,7 @@ apis:
   description: Query on-chain data from Avalanche networks — EVM balances, ERC-20/ERC-721/ERC-1155
     tokens, transactions, blocks, NFT metadata, UTXOs, validators, staking rewards,
     and interchain messaging across 100+ L1s.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.avacloud.io/data-api/overview
   baseURL: https://glacier-api.avax.network/v1
   tags:
@@ -56,7 +56,7 @@ apis:
   description: Access chain throughput metrics, gas consumption, TPS, gas prices,
     cumulative address growth, contract deployment counts, staking metrics, validator
     and delegator information, and rolling-window analytics for Avalanche networks.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.avacloud.io/metrics-api/overview
   baseURL: https://glacier-api.avax.network/v1
   tags:
@@ -83,7 +83,7 @@ apis:
   description: Remote procedure calls for Avalanche Platform Chain operations including
     UTXO queries, transaction submission, validator lookups, staking information,
     subnet and blockchain details, and fee estimates.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://build.avax.network/docs/api-reference/data-api/usage
   baseURL: https://glacier-api.avax.network/v1
   tags:
@@ -108,7 +108,7 @@ apis:
   description: Subscribe to real-time push notifications for Avalanche on-chain events
     including ERC-20 and ERC-721 token transfers, address activity on C-Chain/P-Chain/X-Chain,
     validator events, and staking activities.
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.avacloud.io/webhooks-api/overview
   baseURL: https://glacier-api.avax.network/v1
   tags:
