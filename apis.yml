@@ -136,7 +136,7 @@ common:
   url: https://developers.avacloud.io/
 - type: Documentation
   url: https://build.avax.network/docs/api-reference/data-api/usage
-- type: SDK
+- type: SDKs
   url: https://github.com/ava-labs/avalanche-sdk-typescript
 - type: GitHubOrg
   url: https://github.com/ava-labs
@@ -156,7 +156,7 @@ common:
   url: https://www.avacloud.io/terms-of-service
 - type: PrivacyPolicy
   url: https://www.avacloud.io/privacy-policy
-- type: SignUp
+- type: Signup
   url: https://app.avacloud.io/
 maintainers:
 - FN: API Evangelist
