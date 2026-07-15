@@ -132,6 +132,8 @@ apis:
     url: https://support.avax.network/
     email: support@avax.network
 common:
+- type: AgenticAccess
+  url: agentic-access/avalanche-agentic-access.yml
 - type: DomainSecurity
   url: security/avalanche-domain-security.yml
 - type: Authentication
