@@ -4,7 +4,20 @@ description: Avalanche is a high-performance blockchain platform offering REST A
   and cross-chain activity on the Avalanche C-Chain, P-Chain, X-Chain, and over 100
   L1 subnets. The AvaCloud developer platform also exposes Metrics, RPC, and Webhooks
   APIs.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/avalanche.png
 tags:
 - Blockchain
 - Web3
@@ -17,45 +30,11 @@ modified: '2026-06-13'
 url: https://raw.githubusercontent.com/api-evangelist/avalanche/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- name: Avalanche Data API (Glacier)
-  description: Query on-chain data from Avalanche networks — EVM balances, ERC-20/ERC-721/ERC-1155
-    tokens, transactions, blocks, NFT metadata, UTXOs, validators, staking rewards,
-    and interchain messaging across 100+ L1s.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.avacloud.io/data-api/overview
-  baseURL: https://glacier-api.avax.network/v1
-  tags:
-  - Blockchain
-  - Transactions
-  - Balances
-  - NFT
-  - UTXOs
-  - Validators
-  properties:
-  - type: Documentation
-    url: https://developers.avacloud.io/data-api/overview
-  - type: OpenAPI
-    url: https://glacier-api.avax.network/api
-  - type: Authentication
-    url: https://developers.avacloud.io/data-api/usage-guide
-  - type: RateLimits
-    url: https://developers.avacloud.io/data-api/rate-limits
-  - type: Plans
-    url: plans/data-api.yml
-  - type: RateLimits
-    url: rate-limits/data-api.yml
-  - type: FinOps
-    url: finops/data-api.yml
-  - url: graphql/avalanche-graphql.md
-    type: GraphQL
-  contact:
-  - FN: Ava Labs Support
-    url: https://support.avax.network/
-    email: support@avax.network
 - name: Avalanche Metrics API
-  description: Access chain throughput metrics, gas consumption, TPS, gas prices,
-    cumulative address growth, contract deployment counts, staking metrics, validator
-    and delegator information, and rolling-window analytics for Avalanche networks.
+  description: >-
+    Access chain throughput metrics, gas consumption, TPS, gas prices, cumulative address growth, contract
+    deployment counts, staking metrics, validator and delegator information, and rolling-window analytics
+    for Avalanche networks.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.avacloud.io/metrics-api/overview
   baseURL: https://glacier-api.avax.network/v1
@@ -80,9 +59,9 @@ apis:
     url: https://support.avax.network/
     email: support@avax.network
 - name: Avalanche RPC API
-  description: Remote procedure calls for Avalanche Platform Chain operations including
-    UTXO queries, transaction submission, validator lookups, staking information,
-    subnet and blockchain details, and fee estimates.
+  description: >-
+    Remote procedure calls for Avalanche Platform Chain operations including UTXO queries, transaction
+    submission, validator lookups, staking information, subnet and blockchain details, and fee estimates.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://build.avax.network/docs/api-reference/data-api/usage
   baseURL: https://glacier-api.avax.network/v1
@@ -105,9 +84,9 @@ apis:
     url: https://support.avax.network/
     email: support@avax.network
 - name: Avalanche Webhooks API
-  description: Subscribe to real-time push notifications for Avalanche on-chain events
-    including ERC-20 and ERC-721 token transfers, address activity on C-Chain/P-Chain/X-Chain,
-    validator events, and staking activities.
+  description: >-
+    Subscribe to real-time push notifications for Avalanche on-chain events including ERC-20 and ERC-721
+    token transfers, address activity on C-Chain/P-Chain/X-Chain, validator events, and staking activities.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.avacloud.io/webhooks-api/overview
   baseURL: https://glacier-api.avax.network/v1
@@ -131,6 +110,520 @@ apis:
   - FN: Ava Labs Support
     url: https://support.avax.network/
     email: support@avax.network
+- aid: avalanche:avalanche-avax-supply-api
+  name: Avalanche AVAX Supply API
+  description: Find information about AVAX supply.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - AVAX Supply
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-avax-supply-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-data-api-usage-metrics-api
+  name: Avalanche Data API Usage Metrics API
+  description: Usage metrics and logs for the Data API.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Data API Usage Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-data-api-usage-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-evm-balances-api
+  name: Avalanche EVM Balances API
+  description: Find information about balances on EVM-compatible chains, such as the Avalanche C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - EVM Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-evm-balances-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-evm-blocks-api
+  name: Avalanche EVM Blocks API
+  description: Find information about blocks on EVM-compatible chains, such as the Avalanche C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - EVM Blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-evm-blocks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-evm-chains-api
+  name: Avalanche EVM Chains API
+  description: Find information about indexed EVM-compatible chains, such as the Avalanche C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - EVM Chains
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-evm-chains-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-evm-contracts-api
+  name: Avalanche EVM Contracts API
+  description: >-
+    Find information about contracts on EVM-compatible chains, such as the Avalanche C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - EVM Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-evm-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-evm-transactions-api
+  name: Avalanche EVM Transactions API
+  description: >-
+    Find information about transactions on EVM-compatible chains, such as the Avalanche C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - EVM Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-evm-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-health-check-api
+  name: Avalanche Health Check API
+  description: The Health Check API from Avalanche — 2 operation(s) for health check.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Health Check
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-health-check-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-interchain-messaging-api
+  name: Avalanche Interchain Messaging API
+  description: Find information about Interchain Messaging transactions.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Interchain Messaging
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-interchain-messaging-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-nfts-api
+  name: Avalanche NFTs API
+  description: The NFTs API from Avalanche — 3 operation(s) for nfts.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - NFTs
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-nfts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-operations-api
+  name: Avalanche Operations API
+  description: The Operations API from Avalanche — 2 operation(s) for operations.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-operations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-primary-network-api
+  name: Avalanche Primary Network API
+  description: The Primary Network API from Avalanche — 11 operation(s) for primary network.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Primary Network
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-primary-network-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-primary-network-balances-api
+  name: Avalanche Primary Network Balances API
+  description: >-
+    Find information about balances on Avalanche's Primary Network Chains - the P-Chain, the X-Chain,
+    and the C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Primary Network Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-primary-network-balances-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-primary-network-blocks-api
+  name: Avalanche Primary Network Blocks API
+  description: >-
+    Find information about blocks on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and
+    the C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Primary Network Blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-primary-network-blocks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-primary-network-rewards-api
+  name: Avalanche Primary Network Rewards API
+  description: Find information about rewards on Avalanche's Primary Network.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Primary Network Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-primary-network-rewards-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-primary-network-transactions-api
+  name: Avalanche Primary Network Transactions API
+  description: >-
+    Find information about transactions on Avalanche's Primary Network Chains - the P-Chain, the X-Chain,
+    and the C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Primary Network Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-primary-network-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-primary-network-utxos-api
+  name: Avalanche Primary Network UTXOs API
+  description: >-
+    Find information about utxos on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and
+    the C-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Primary Network UTXOs
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-primary-network-utxos-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-primary-network-vertices-api
+  name: Avalanche Primary Network Vertices API
+  description: Find information about vertices on Avalanche's X-Chain.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Primary Network Vertices
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-primary-network-vertices-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-signature-aggregator-api
+  name: Avalanche Signature Aggregator API
+  description: Request signatures for a Warp message from Subnet validators
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Signature Aggregator
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-signature-aggregator-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-teleporter-api
+  name: Avalanche Teleporter API
+  description: Find information about Teleporter transactions.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Teleporter
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-teleporter-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-webhooks-api
+  name: Avalanche Webhooks API
+  description: Manage webhooks and get notified for various onchain activities.
+  humanURL: https://developers.avacloud.io/data-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/avalanche-agentic-access.yml
