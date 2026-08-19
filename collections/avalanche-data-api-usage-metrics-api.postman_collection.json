@@ -1,0 +1,4233 @@
+{
+  "item": [
+    {
+      "id": "09a518b6-cf86-40e6-8703-1658222e4eeb",
+      "name": "Data API Usage Metrics",
+      "description": {
+        "content": "Usage metrics and logs for the Data API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91f27a31-bb27-4410-87ce-cbc42ce0ec74",
+          "name": "Get usage metrics for the Data API",
+          "request": {
+            "name": "Get usage metrics for the Data API",
+            "description": {
+              "content": "Gets metrics for Data API usage over a specified time interval aggregated at the specified time-duration granularity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "apiUsageMetrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgId",
+                  "value": "<string>",
+                  "description": "Organization ID to fetch usage metrics for"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTimestamp",
+                  "value": "<integer>",
+                  "description": "The start time of the range as a UNIX timestamp. The requested start time  will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<integer>",
+                  "description": "The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "timeInterval",
+                  "value": "<string>",
+                  "description": "Time interval granularity for data aggregation"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupBy",
+                  "value": "<string>",
+                  "description": "Query param for the criterion used for grouping metrics"
+                },
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "Filter data by chain ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseCode",
+                  "value": "<string>",
+                  "description": "Filter data by response status code."
+                },
+                {
+                  "disabled": false,
+                  "key": "requestType",
+                  "value": "<string>",
+                  "description": "Filter data by request type."
+                },
+                {
+                  "disabled": false,
+                  "key": "apiKeyId",
+                  "value": "<string>",
+                  "description": "Filter data by API key ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "requestPath",
+                  "value": "<string>",
+                  "description": "Filter data by request path."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5911599-eb80-4f1b-a895-16c93f332ec2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aggregateDuration\": \"string\",\n  \"orgId\": \"string\",\n  \"metrics\": [\n    {\n      \"timestamp\": 6243.226994792432,\n      \"values\": [\n        {\n          \"groupedBy\": \"requestPath\",\n          \"totalRequests\": 6499.085534916524,\n          \"requestsPerSecond\": 3777.166491517093,\n          \"successRatePercent\": 9997.465787335452,\n          \"medianResponseTimeMsecs\": 6868.411046543427,\n          \"invalidRequests\": 7728.994778108733,\n          \"apiCreditsUsed\": 7924.630458035178,\n          \"apiCreditsWasted\": 6332.358654829691,\n          \"groupValue\": \"string\"\n        },\n        {\n          \"groupedBy\": \"None\",\n          \"totalRequests\": 543.3799832059138,\n          \"requestsPerSecond\": 8164.446368538106,\n          \"successRatePercent\": 8747.943477975994,\n          \"medianResponseTimeMsecs\": 7240.596022630813,\n          \"invalidRequests\": 9532.021118416566,\n          \"apiCreditsUsed\": 457.6573856589594,\n          \"apiCreditsWasted\": 3186.440222636414,\n          \"groupValue\": \"string\"\n        }\n      ]\n    },\n    {\n      \"timestamp\": 7406.6587252873005,\n      \"values\": [\n        {\n          \"groupedBy\": \"None\",\n          \"totalRequests\": 5612.245089535015,\n          \"requestsPerSecond\": 5004.966400454898,\n          \"successRatePercent\": 1085.8882594698039,\n          \"medianResponseTimeMsecs\": 3393.9004851752406,\n          \"invalidRequests\": 9127.69266706766,\n          \"apiCreditsUsed\": 5280.810149109807,\n          \"apiCreditsWasted\": 5185.921928684004,\n          \"groupValue\": \"string\"\n        },\n        {\n          \"groupedBy\": \"requestType\",\n          \"totalRequests\": 7154.276233595485,\n          \"requestsPerSecond\": 5078.432519109791,\n          \"successRatePercent\": 5343.637203443525,\n          \"medianResponseTimeMsecs\": 3704.0703191113644,\n          \"invalidRequests\": 4027.0001404298737,\n          \"apiCreditsUsed\": 5793.8852864686505,\n          \"apiCreditsWasted\": 7372.8009958748,\n          \"groupValue\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b723bed5-4a50-42b1-97ec-5376c9b62c97",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25e8e32c-edc6-4e65-a7ef-8b4d1d449a02",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02477bff-4d8b-4147-8dd2-3ffab58a3686",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da22627b-bdf5-41ad-932f-54198ca32ed3",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f00aecd1-9936-40f5-9002-de83c398657a",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6b27fd2-e8fe-4dce-af5e-69108182b5dd",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7e73ff4-cb07-483a-b74c-689131939f1f",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c950b26-0b27-42bd-8c1c-88237b507577",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "requestPath"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7daa5fb-a09b-4a69-9eba-d093731bea1a",
+          "name": "Get logs for requests made by client",
+          "request": {
+            "name": "Get logs for requests made by client",
+            "description": {
+              "content": "Gets logs for requests made by client over a specified time interval for a specific organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "apiLogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgId",
+                  "value": "<string>",
+                  "description": "Organization ID to fetch usage metrics for"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTimestamp",
+                  "value": "<integer>",
+                  "description": "The start time of the range as a UNIX timestamp. The requested start time  will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<integer>",
+                  "description": "The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "Filter data by chain ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseCode",
+                  "value": "<string>",
+                  "description": "Filter data by response status code."
+                },
+                {
+                  "disabled": false,
+                  "key": "requestType",
+                  "value": "<string>",
+                  "description": "Filter data by request type."
+                },
+                {
+                  "disabled": false,
+                  "key": "apiKeyId",
+                  "value": "<string>",
+                  "description": "Filter data by API key ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "requestPath",
+                  "value": "<string>",
+                  "description": "Filter data by request path."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "The maximum number of items to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef9ee971-7906-4ddd-9c60-2460544ebd6b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orgId\": \"string\",\n  \"logs\": [\n    {\n      \"orgId\": \"string\",\n      \"logId\": \"string\",\n      \"eventTimestamp\": 7583.572550012861,\n      \"apiKeyId\": \"string\",\n      \"apiKeyAlias\": \"string\",\n      \"hostRegion\": \"string\",\n      \"requestType\": \"rpc\",\n      \"requestPath\": \"string\",\n      \"apiCreditsConsumed\": 3476.721518008011,\n      \"requestDurationMsecs\": 9261.692527455332,\n      \"responseCode\": 2717.9755341883406,\n      \"metadata\": {\n        \"ipAddress\": \"string\",\n        \"host\": \"string\",\n        \"userAgent\": \"string\"\n      },\n      \"chainId\": \"string\",\n      \"rpcMethod\": \"string\"\n    },\n    {\n      \"orgId\": \"string\",\n      \"logId\": \"string\",\n      \"eventTimestamp\": 2964.9240366292306,\n      \"apiKeyId\": \"string\",\n      \"apiKeyAlias\": \"string\",\n      \"hostRegion\": \"string\",\n      \"requestType\": \"rpc\",\n      \"requestPath\": \"string\",\n      \"apiCreditsConsumed\": 8159.343997216094,\n      \"requestDurationMsecs\": 7921.7679142505185,\n      \"responseCode\": 8305.833252672794,\n      \"metadata\": {\n        \"ipAddress\": \"string\",\n        \"host\": \"string\",\n        \"userAgent\": \"string\"\n      },\n      \"chainId\": \"string\",\n      \"rpcMethod\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b7f3758-8414-4a3e-ba55-a5e2dcf80f6b",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "873db739-8033-4120-83a8-c9d061f32452",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c127947a-54a1-4d3b-af97-7819f8f4678b",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4db84376-3806-43a2-a0cc-e0d1c5c60097",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d90b10b4-7517-43c6-8307-e66fa6b4a222",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bdaba31-f720-4e48-a3fe-18085f7fe078",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9ea28bc-624b-4e55-b50a-18e4ea3d1ecf",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "094bfdf7-642c-438b-ad79-f1ad3ef97dc4",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apiLogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKeyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e7756ed-96ad-4eec-9590-3c6d9f62bc81",
+          "name": "Get usage metrics for the Subnet RPC",
+          "request": {
+            "name": "Get usage metrics for the Subnet RPC",
+            "description": {
+              "content": "Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subnetRpcUsageMetrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeInterval",
+                  "value": "<string>",
+                  "description": "Time interval granularity for data aggregation for subnet\n     rpc metrics"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTimestamp",
+                  "value": "<integer>",
+                  "description": "The start time of the range as a UNIX timestamp. The requested start time  will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<integer>",
+                  "description": "The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "groupBy",
+                  "value": "<string>",
+                  "description": "Query param for the criterion used for grouping metrics"
+                },
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "Filter data by chain ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseCode",
+                  "value": "<string>",
+                  "description": "Filter data by response status code."
+                },
+                {
+                  "disabled": false,
+                  "key": "rpcMethod",
+                  "value": "<string>",
+                  "description": "Filter data by RPC method."
+                },
+                {
+                  "disabled": false,
+                  "key": "rlBypassApiToken",
+                  "value": "<string>",
+                  "description": "Filter data by Rl Bypass API Token."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40750832-2866-4e07-b7fd-71c43bfaa365",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aggregateDuration\": \"string\",\n  \"metrics\": [\n    {\n      \"timestamp\": 9664.447192859147,\n      \"values\": [\n        {\n          \"totalRequests\": 7382.623376415381,\n          \"apiCreditsUsed\": 5313.518931738451,\n          \"requestsPerSecond\": 9339.171430501005,\n          \"successRatePercent\": 8804.23564525839,\n          \"medianResponseTimeMsecs\": 8143.780562966898,\n          \"invalidRequests\": 4569.679234200625,\n          \"apiCreditsWasted\": 4522.03005160143,\n          \"groupedBy\": \"rpcMethod\",\n          \"groupValue\": \"string\"\n        },\n        {\n          \"totalRequests\": 6080.450549367941,\n          \"apiCreditsUsed\": 2312.6333751197735,\n          \"requestsPerSecond\": 6146.4605372785345,\n          \"successRatePercent\": 6053.624236343177,\n          \"medianResponseTimeMsecs\": 6090.728952188409,\n          \"invalidRequests\": 1684.3961690439846,\n          \"apiCreditsWasted\": 9845.620920147992,\n          \"groupedBy\": \"country\",\n          \"groupValue\": \"string\"\n        }\n      ]\n    },\n    {\n      \"timestamp\": 4745.7986625478525,\n      \"values\": [\n        {\n          \"totalRequests\": 6628.370514466927,\n          \"apiCreditsUsed\": 2074.6729983029422,\n          \"requestsPerSecond\": 8439.425506669455,\n          \"successRatePercent\": 2514.9681844236093,\n          \"medianResponseTimeMsecs\": 8869.063953026294,\n          \"invalidRequests\": 6560.565922639778,\n          \"apiCreditsWasted\": 8307.559216648597,\n          \"groupedBy\": \"responseCode\",\n          \"groupValue\": \"string\"\n        },\n        {\n          \"totalRequests\": 7977.831761213182,\n          \"apiCreditsUsed\": 49.25757983274215,\n          \"requestsPerSecond\": 2776.6770518418994,\n          \"successRatePercent\": 4957.6169095568375,\n          \"medianResponseTimeMsecs\": 2375.276755294905,\n          \"invalidRequests\": 607.6039646694442,\n          \"apiCreditsWasted\": 4314.474614023538,\n          \"groupedBy\": \"rlBypassToken\",\n          \"groupValue\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"chainId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2d694e7-07a5-479d-957b-3be30595b412",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bee8eb3-506a-484a-b3ca-2ddc1f16aab1",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86e1c428-c96e-4b0b-8d51-dcde2f68e8a9",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa1a2d80-e7f1-4527-a6cd-4474b9a6e416",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e79bb092-06df-4964-b8ac-4c6f2dde0653",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c725b78-4ada-48e0-b750-94d346178fcf",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87d237e7-b163-4035-bc7a-41b7dc31c247",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f8ec73c-933f-4c11-8097-15b3e401d1ce",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subnetRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d80f9a68-34e7-4867-b549-e7eed8f39a7a",
+          "name": "get Rpc Usage Metrics",
+          "request": {
+            "name": "get Rpc Usage Metrics",
+            "description": {
+              "content": "**[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.\n\n⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "rpcUsageMetrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeInterval",
+                  "value": "<string>",
+                  "description": "Time interval granularity for data aggregation for subnet\n     rpc metrics"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTimestamp",
+                  "value": "<integer>",
+                  "description": "The start time of the range as a UNIX timestamp. The requested start time  will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<integer>",
+                  "description": "The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "groupBy",
+                  "value": "<string>",
+                  "description": "Query param for the criterion used for grouping metrics"
+                },
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "Filter data by chain ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseCode",
+                  "value": "<string>",
+                  "description": "Filter data by response status code."
+                },
+                {
+                  "disabled": false,
+                  "key": "rpcMethod",
+                  "value": "<string>",
+                  "description": "Filter data by RPC method."
+                },
+                {
+                  "disabled": false,
+                  "key": "rlBypassApiToken",
+                  "value": "<string>",
+                  "description": "Filter data by Rl Bypass API Token."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "badf325e-a3a2-4b04-837f-d38fc0fab9fc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aggregateDuration\": \"string\",\n  \"metrics\": [\n    {\n      \"timestamp\": 9664.447192859147,\n      \"values\": [\n        {\n          \"totalRequests\": 7382.623376415381,\n          \"apiCreditsUsed\": 5313.518931738451,\n          \"requestsPerSecond\": 9339.171430501005,\n          \"successRatePercent\": 8804.23564525839,\n          \"medianResponseTimeMsecs\": 8143.780562966898,\n          \"invalidRequests\": 4569.679234200625,\n          \"apiCreditsWasted\": 4522.03005160143,\n          \"groupedBy\": \"rpcMethod\",\n          \"groupValue\": \"string\"\n        },\n        {\n          \"totalRequests\": 6080.450549367941,\n          \"apiCreditsUsed\": 2312.6333751197735,\n          \"requestsPerSecond\": 6146.4605372785345,\n          \"successRatePercent\": 6053.624236343177,\n          \"medianResponseTimeMsecs\": 6090.728952188409,\n          \"invalidRequests\": 1684.3961690439846,\n          \"apiCreditsWasted\": 9845.620920147992,\n          \"groupedBy\": \"country\",\n          \"groupValue\": \"string\"\n        }\n      ]\n    },\n    {\n      \"timestamp\": 4745.7986625478525,\n      \"values\": [\n        {\n          \"totalRequests\": 6628.370514466927,\n          \"apiCreditsUsed\": 2074.6729983029422,\n          \"requestsPerSecond\": 8439.425506669455,\n          \"successRatePercent\": 2514.9681844236093,\n          \"medianResponseTimeMsecs\": 8869.063953026294,\n          \"invalidRequests\": 6560.565922639778,\n          \"apiCreditsWasted\": 8307.559216648597,\n          \"groupedBy\": \"responseCode\",\n          \"groupValue\": \"string\"\n        },\n        {\n          \"totalRequests\": 7977.831761213182,\n          \"apiCreditsUsed\": 49.25757983274215,\n          \"requestsPerSecond\": 2776.6770518418994,\n          \"successRatePercent\": 4957.6169095568375,\n          \"medianResponseTimeMsecs\": 2375.276755294905,\n          \"invalidRequests\": 607.6039646694442,\n          \"apiCreditsWasted\": 4314.474614023538,\n          \"groupedBy\": \"rlBypassToken\",\n          \"groupValue\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"chainId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d23a444-f294-4f1e-a6f9-980032ba0033",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59c4275e-9a92-42da-8171-1008484be543",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f2b8efc-1515-4503-a800-56ec7b7ca8bb",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e638be52-877e-45bd-aaef-85cd83b7d0e3",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6fd6016-b740-4891-9399-7a0d750044ef",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e7336bb-70e5-4052-a8c5-149724b33c5a",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "447a229d-b4a8-4999-a0ba-ccf22bdb8251",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4686e8bd-8333-435c-8c54-37ea8638ba79",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rlBypassApiToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4687b2fb-5be0-4559-8e95-2e380b2d012f",
+          "name": "Get usage metrics for the Primary Network RPC",
+          "request": {
+            "name": "Get usage metrics for the Primary Network RPC",
+            "description": {
+              "content": "Gets metrics for public Primary Network RPC usage over  a specified time interval aggregated at the specified  time-duration granularity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "primaryNetworkRpcUsageMetrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeInterval",
+                  "value": "<string>",
+                  "description": "Time interval granularity for data aggregation for subnet\n     rpc metrics"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTimestamp",
+                  "value": "<integer>",
+                  "description": "The start time of the range as a UNIX timestamp. The requested start time  will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<integer>",
+                  "description": "The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day."
+                },
+                {
+                  "disabled": false,
+                  "key": "groupBy",
+                  "value": "<string>",
+                  "description": "Query param for the criterion used for grouping metrics"
+                },
+                {
+                  "disabled": false,
+                  "key": "responseCode",
+                  "value": "<string>",
+                  "description": "Filter data by response status code."
+                },
+                {
+                  "disabled": false,
+                  "key": "requestPath",
+                  "value": "<string>",
+                  "description": "Filter data by request path."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter data by Country. Input must be a valid ISO 3166-1 alpha-2 country code. \"XX\" - Represents clients without country code data. \"T1\" - Represents clients using the Tor network."
+                },
+                {
+                  "disabled": false,
+                  "key": "continent",
+                  "value": "<string>",
+                  "description": "Filter data by Continent. Input must be a valid ISO 3166-1 alpha-2 continent code."
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>",
+                  "description": "Filter data by User Agent."
+                },
+                {
+                  "disabled": false,
+                  "key": "rpcMethod",
+                  "value": "<string>",
+                  "description": "Filter data by RPC method."
+                },
+                {
+                  "disabled": false,
+                  "key": "network",
+                  "value": "<string>",
+                  "description": "(Required) Either mainnet or testnet/fuji."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb5f36f6-5b2f-4cd6-91bc-c22ef6fd851f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aggregateDuration\": \"string\",\n  \"metrics\": [\n    {\n      \"timestamp\": 335.49881129807943,\n      \"values\": [\n        {\n          \"totalRequests\": 9744.271342817128,\n          \"apiCreditsUsed\": 6254.530936472707,\n          \"requestsPerSecond\": 3944.674313167067,\n          \"successRatePercent\": 8315.406604374917,\n          \"medianResponseTimeMsecs\": 1832.1049322684757,\n          \"invalidRequests\": 4573.181276896121,\n          \"apiCreditsWasted\": 897.9006187917815,\n          \"groupedBy\": \"country\",\n          \"groupValue\": \"string\"\n        },\n        {\n          \"totalRequests\": 5998.967486721441,\n          \"apiCreditsUsed\": 7078.594852922778,\n          \"requestsPerSecond\": 2500.6571513698273,\n          \"successRatePercent\": 4390.421131273454,\n          \"medianResponseTimeMsecs\": 9692.290782097058,\n          \"invalidRequests\": 6360.529668121556,\n          \"apiCreditsWasted\": 6558.927187623028,\n          \"groupedBy\": \"userAgent\",\n          \"groupValue\": \"string\"\n        }\n      ]\n    },\n    {\n      \"timestamp\": 5623.82298904024,\n      \"values\": [\n        {\n          \"totalRequests\": 3205.217262651111,\n          \"apiCreditsUsed\": 582.0891460467536,\n          \"requestsPerSecond\": 533.067273672233,\n          \"successRatePercent\": 3640.292335789419,\n          \"medianResponseTimeMsecs\": 8512.779866962885,\n          \"invalidRequests\": 3450.9123849227594,\n          \"apiCreditsWasted\": 9442.904533093617,\n          \"groupedBy\": \"responseCode\",\n          \"groupValue\": \"string\"\n        },\n        {\n          \"totalRequests\": 195.62439450374393,\n          \"apiCreditsUsed\": 1493.0901986932033,\n          \"requestsPerSecond\": 3498.051613756572,\n          \"successRatePercent\": 8830.675114031015,\n          \"medianResponseTimeMsecs\": 5816.44498621392,\n          \"invalidRequests\": 4189.46959893471,\n          \"apiCreditsWasted\": 7021.062205078622,\n          \"groupedBy\": \"responseCode\",\n          \"groupValue\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"network\": \"mainnet\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "545416ba-f626-47d5-9892-e071a2d75bc4",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62fcc084-ea81-432d-8c78-d8682462393c",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d4218f0-f8a5-4464-8748-cd15c0c65c72",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18328630-454f-4982-a0cd-6fb81f8eb4db",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7fcf410-d188-4eff-a7fd-08c66b08a0b3",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2f5a407-fe49-47bb-bc19-122b644b22c7",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c88930e9-0717-48b4-a0a9-7e21fbd2a982",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c08d410-6e3a-4bc4-adee-41820449912d",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "primaryNetworkRpcUsageMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeInterval",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "startTimestamp",
+                      "value": "1739507200"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1739664000"
+                    },
+                    {
+                      "key": "groupBy",
+                      "value": "rpcMethod"
+                    },
+                    {
+                      "key": "responseCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestPath",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "continent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rpcMethod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network",
+                      "value": "mainnet"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data-api.avax.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-glacier-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "376d9721-b535-473f-86f2-de78c5a99d8f",
+    "name": "Data AVAX Supply Data API Usage Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href=\"https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api\">here</a>. Bug reports can be submitted <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform\">here</a>, and any potential security issues can be reported <a href=\"https://immunefi.com/bounty/avalabs\">here</a>.",
+      "type": "text/plain"
+    }
+  }
+}

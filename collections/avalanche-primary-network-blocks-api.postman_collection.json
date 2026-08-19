@@ -1,0 +1,2441 @@
+{
+  "item": [
+    {
+      "id": "a9efe55a-f917-48de-ad29-19f82a8a7802",
+      "name": "Primary Network Blocks",
+      "description": {
+        "content": "Find information about blocks on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72a484de-1069-414c-b19d-8779f0bca192",
+          "name": "Get block",
+          "request": {
+            "name": "Get block",
+            "description": {
+              "content": "Gets a block by block height or block hash on one of the Primary Network chains.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ":network",
+                "blockchains",
+                ":blockchainId",
+                "blocks",
+                ":blockId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blockchainId",
+                  "description": "(Required) A primary network blockchain id or alias."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network",
+                  "description": "(Required) Either mainnet or testnet/fuji."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blockId",
+                  "description": "(Required) A block identifier which is either a block number or the block hash."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4602647-87b5-4614-b085-9b74f64f356f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blockNumber\": \"string\",\n  \"blockHash\": \"string\",\n  \"parentHash\": \"string\",\n  \"blockTimestamp\": 366.4872796466223,\n  \"blockType\": \"string\",\n  \"txCount\": 102.03578796045387,\n  \"transactions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"blockSizeBytes\": 934.01785399309,\n  \"l1ValidatorsAccruedFees\": 4138.6875467412165,\n  \"activeL1Validators\": 2163.747799354343,\n  \"currentSupply\": \"string\",\n  \"proposerDetails\": {\n    \"proposerId\": \"string\",\n    \"proposerParentId\": \"string\",\n    \"proposerNodeId\": \"string\",\n    \"proposerPChainHeight\": 9311.539469366287,\n    \"proposerTimestamp\": 4366.217069972107\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96b4b0f8-44f1-4819-98ec-7990dab2189c",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "213caed4-3bf0-45f7-9e78-918a3710d40b",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "824bce1b-35ba-4375-b91f-957d70757b7b",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ed31e8a-de62-4474-9edb-475dc5bb99af",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52f18859-59d9-418a-a476-6aab72b5e1a3",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2022e963-9f2b-4cf4-8e7a-a2dd22c487a0",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28332a4e-45e0-465c-a7ef-590fd47172cb",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbb26c80-2c3a-4d53-a132-649dafac37b3",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks",
+                    ":blockId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockId",
+                      "description": "(Required) A block identifier which is either a block number or the block hash."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41970ecf-e5d6-474d-ab33-a4ef8cbc0940",
+          "name": "List blocks proposed by node",
+          "request": {
+            "name": "List blocks proposed by node",
+            "description": {
+              "content": "Lists the latest blocks proposed by a given NodeID on one of the Primary Network chains.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ":network",
+                "blockchains",
+                ":blockchainId",
+                "nodes",
+                ":nodeId",
+                "blocks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTimestamp",
+                  "value": "<integer>",
+                  "description": "Query param for retrieving items after a specific timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<integer>",
+                  "description": "Query param for retrieving items before a specific timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "The maximum number of items to return. The minimum page size is 1. The maximum pageSize is 100."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blockchainId",
+                  "description": "(Required) A primary network blockchain id or alias."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network",
+                  "description": "(Required) Either mainnet or testnet/fuji."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nodeId",
+                  "description": "(Required) A primary network (P or X chain) nodeId."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af5743d2-d207-4e67-94d0-2e45a89c349c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blocks\": [\n    {\n      \"blockNumber\": \"string\",\n      \"blockHash\": \"string\",\n      \"parentHash\": \"string\",\n      \"blockTimestamp\": 5739.661040346852,\n      \"blockType\": \"string\",\n      \"txCount\": 4771.045939412989,\n      \"transactions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"blockSizeBytes\": 8372.18598237084,\n      \"l1ValidatorsAccruedFees\": 3320.0341170356296,\n      \"activeL1Validators\": 1473.345607202552,\n      \"currentSupply\": \"string\",\n      \"proposerDetails\": {\n        \"proposerId\": \"string\",\n        \"proposerParentId\": \"string\",\n        \"proposerNodeId\": \"string\",\n        \"proposerPChainHeight\": 9015.58617799537,\n        \"proposerTimestamp\": 4705.023453313501\n      }\n    },\n    {\n      \"blockNumber\": \"string\",\n      \"blockHash\": \"string\",\n      \"parentHash\": \"string\",\n      \"blockTimestamp\": 458.3823311242985,\n      \"blockType\": \"string\",\n      \"txCount\": 6072.309145106816,\n      \"transactions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"blockSizeBytes\": 2259.5834150565706,\n      \"l1ValidatorsAccruedFees\": 7937.461407997864,\n      \"activeL1Validators\": 4678.696074927823,\n      \"currentSupply\": \"string\",\n      \"proposerDetails\": {\n        \"proposerId\": \"string\",\n        \"proposerParentId\": \"string\",\n        \"proposerNodeId\": \"string\",\n        \"proposerPChainHeight\": 9200.11196548842,\n        \"proposerTimestamp\": 6915.333541209011\n      }\n    }\n  ],\n  \"chainInfo\": {\n    \"chainName\": \"c-chain\",\n    \"network\": \"mainnet\"\n  },\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "366e3034-ca4b-4d42-a79d-ee85e36635d6",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6537aeec-43fb-4464-ad6f-ce59f275d752",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aec90649-6a93-482c-aa36-f584dc22e0c4",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a9d9c56-f2fc-4b30-8dd0-d2788f7783b3",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c81d2c8-b711-4d9f-a734-a785ff36921c",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1a0bff3-7b8c-4adf-95ac-d4bee31ea9e5",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18f841a1-4683-4e8a-847b-207107e6b919",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc44fa16-a94a-4441-9dc5-89caae0737b1",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "nodes",
+                    ":nodeId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nodeId",
+                      "description": "(Required) A primary network (P or X chain) nodeId."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9b84b62-0ce8-419e-af5e-176fc8fd28f8",
+          "name": "List latest blocks",
+          "request": {
+            "name": "List latest blocks",
+            "description": {
+              "content": "Lists latest blocks on one of the Primary Network chains.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ":network",
+                "blockchains",
+                ":blockchainId",
+                "blocks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTimestamp",
+                  "value": "<integer>",
+                  "description": "Query param for retrieving items after a specific timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<integer>",
+                  "description": "Query param for retrieving items before a specific timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "The maximum number of items to return. The minimum page size is 1. The maximum pageSize is 100."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blockchainId",
+                  "description": "(Required) A primary network blockchain id or alias."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "network",
+                  "description": "(Required) Either mainnet or testnet/fuji."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b29f2a3-8367-4f27-8d8c-f0817a601087",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blocks\": [\n    {\n      \"blockNumber\": \"string\",\n      \"blockHash\": \"string\",\n      \"parentHash\": \"string\",\n      \"blockTimestamp\": 5739.661040346852,\n      \"blockType\": \"string\",\n      \"txCount\": 4771.045939412989,\n      \"transactions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"blockSizeBytes\": 8372.18598237084,\n      \"l1ValidatorsAccruedFees\": 3320.0341170356296,\n      \"activeL1Validators\": 1473.345607202552,\n      \"currentSupply\": \"string\",\n      \"proposerDetails\": {\n        \"proposerId\": \"string\",\n        \"proposerParentId\": \"string\",\n        \"proposerNodeId\": \"string\",\n        \"proposerPChainHeight\": 9015.58617799537,\n        \"proposerTimestamp\": 4705.023453313501\n      }\n    },\n    {\n      \"blockNumber\": \"string\",\n      \"blockHash\": \"string\",\n      \"parentHash\": \"string\",\n      \"blockTimestamp\": 458.3823311242985,\n      \"blockType\": \"string\",\n      \"txCount\": 6072.309145106816,\n      \"transactions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"blockSizeBytes\": 2259.5834150565706,\n      \"l1ValidatorsAccruedFees\": 7937.461407997864,\n      \"activeL1Validators\": 4678.696074927823,\n      \"currentSupply\": \"string\",\n      \"proposerDetails\": {\n        \"proposerId\": \"string\",\n        \"proposerParentId\": \"string\",\n        \"proposerNodeId\": \"string\",\n        \"proposerPChainHeight\": 9200.11196548842,\n        \"proposerTimestamp\": 6915.333541209011\n      }\n    }\n  ],\n  \"chainInfo\": {\n    \"chainName\": \"c-chain\",\n    \"network\": \"mainnet\"\n  },\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e82f602c-be01-412a-a6e2-169675dc231a",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1efed638-c21f-4725-9b1d-de6c0ba76112",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf8f27fb-f151-4854-aa58-ea0b453b0eeb",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "886c731e-2521-403e-97d1-146cd4bc992c",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d56299e-cc2c-46a1-9768-e331a27f64fe",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec4c7f00-64a4-402c-a19b-ad9c608a3590",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e1d47db-610d-49b5-8a7c-9bedb4155942",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b61f313a-a704-4916-9e8b-551e653ae6b9",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":network",
+                    "blockchains",
+                    ":blockchainId",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTimestamp",
+                      "value": "1689541049"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "1689800249"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blockchainId",
+                      "description": "(Required) A primary network blockchain id or alias."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "network",
+                      "description": "(Required) Either mainnet or testnet/fuji."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data-api.avax.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-glacier-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "801824e7-dde7-4770-a7f3-74652e6e12a1",
+    "name": "Data AVAX Supply Primary Network Blocks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href=\"https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api\">here</a>. Bug reports can be submitted <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform\">here</a>, and any potential security issues can be reported <a href=\"https://immunefi.com/bounty/avalabs\">here</a>.",
+      "type": "text/plain"
+    }
+  }
+}

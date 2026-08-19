@@ -1,0 +1,3965 @@
+{
+  "item": [
+    {
+      "id": "59884623-d724-4e59-b627-f9e6eb96cf87",
+      "name": "EVM Balances",
+      "description": {
+        "content": "Find information about balances on EVM-compatible chains, such as the Avalanche C-Chain.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e29f1ca-23dd-4a11-ac56-dfd833038ec0",
+          "name": "Get native token balance",
+          "request": {
+            "name": "Get native token balance",
+            "description": {
+              "content": "Gets native token balance of a wallet address.\n\nBalance at a given block can be retrieved with the `blockNumber` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chains",
+                ":chainId",
+                "addresses",
+                ":address",
+                "balances:getNative"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blockNumber",
+                  "value": "<string>",
+                  "description": "The block number, if not defined the block number will be the latest block."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "The currency that return values should use. Defaults to USD."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainId",
+                  "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) A wallet address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41485161-1e78-4a8b-949d-f3221fcbe1cc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nativeTokenBalance\": {\n    \"name\": \"Wrapped AVAX\",\n    \"symbol\": \"WAVAX\",\n    \"decimals\": 18,\n    \"chainId\": \"43114\",\n    \"balance\": \"2000000000000000000\",\n    \"logoUri\": \"https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg\",\n    \"price\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 4262.418095646282\n    },\n    \"balanceValue\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 467.3947370965614\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a2532c8-f75a-4fa4-aca8-88fc0df72e6b",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa1dbde2-6f96-4248-8043-7ddf3a65173b",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af1db2f1-7e5a-44f9-b98e-ac17a699ca67",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a259a3f0-7d9b-4094-81c0-0ec894ae79f3",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9020a07f-ddc5-48e3-89cf-e2e151c63c53",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c80695cc-488a-4ffc-a6c8-77eee2683320",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c74e6ac8-898b-46da-b811-325a17109149",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c27652a6-7c2c-41fb-93a3-07fd0a43eb8d",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:getNative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2928b51e-53a3-441e-a7ce-942c3811277d",
+          "name": "List ERC-20 balances",
+          "request": {
+            "name": "List ERC-20 balances",
+            "description": {
+              "content": "Lists ERC-20 token balances of a wallet address.\n\nBalance at a given block can be retrieved with the `blockNumber` parameter.\n\nBalance for specific contracts can be retrieved with the `contractAddresses` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chains",
+                ":chainId",
+                "addresses",
+                ":address",
+                "balances:listErc20"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blockNumber",
+                  "value": "<string>",
+                  "description": "The block number, if not defined the block number will be the latest block."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "The maximum number of items to return. The minimum page size is 1. The maximum pageSize is 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "filterSpamTokens",
+                  "value": "true",
+                  "description": "whether to filter out spam tokens from the response. Default is true."
+                },
+                {
+                  "disabled": false,
+                  "key": "contractAddresses",
+                  "value": "<string>",
+                  "description": "A comma separated list of contract addresses to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "The currency that return values should use. Defaults to USD."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainId",
+                  "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) A wallet address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50f8e93b-fd93-4854-9a45-467228391ecb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nativeTokenBalance\": {\n    \"name\": \"Wrapped AVAX\",\n    \"symbol\": \"WAVAX\",\n    \"decimals\": 18,\n    \"chainId\": \"43114\",\n    \"balance\": \"2000000000000000000\",\n    \"logoUri\": \"https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg\",\n    \"price\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 4030.69060821267\n    },\n    \"balanceValue\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 1683.940878900596\n    }\n  },\n  \"erc20TokenBalances\": [\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"name\": \"Wrapped AVAX\",\n      \"symbol\": \"WAVAX\",\n      \"decimals\": 18,\n      \"ercType\": \"ERC-20\",\n      \"chainId\": \"43114\",\n      \"balance\": \"2000000000000000000\",\n      \"tokenReputation\": \"Malicious\",\n      \"logoUri\": \"https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg\",\n      \"price\": {\n        \"currencyCode\": \"usd\",\n        \"value\": 5640.590934502711\n      },\n      \"balanceValue\": {\n        \"currencyCode\": \"usd\",\n        \"value\": 1750.7183870677122\n      }\n    },\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"name\": \"Wrapped AVAX\",\n      \"symbol\": \"WAVAX\",\n      \"decimals\": 18,\n      \"ercType\": \"ERC-20\",\n      \"chainId\": \"43114\",\n      \"balance\": \"2000000000000000000\",\n      \"tokenReputation\": \"Malicious\",\n      \"logoUri\": \"https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg\",\n      \"price\": {\n        \"currencyCode\": \"usd\",\n        \"value\": 7790.207580743111\n      },\n      \"balanceValue\": {\n        \"currencyCode\": \"usd\",\n        \"value\": 8387.594376866702\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a3aa9bc-c393-4d7d-b1d2-0cd894d67ef5",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba9cc13d-845f-415e-a051-adb151309cfe",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a66204f4-725c-4ec9-b0d0-c75ad2c8dc85",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47869b2e-b657-4ff7-b15e-2d3241899671",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3037260-6002-4303-b5e0-f859dbc44ffa",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf9a2180-b300-4e88-8e62-82a34615c941",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "202067a1-435e-4622-85f1-aab27dab902d",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57ea0e72-6f08-4c4d-a4ac-d9b336376ab3",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc20"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "filterSpamTokens",
+                      "value": "true"
+                    },
+                    {
+                      "key": "contractAddresses",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8972837a-acdd-4ce2-82b8-5763cf231d31",
+          "name": "List ERC-721 balances",
+          "request": {
+            "name": "List ERC-721 balances",
+            "description": {
+              "content": "Lists ERC-721 token balances of a wallet address.\n\nBalance for a specific contract can be retrieved with the `contractAddress` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chains",
+                ":chainId",
+                "addresses",
+                ":address",
+                "balances:listErc721"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "The maximum number of items to return. The minimum page size is 1. The maximum pageSize is 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "contractAddress",
+                  "value": "<string>",
+                  "description": "A contract addresses to filter by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainId",
+                  "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) A wallet address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "633fd385-087b-48ce-9725-ed488a6c6365",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nativeTokenBalance\": {\n    \"name\": \"Wrapped AVAX\",\n    \"symbol\": \"WAVAX\",\n    \"decimals\": 18,\n    \"chainId\": \"43114\",\n    \"balance\": \"2000000000000000000\",\n    \"logoUri\": \"https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg\",\n    \"price\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 9865.84134162118\n    },\n    \"balanceValue\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 7904.848176934062\n    }\n  },\n  \"erc721TokenBalances\": [\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"name\": \"Wrapped AVAX\",\n      \"symbol\": \"WAVAX\",\n      \"ercType\": \"ERC-721\",\n      \"tokenId\": \"string\",\n      \"tokenUri\": \"string\",\n      \"metadata\": {\n        \"indexStatus\": \"UNINDEXED\",\n        \"metadataLastUpdatedTimestamp\": 1697.6115095225964,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"imageUri\": \"string\",\n        \"description\": \"string\",\n        \"animationUri\": \"string\",\n        \"externalUrl\": \"string\",\n        \"background\": \"string\",\n        \"attributes\": \"string\"\n      },\n      \"chainId\": \"43114\",\n      \"ownerAddress\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\"\n    },\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"name\": \"Wrapped AVAX\",\n      \"symbol\": \"WAVAX\",\n      \"ercType\": \"ERC-721\",\n      \"tokenId\": \"string\",\n      \"tokenUri\": \"string\",\n      \"metadata\": {\n        \"indexStatus\": \"MISSING_TOKEN\",\n        \"metadataLastUpdatedTimestamp\": 7406.946093876226,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"imageUri\": \"string\",\n        \"description\": \"string\",\n        \"animationUri\": \"string\",\n        \"externalUrl\": \"string\",\n        \"background\": \"string\",\n        \"attributes\": \"string\"\n      },\n      \"chainId\": \"43114\",\n      \"ownerAddress\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0df6992-4864-49fb-877e-0a05a6ff3cfd",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "182afbf7-3b7b-4186-89dd-672fac6dbc7a",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f3e4453-a71d-4473-9258-a3f328219f2a",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e7d7bcf-58c4-4ebe-8390-a72ef7bddcf0",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e0bd3f6-fd6a-43f9-a3ca-5c4e11a4f822",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36590772-7513-4b0e-8dd7-00a0075003a5",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e9cd474-a59a-4c8e-9f81-b3802c1b3c49",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0823b9e5-994e-425a-adc5-2814ca1b5521",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc721"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6b7bf18-d1f0-446a-8b59-b71ef3e4a506",
+          "name": "List ERC-1155 balances",
+          "request": {
+            "name": "List ERC-1155 balances",
+            "description": {
+              "content": "Lists ERC-1155 token balances of a wallet address.\n\nBalance at a given block can be retrieved with the `blockNumber` parameter.\n\nBalance for a specific contract can be retrieved with the `contractAddress` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chains",
+                ":chainId",
+                "addresses",
+                ":address",
+                "balances:listErc1155"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blockNumber",
+                  "value": "<string>",
+                  "description": "The block number, if not defined the block number will be the latest block."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "The maximum number of items to return. The minimum page size is 1. The maximum pageSize is 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "contractAddress",
+                  "value": "<string>",
+                  "description": "A contract addresses to filter by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainId",
+                  "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) A wallet address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19796988-4b19-4594-b3f5-6eeb05047129",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nativeTokenBalance\": {\n    \"name\": \"Wrapped AVAX\",\n    \"symbol\": \"WAVAX\",\n    \"decimals\": 18,\n    \"chainId\": \"43114\",\n    \"balance\": \"2000000000000000000\",\n    \"logoUri\": \"https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg\",\n    \"price\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 3330.2288427533213\n    },\n    \"balanceValue\": {\n      \"currencyCode\": \"usd\",\n      \"value\": 5373.720304540399\n    }\n  },\n  \"erc1155TokenBalances\": [\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"ercType\": \"ERC-1155\",\n      \"tokenId\": \"string\",\n      \"tokenUri\": \"string\",\n      \"metadata\": {\n        \"indexStatus\": \"INVALID_TOKEN_URI\",\n        \"metadataLastUpdatedTimestamp\": 7611.800773261633,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"imageUri\": \"string\",\n        \"description\": \"string\",\n        \"animationUri\": \"string\",\n        \"externalUrl\": \"string\",\n        \"background\": \"string\",\n        \"decimals\": 1052.2897362816996,\n        \"properties\": \"string\"\n      },\n      \"chainId\": \"43114\",\n      \"balance\": \"2000000000000000000\"\n    },\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"ercType\": \"ERC-1155\",\n      \"tokenId\": \"string\",\n      \"tokenUri\": \"string\",\n      \"metadata\": {\n        \"indexStatus\": \"METADATA_CONTENT_TOO_LARGE\",\n        \"metadataLastUpdatedTimestamp\": 1171.7927172092202,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"imageUri\": \"string\",\n        \"description\": \"string\",\n        \"animationUri\": \"string\",\n        \"externalUrl\": \"string\",\n        \"background\": \"string\",\n        \"decimals\": 5089.57223147704,\n        \"properties\": \"string\"\n      },\n      \"chainId\": \"43114\",\n      \"balance\": \"2000000000000000000\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "513d9908-5de5-4602-a4b2-726164243dad",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3a119ee-7d93-459f-b707-bb3d61c83cf4",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25cd8e0d-3659-44b4-bc99-120161d7df2a",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4563a1b6-1c85-4fc2-ad21-63eebccd5458",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf9a1be8-08b1-4e35-bae8-b8409eac5ab1",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ef30f39-8370-4cd9-9f67-317a01a01354",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afd25644-abcd-4710-854e-b419a1c3b7ed",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96e24acc-b9d9-465e-9e7c-011e59d3fb05",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listErc1155"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockNumber",
+                      "value": "6479329"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74a95345-a4cd-4a1b-9b04-2d288f67e331",
+          "name": "List collectible (ERC-721/ERC-1155) balances",
+          "request": {
+            "name": "List collectible (ERC-721/ERC-1155) balances",
+            "description": {
+              "content": "Lists ERC-721 and ERC-1155 token balances of a wallet address.\n\nBalance for a specific contract can be retrieved with the `contractAddress` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chains",
+                ":chainId",
+                "addresses",
+                ":address",
+                "balances:listCollectibles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "The maximum number of items to return. The minimum page size is 1. The maximum pageSize is 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "contractAddress",
+                  "value": "<string>",
+                  "description": "A contract addresses to filter by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainId",
+                  "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) A wallet address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0197442b-2733-4001-a587-558f92fcd9d1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collectibleBalances\": [\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"name\": \"Wrapped AVAX\",\n      \"symbol\": \"WAVAX\",\n      \"ercType\": \"ERC-721\",\n      \"tokenId\": \"string\",\n      \"tokenUri\": \"string\",\n      \"metadata\": {\n        \"indexStatus\": \"UNREACHABLE_TOKEN_URI\",\n        \"metadataLastUpdatedTimestamp\": 2479.717973449512,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"imageUri\": \"string\",\n        \"description\": \"string\",\n        \"animationUri\": \"string\",\n        \"externalUrl\": \"string\",\n        \"background\": \"string\",\n        \"attributes\": \"string\"\n      },\n      \"chainId\": \"43114\",\n      \"ownerAddress\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\"\n    },\n    {\n      \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n      \"name\": \"Wrapped AVAX\",\n      \"symbol\": \"WAVAX\",\n      \"ercType\": \"ERC-721\",\n      \"tokenId\": \"string\",\n      \"tokenUri\": \"string\",\n      \"metadata\": {\n        \"indexStatus\": \"INVALID_TOKEN_URI\",\n        \"metadataLastUpdatedTimestamp\": 4115.946515758594,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"imageUri\": \"string\",\n        \"description\": \"string\",\n        \"animationUri\": \"string\",\n        \"externalUrl\": \"string\",\n        \"background\": \"string\",\n        \"attributes\": \"string\"\n      },\n      \"chainId\": \"43114\",\n      \"ownerAddress\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d0a889a-89e6-43eb-a186-0f03e604964b",
+              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef886566-632d-4c4e-ab14-2cc3d346e6b9",
+              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "513a6154-1b48-4f1a-82a4-6b19a6f7adee",
+              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b6cd4c7-41fa-4f30-a0e8-559bcce2b4b7",
+              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4347a9d6-e647-434f-9e1a-34bc6b1e234d",
+              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8afe0d29-f3ef-49fe-a801-2e36dc9052ae",
+              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61388fd6-d598-4c14-80a9-c983915a4331",
+              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "baa94016-1187-4307-9fc6-20abaf6e238b",
+              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chains",
+                    ":chainId",
+                    "addresses",
+                    ":address",
+                    "balances:listCollectibles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "contractAddress",
+                      "value": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainId",
+                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) A wallet address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-glacier-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data-api.avax.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-glacier-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1166f992-cea2-4804-800a-f86290b5d476",
+    "name": "Data AVAX Supply EVM Balances API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href=\"https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api\">here</a>. Bug reports can be submitted <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform\">here</a>, and any potential security issues can be reported <a href=\"https://immunefi.com/bounty/avalabs\">here</a>.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Data AVAX Supply Health Check API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-glacier-api-key",
+      "value": "{{x-glacier-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health Check",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the health of the service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data-api.avax.network/v1/health-check"
+          },
+          "docs": "Check the health of the service. This checks the read and write health of the database and cache."
+        },
+        {
+          "info": {
+            "name": "Get the liveliness of the service (reads only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data-api.avax.network/v1/live-check"
+          },
+          "docs": "Check the liveliness of the service (reads only)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
