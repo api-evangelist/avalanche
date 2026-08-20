@@ -91,6 +91,11 @@ apis:
   humanURL: https://developers.avacloud.io/webhooks-api/overview
   baseURL: https://glacier-api.avax.network/v1
   tags:
+  - Webhook
+  - Event
+  - Notification
+  - Blockchain
+  tags_raw:
   - Webhooks
   - Events
   - Notifications
@@ -334,6 +339,8 @@ apis:
   humanURL: https://developers.avacloud.io/data-api/overview
   baseURL: https://glacier-api.avax.network/v1
   tags:
+  - NFT
+  tags_raw:
   - NFTs
   properties:
   - type: OpenAPI
@@ -357,7 +364,8 @@ apis:
   description: The Operations API from Avalanche — 2 operation(s) for operations.
   humanURL: https://developers.avacloud.io/data-api/overview
   baseURL: https://glacier-api.avax.network/v1
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
@@ -606,6 +614,8 @@ apis:
   humanURL: https://developers.avacloud.io/data-api/overview
   baseURL: https://glacier-api.avax.network/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
