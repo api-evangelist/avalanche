@@ -4,6 +4,18 @@ description: Avalanche is a high-performance blockchain platform offering REST A
   and cross-chain activity on the Avalanche C-Chain, P-Chain, X-Chain, and over 100
   L1 subnets. The AvaCloud developer platform also exposes Metrics, RPC, and Webhooks
   APIs.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
