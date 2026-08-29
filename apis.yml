@@ -646,6 +646,16 @@ apis:
     url: finops/data-api.yml
   - type: GraphQL
     url: graphql/avalanche-graphql.md
+- aid: avalanche:avalanche-data-api-api
+  name: Avalanche Data API
+  description: The Data API API from Avalanche — 0 operation(s) for data api.
+  humanURL: https://developers.avacloud.io/metrics-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - Data API
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-data-api-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/avalanche-agentic-access.yml

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Data AVAX Supply Data API Usage Metrics API
+  title: Data API Usage Metrics API
   description: The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href="https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api">here</a>. Bug reports can be submitted <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform">here</a>, and any potential security issues can be reported <a href="https://immunefi.com/bounty/avalabs">here</a>.
   version: 1.0.0
   contact: {}
@@ -677,86 +677,53 @@ paths:
       - Data API Usage Metrics
 components:
   schemas:
-    Forbidden:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 403
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Forbidden
-      required:
-      - message
-      - statusCode
-      - error
-    TimeIntervalGranularityExtended:
-      type: string
-      enum:
-      - minute
-      - hourly
-      - daily
-      - weekly
-      - monthly
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    UsageMetricsResponseDTO:
+    PrimaryNetworkRpcUsageMetricsResponseDTO:
       type: object
       properties:
         aggregateDuration:
           type: string
           description: Duration in which the metrics value is aggregated
-        orgId:
-          type: string
-          description: Org ID for which the metrics are aggregated
         metrics:
           description: Metrics values
           type: array
           items:
-            $ref: '#/components/schemas/Metric'
+            $ref: '#/components/schemas/RpcMetrics'
+        network:
+          type: string
+          description: Network type for which the metrics are aggregated
+          enum:
+          - mainnet
+          - testnet
+          examples:
+          - mainnet
       required:
       - aggregateDuration
-      - orgId
       - metrics
-    RpcUsageMetricsGroupByEnum:
-      type: string
-      enum:
-      - rpcMethod
-      - responseCode
-      - rlBypassToken
+      - network
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
     RpcUsageMetricsValueAggregated:
       type: object
       properties:
@@ -807,44 +774,6 @@ components:
       - invalidRequests
       - apiCreditsWasted
       - groupedBy
-    InternalServerError:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 500
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Internal Server Error
-      required:
-      - message
-      - statusCode
-      - error
-    RpcMetrics:
-      type: object
-      properties:
-        timestamp:
-          type: number
-          description: The timestamp of the metrics value
-        values:
-          description: The metrics values for the timestamp
-          type: array
-          items:
-            $ref: '#/components/schemas/RpcUsageMetricsValueAggregated'
-      required:
-      - timestamp
-      - values
     UsageMetricsGroupByEnum:
       type: string
       enum:
@@ -853,219 +782,6 @@ components:
       - chainId
       - apiKeyId
       - requestType
-    PrimaryNetworkRpcUsageMetricsResponseDTO:
-      type: object
-      properties:
-        aggregateDuration:
-          type: string
-          description: Duration in which the metrics value is aggregated
-        metrics:
-          description: Metrics values
-          type: array
-          items:
-            $ref: '#/components/schemas/RpcMetrics'
-        network:
-          type: string
-          description: Network type for which the metrics are aggregated
-          enum:
-          - mainnet
-          - testnet
-          examples:
-          - mainnet
-      required:
-      - aggregateDuration
-      - metrics
-      - network
-    SubnetRpcUsageMetricsResponseDTO:
-      type: object
-      properties:
-        aggregateDuration:
-          type: string
-          description: Duration in which the metrics value is aggregated
-        metrics:
-          description: Metrics values
-          type: array
-          items:
-            $ref: '#/components/schemas/RpcMetrics'
-        chainId:
-          type: string
-          description: ChainId for which the metrics are aggregated
-      required:
-      - aggregateDuration
-      - metrics
-      - chainId
-    SubnetRpcTimeIntervalGranularity:
-      type: string
-      enum:
-      - hourly
-      - daily
-      - weekly
-      - monthly
-    NotFound:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 404
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Not Found
-      required:
-      - message
-      - statusCode
-      - error
-    Unauthorized:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 401
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Unauthorized
-      required:
-      - message
-      - statusCode
-      - error
-    ServiceUnavailable:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 503
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
-    UsageMetricsValueDTO:
-      type: object
-      properties:
-        groupedBy:
-          type: string
-          description: Column name used for data aggregation
-          enum:
-          - requestPath
-          - responseCode
-          - chainId
-          - apiKeyId
-          - requestType
-          - None
-        groupValue:
-          description: The value of the column used for data aggregation
-          oneOf:
-          - type: string
-          - type: number
-        totalRequests:
-          type: number
-          description: The total number of requests
-        requestsPerSecond:
-          type: number
-          description: The number of requests per second
-        successRatePercent:
-          type: number
-          description: The success rate percentage
-        medianResponseTimeMsecs:
-          type: number
-          description: The median response time in milliseconds
-        invalidRequests:
-          type: number
-          description: The number of invalid requests
-        apiCreditsUsed:
-          type: number
-          description: The number of API credits used
-        apiCreditsWasted:
-          type: number
-          description: The number of API credits wasted on invalid requests
-      required:
-      - groupedBy
-      - totalRequests
-      - requestsPerSecond
-      - successRatePercent
-      - medianResponseTimeMsecs
-      - invalidRequests
-      - apiCreditsUsed
-      - apiCreditsWasted
-    PrimaryNetworkRpcTimeIntervalGranularity:
-      type: string
-      enum:
-      - hourly
-      - daily
-      - weekly
-      - monthly
-    Metric:
-      type: object
-      properties:
-        timestamp:
-          type: number
-          description: The timestamp of the metrics value
-        values:
-          description: The metrics values for the timestamp
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageMetricsValueDTO'
-      required:
-      - timestamp
-      - values
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
     LogsFormat:
       type: object
       properties:
@@ -1126,38 +842,123 @@ components:
       - requestDurationMsecs
       - responseCode
       - metadata
-    PrimaryNetworkRpcMetricsGroupByEnum:
+    RpcUsageMetricsGroupByEnum:
       type: string
       enum:
       - rpcMethod
-      - requestPath
       - responseCode
-      - country
-      - continent
-      - userAgent
-    RequestType:
-      type: string
-      description: The type of request made by the client.
-      enum:
-      - data
-      - rpc
-    LogsResponseDTO:
+      - rlBypassToken
+    SubnetRpcUsageMetricsResponseDTO:
       type: object
       properties:
-        nextPageToken:
+        aggregateDuration:
           type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        orgId:
-          type: string
-          description: The organization id of the request.
-        logs:
-          description: An array of logs representing the requests made by clients.
+          description: Duration in which the metrics value is aggregated
+        metrics:
+          description: Metrics values
           type: array
           items:
-            $ref: '#/components/schemas/LogsFormat'
+            $ref: '#/components/schemas/RpcMetrics'
+        chainId:
+          type: string
+          description: ChainId for which the metrics are aggregated
       required:
-      - orgId
-      - logs
+      - aggregateDuration
+      - metrics
+      - chainId
+    Unauthorized:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 401
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Unauthorized
+      required:
+      - message
+      - statusCode
+      - error
+    ServiceUnavailable:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 503
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Service Unavailable
+      required:
+      - message
+      - statusCode
+      - error
+    PrimaryNetworkRpcTimeIntervalGranularity:
+      type: string
+      enum:
+      - hourly
+      - daily
+      - weekly
+      - monthly
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    Metric:
+      type: object
+      properties:
+        timestamp:
+          type: number
+          description: The timestamp of the metrics value
+        values:
+          description: The metrics values for the timestamp
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageMetricsValueDTO'
+      required:
+      - timestamp
+      - values
     TooManyRequests:
       type: object
       properties:
@@ -1182,6 +983,157 @@ components:
       - message
       - statusCode
       - error
+    UsageMetricsResponseDTO:
+      type: object
+      properties:
+        aggregateDuration:
+          type: string
+          description: Duration in which the metrics value is aggregated
+        orgId:
+          type: string
+          description: Org ID for which the metrics are aggregated
+        metrics:
+          description: Metrics values
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+      required:
+      - aggregateDuration
+      - orgId
+      - metrics
+    RpcMetrics:
+      type: object
+      properties:
+        timestamp:
+          type: number
+          description: The timestamp of the metrics value
+        values:
+          description: The metrics values for the timestamp
+          type: array
+          items:
+            $ref: '#/components/schemas/RpcUsageMetricsValueAggregated'
+      required:
+      - timestamp
+      - values
+    LogsResponseDTO:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        orgId:
+          type: string
+          description: The organization id of the request.
+        logs:
+          description: An array of logs representing the requests made by clients.
+          type: array
+          items:
+            $ref: '#/components/schemas/LogsFormat'
+      required:
+      - orgId
+      - logs
+    BadRequest:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
+      required:
+      - message
+      - statusCode
+      - error
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
+    Network:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+      - testnet
+    UsageMetricsValueDTO:
+      type: object
+      properties:
+        groupedBy:
+          type: string
+          description: Column name used for data aggregation
+          enum:
+          - requestPath
+          - responseCode
+          - chainId
+          - apiKeyId
+          - requestType
+          - None
+        groupValue:
+          description: The value of the column used for data aggregation
+          oneOf:
+          - type: string
+          - type: number
+        totalRequests:
+          type: number
+          description: The total number of requests
+        requestsPerSecond:
+          type: number
+          description: The number of requests per second
+        successRatePercent:
+          type: number
+          description: The success rate percentage
+        medianResponseTimeMsecs:
+          type: number
+          description: The median response time in milliseconds
+        invalidRequests:
+          type: number
+          description: The number of invalid requests
+        apiCreditsUsed:
+          type: number
+          description: The number of API credits used
+        apiCreditsWasted:
+          type: number
+          description: The number of API credits wasted on invalid requests
+      required:
+      - groupedBy
+      - totalRequests
+      - requestsPerSecond
+      - successRatePercent
+      - medianResponseTimeMsecs
+      - invalidRequests
+      - apiCreditsUsed
+      - apiCreditsWasted
     LogsFormatMetadata:
       type: object
       properties:
@@ -1198,12 +1150,60 @@ components:
       - ipAddress
       - host
       - userAgent
-    Network:
+    TimeIntervalGranularityExtended:
       type: string
       enum:
-      - mainnet
-      - fuji
-      - testnet
+      - minute
+      - hourly
+      - daily
+      - weekly
+      - monthly
+    SubnetRpcTimeIntervalGranularity:
+      type: string
+      enum:
+      - hourly
+      - daily
+      - weekly
+      - monthly
+    RequestType:
+      type: string
+      description: The type of request made by the client.
+      enum:
+      - data
+      - rpc
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 500
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Internal Server Error
+      required:
+      - message
+      - statusCode
+      - error
+    PrimaryNetworkRpcMetricsGroupByEnum:
+      type: string
+      enum:
+      - rpcMethod
+      - requestPath
+      - responseCode
+      - country
+      - continent
+      - userAgent
   securitySchemes:
     apiKey:
       type: apiKey

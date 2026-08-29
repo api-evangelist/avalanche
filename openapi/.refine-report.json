@@ -1,30 +1,11 @@
 {
   "provider": "avalanche",
   "sources": [
-    "avalanche-avax-supply-api-openapi.yml",
-    "avalanche-data-api-usage-metrics-api-openapi.yml",
-    "avalanche-evm-balances-api-openapi.yml",
-    "avalanche-evm-blocks-api-openapi.yml",
-    "avalanche-evm-chains-api-openapi.yml",
-    "avalanche-evm-contracts-api-openapi.yml",
-    "avalanche-evm-transactions-api-openapi.yml",
-    "avalanche-health-check-api-openapi.yml",
-    "avalanche-interchain-messaging-api-openapi.yml",
-    "avalanche-nfts-api-openapi.yml",
-    "avalanche-operations-api-openapi.yml",
-    "avalanche-primary-network-api-openapi.yml",
-    "avalanche-primary-network-balances-api-openapi.yml",
-    "avalanche-primary-network-blocks-api-openapi.yml",
-    "avalanche-primary-network-rewards-api-openapi.yml",
-    "avalanche-primary-network-transactions-api-openapi.yml",
-    "avalanche-primary-network-utxos-api-openapi.yml",
-    "avalanche-primary-network-vertices-api-openapi.yml",
-    "avalanche-signature-aggregator-api-openapi.yml",
-    "avalanche-teleporter-api-openapi.yml",
-    "avalanche-webhooks-api-openapi.yml"
+    "_original/data-api.json"
   ],
   "outputs": [
     "avalanche-avax-supply-api-openapi.yml",
+    "avalanche-data-api-api-openapi.yml",
     "avalanche-data-api-usage-metrics-api-openapi.yml",
     "avalanche-evm-balances-api-openapi.yml",
     "avalanche-evm-blocks-api-openapi.yml",
@@ -49,6 +30,33 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "data-api.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "data-api.json: tagged webhooks POST address_activity -> Data API",
+    "data-api.json: declared missing tag: Data API"
+  ],
+  "skipped": [
+    "avalanche-avax-supply-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-data-api-usage-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-evm-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-evm-blocks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-evm-chains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-evm-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-evm-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-health-check-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-interchain-messaging-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-nfts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-primary-network-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-primary-network-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-primary-network-blocks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-primary-network-rewards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-primary-network-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-primary-network-utxos-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-primary-network-vertices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-signature-aggregator-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-teleporter-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
