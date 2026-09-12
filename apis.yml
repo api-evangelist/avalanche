@@ -658,6 +658,8 @@ apis:
   - type: OpenAPI
     url: openapi/avalanche-data-api-api-openapi.yml
 common:
+- type: Website
+  url: https://www.avacloud.io/
 - type: AgenticAccess
   url: agentic-access/avalanche-agentic-access.yml
 - type: DomainSecurity
