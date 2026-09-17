@@ -346,32 +346,6 @@ apis:
     url: finops/data-api.yml
   - type: GraphQL
     url: graphql/avalanche-graphql.md
-- aid: avalanche:avalanche-nfts-api
-  name: Avalanche NFTs API
-  description: The NFTs API from Avalanche — 3 operation(s) for nfts.
-  humanURL: https://developers.avacloud.io/data-api/overview
-  baseURL: https://glacier-api.avax.network/v1
-  tags:
-  - NFT
-  tags_raw:
-  - NFTs
-  properties:
-  - type: OpenAPI
-    url: openapi/avalanche-nfts-api-openapi.yml
-  - type: Documentation
-    url: https://developers.avacloud.io/data-api/overview
-  - type: Authentication
-    url: https://developers.avacloud.io/data-api/usage-guide
-  - type: RateLimits
-    url: https://developers.avacloud.io/data-api/rate-limits
-  - type: Plans
-    url: plans/data-api.yml
-  - type: RateLimits
-    url: rate-limits/data-api.yml
-  - type: FinOps
-    url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-operations-api
   name: Avalanche Operations API
   description: The Operations API from Avalanche — 2 operation(s) for operations.
@@ -657,6 +631,30 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/avalanche-data-api-api-openapi.yml
+- aid: avalanche:avalanche-nfts-api
+  name: Avalanche NF Ts API
+  description: The NFTs API from Avalanche — 3 operation(s) for nfts.
+  humanURL: https://developers.avacloud.io/metrics-api/overview
+  baseURL: https://glacier-api.avax.network/v1
+  tags:
+  - NFTs
+  properties:
+  - type: OpenAPI
+    url: openapi/avalanche-nfts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.avacloud.io/data-api/overview
+  - type: Authentication
+    url: https://developers.avacloud.io/data-api/usage-guide
+  - type: RateLimits
+    url: https://developers.avacloud.io/data-api/rate-limits
+  - type: Plans
+    url: plans/data-api.yml
+  - type: RateLimits
+    url: rate-limits/data-api.yml
+  - type: FinOps
+    url: finops/data-api.yml
+  - type: GraphQL
+    url: graphql/avalanche-graphql.md
 common:
 - type: Website
   url: https://www.avacloud.io/
