@@ -81,6 +81,11 @@ apis:
   tags:
   - RPC
   - Platform Chain
+  - Validator
+  - Staking
+  tags_raw:
+  - RPC
+  - Platform Chain
   - Validators
   - Staking
   properties:
@@ -637,6 +642,8 @@ apis:
   humanURL: https://developers.avacloud.io/metrics-api/overview
   baseURL: https://glacier-api.avax.network/v1
   tags:
+  - NFT
+  tags_raw:
   - NFTs
   properties:
   - type: OpenAPI
