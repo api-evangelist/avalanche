@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Data Primary Network Blocks API
-  description: The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href="https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api">here</a>. Bug reports can be submitted <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform">here</a>, and any potential security issues can be reported <a href="https://immunefi.com/bounty/avalabs">here</a>.
+  description: The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum.
   version: 1.0.0
   contact: {}
 servers:
@@ -349,6 +349,19 @@ paths:
       - Primary Network Blocks
 components:
   schemas:
+    ProposerDetails:
+      type: object
+      properties:
+        proposerId:
+          type: string
+        proposerParentId:
+          type: string
+        proposerNodeId:
+          type: string
+        proposerPChainHeight:
+          type: number
+        proposerTimestamp:
+          type: number
     Unauthorized:
       type: object
       properties:
@@ -369,119 +382,6 @@ components:
           description: The type of error
           examples:
           - Unauthorized
-      required:
-      - message
-      - statusCode
-      - error
-    ServiceUnavailable:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 503
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    BlockchainId:
-      type: string
-      enum:
-      - 11111111111111111111111111111111LpoYY
-      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
-      - 2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5
-      - yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp
-      - p-chain
-      - x-chain
-      - c-chain
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    PrimaryNetworkChainName:
-      type: string
-      enum:
-      - p-chain
-      - x-chain
-      - c-chain
-    NotFound:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 404
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Not Found
       required:
       - message
       - statusCode
@@ -524,29 +424,30 @@ components:
       - txCount
       - transactions
       - blockSizeBytes
-    PrimaryNetworkChainInfo:
+    BadRequest:
       type: object
       properties:
-        chainName:
-          $ref: '#/components/schemas/PrimaryNetworkChainName'
-        network:
-          $ref: '#/components/schemas/Network'
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
       required:
-      - chainName
-      - network
-    ProposerDetails:
-      type: object
-      properties:
-        proposerId:
-          type: string
-        proposerParentId:
-          type: string
-        proposerNodeId:
-          type: string
-        proposerPChainHeight:
-          type: number
-        proposerTimestamp:
-          type: number
+      - message
+      - statusCode
+      - error
     Forbidden:
       type: object
       properties:
@@ -571,12 +472,6 @@ components:
       - message
       - statusCode
       - error
-    Network:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-      - testnet
     GetPrimaryNetworkBlockResponse:
       type: object
       properties:
@@ -615,6 +510,63 @@ components:
       - txCount
       - transactions
       - blockSizeBytes
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    PrimaryNetworkChainName:
+      type: string
+      enum:
+      - p-chain
+      - x-chain
+      - c-chain
+    PrimaryNetworkChainInfo:
+      type: object
+      properties:
+        chainName:
+          $ref: '#/components/schemas/PrimaryNetworkChainName'
+        network:
+          $ref: '#/components/schemas/Network'
+      required:
+      - chainName
+      - network
+    BlockchainId:
+      type: string
+      enum:
+      - 11111111111111111111111111111111LpoYY
+      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
+      - 2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5
+      - yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp
+      - p-chain
+      - x-chain
+      - c-chain
+    Network:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+      - testnet
     InternalServerError:
       type: object
       properties:
@@ -674,6 +626,54 @@ components:
           description: The type of error
           examples:
           - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
+    ServiceUnavailable:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 503
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Service Unavailable
       required:
       - message
       - statusCode
