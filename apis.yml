@@ -159,8 +159,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-data-api-usage-metrics-api
   name: Avalanche Data API Usage Metrics API
   description: Usage metrics and logs for the Data API.
@@ -183,8 +181,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-evm-balances-api
   name: Avalanche EVM Balances API
   description: Find information about balances on EVM-compatible chains, such as the Avalanche C-Chain.
@@ -207,8 +203,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-evm-blocks-api
   name: Avalanche EVM Blocks API
   description: Find information about blocks on EVM-compatible chains, such as the Avalanche C-Chain.
@@ -231,8 +225,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-evm-chains-api
   name: Avalanche EVM Chains API
   description: Find information about indexed EVM-compatible chains, such as the Avalanche C-Chain.
@@ -255,8 +247,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-evm-contracts-api
   name: Avalanche EVM Contracts API
   description: >-
@@ -280,8 +270,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-evm-transactions-api
   name: Avalanche EVM Transactions API
   description: >-
@@ -305,8 +293,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-health-check-api
   name: Avalanche Health Check API
   description: The Health Check API from Avalanche — 2 operation(s) for health check.
@@ -329,8 +315,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-interchain-messaging-api
   name: Avalanche Interchain Messaging API
   description: Find information about Interchain Messaging transactions.
@@ -353,8 +337,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-operations-api
   name: Avalanche Operations API
   description: The Operations API from Avalanche — 2 operation(s) for operations.
@@ -378,8 +360,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-primary-network-api
   name: Avalanche Primary Network API
   description: The Primary Network API from Avalanche — 11 operation(s) for primary network.
@@ -402,8 +382,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-primary-network-balances-api
   name: Avalanche Primary Network Balances API
   description: >-
@@ -428,8 +406,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-primary-network-blocks-api
   name: Avalanche Primary Network Blocks API
   description: >-
@@ -454,8 +430,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-primary-network-rewards-api
   name: Avalanche Primary Network Rewards API
   description: Find information about rewards on Avalanche's Primary Network.
@@ -478,8 +452,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-primary-network-transactions-api
   name: Avalanche Primary Network Transactions API
   description: >-
@@ -504,8 +476,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-primary-network-utxos-api
   name: Avalanche Primary Network UTXOs API
   description: >-
@@ -530,8 +500,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-primary-network-vertices-api
   name: Avalanche Primary Network Vertices API
   description: Find information about vertices on Avalanche's X-Chain.
@@ -554,8 +522,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-signature-aggregator-api
   name: Avalanche Signature Aggregator API
   description: Request signatures for a Warp message from Subnet validators
@@ -578,8 +544,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-teleporter-api
   name: Avalanche Teleporter API
   description: Find information about Teleporter transactions.
@@ -602,8 +566,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-webhooks-api
   name: Avalanche Webhooks API
   description: Manage webhooks and get notified for various onchain activities.
@@ -628,8 +590,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 - aid: avalanche:avalanche-data-api-api
   name: Avalanche Data API
   description: The Data API API from Avalanche — 0 operation(s) for data api.
@@ -664,8 +624,6 @@ apis:
     url: rate-limits/data-api.yml
   - type: FinOps
     url: finops/data-api.yml
-  - type: GraphQL
-    url: graphql/avalanche-graphql.md
 common:
 - type: Website
   url: https://www.avacloud.io/
