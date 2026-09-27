@@ -79,7 +79,7 @@ paths:
       - AVAX Supply
 components:
   schemas:
-    Unauthorized:
+    BadGateway:
       type: object
       properties:
         message:
@@ -93,12 +93,36 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 401
+          - 502
         error:
           type: string
           description: The type of error
           examples:
-          - Unauthorized
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
       required:
       - message
       - statusCode
@@ -127,7 +151,7 @@ components:
       - message
       - statusCode
       - error
-    Forbidden:
+    Unauthorized:
       type: object
       properties:
         message:
@@ -141,17 +165,17 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 403
+          - 401
         error:
           type: string
           description: The type of error
           examples:
-          - Forbidden
+          - Unauthorized
       required:
       - message
       - statusCode
       - error
-    NotFound:
+    InternalServerError:
       type: object
       properties:
         message:
@@ -165,12 +189,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 404
+          - 500
         error:
           type: string
           description: The type of error
           examples:
-          - Not Found
+          - Internal Server Error
       required:
       - message
       - statusCode
@@ -235,7 +259,7 @@ components:
       - lastUpdated
       - genesisUnlock
       - l1ValidatorFees
-    InternalServerError:
+    NotFound:
       type: object
       properties:
         message:
@@ -249,60 +273,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 500
+          - 404
         error:
           type: string
           description: The type of error
           examples:
-          - Internal Server Error
-      required:
-      - message
-      - statusCode
-      - error
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
+          - Not Found
       required:
       - message
       - statusCode
@@ -327,6 +303,30 @@ components:
           description: The type of error
           examples:
           - Service Unavailable
+      required:
+      - message
+      - statusCode
+      - error
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
       required:
       - message
       - statusCode

@@ -105,28 +105,7 @@ paths:
       - EVM Contracts
 components:
   schemas:
-    ResourceLinkType:
-      type: string
-      enum:
-      - Blog
-      - CoinGecko
-      - CoinMarketCap
-      - Discord
-      - Documentation
-      - Facebook
-      - Github
-      - Instagram
-      - LinkedIn
-      - Medium
-      - Reddit
-      - Support
-      - Telegram
-      - TikTok
-      - Twitter
-      - Website
-      - Whitepaper
-      - Youtube
-    Unauthorized:
+    BadGateway:
       type: object
       properties:
         message:
@@ -140,17 +119,99 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 401
+          - 502
         error:
           type: string
           description: The type of error
           examples:
-          - Unauthorized
+          - Bad Gateway
       required:
       - message
       - statusCode
       - error
-    UnknownContract:
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    ServiceUnavailable:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 503
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Service Unavailable
+      required:
+      - message
+      - statusCode
+      - error
+    ResourceLink:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ResourceLinkType'
+        url:
+          type: string
+      required:
+      - type
+      - url
+    BadRequest:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
+      required:
+      - message
+      - statusCode
+      - error
+    Erc721Contract:
       type: object
       properties:
         name:
@@ -188,100 +249,15 @@ components:
         ercType:
           type: string
           enum:
-          - UNKNOWN
+          - ERC-721
+        symbol:
+          type: string
+          description: The contract symbol.
+          examples:
+          - WAVAX
       required:
       - address
       - ercType
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    Forbidden:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 403
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Forbidden
-      required:
-      - message
-      - statusCode
-      - error
-    ResourceLink:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ResourceLinkType'
-        url:
-          type: string
-      required:
-      - type
-      - url
-    NotFound:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 404
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Not Found
-      required:
-      - message
-      - statusCode
-      - error
-    ImageAsset:
-      type: object
-      properties:
-        assetId:
-          type: string
-        imageUri:
-          type: string
-          description: OUTPUT ONLY
     Erc20Contract:
       type: object
       properties:
@@ -337,6 +313,38 @@ components:
       - address
       - ercType
       - decimals
+    ImageAsset:
+      type: object
+      properties:
+        assetId:
+          type: string
+        imageUri:
+          type: string
+          description: OUTPUT ONLY
+    Unauthorized:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 401
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Unauthorized
+      required:
+      - message
+      - statusCode
+      - error
     ContractDeploymentDetails:
       type: object
       properties:
@@ -351,54 +359,6 @@ components:
       required:
       - txHash
       - deployerAddress
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
-      required:
-      - message
-      - statusCode
-      - error
     InternalServerError:
       type: object
       properties:
@@ -423,7 +383,57 @@ components:
       - message
       - statusCode
       - error
-    Erc721Contract:
+    ResourceLinkType:
+      type: string
+      enum:
+      - Blog
+      - CoinGecko
+      - CoinMarketCap
+      - Discord
+      - Documentation
+      - Facebook
+      - Github
+      - Instagram
+      - LinkedIn
+      - Medium
+      - Reddit
+      - Support
+      - Telegram
+      - TikTok
+      - Twitter
+      - Website
+      - Whitepaper
+      - Youtube
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    PricingProviders:
+      type: object
+      properties:
+        coingeckoCoinId:
+          type: string
+    UnknownContract:
       type: object
       properties:
         name:
@@ -461,44 +471,10 @@ components:
         ercType:
           type: string
           enum:
-          - ERC-721
-        symbol:
-          type: string
-          description: The contract symbol.
-          examples:
-          - WAVAX
+          - UNKNOWN
       required:
       - address
       - ercType
-    PricingProviders:
-      type: object
-      properties:
-        coingeckoCoinId:
-          type: string
-    ServiceUnavailable:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 503
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
     Erc1155Contract:
       type: object
       properties:
@@ -548,6 +524,30 @@ components:
       required:
       - address
       - ercType
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
   securitySchemes:
     apiKey:
       type: apiKey

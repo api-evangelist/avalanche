@@ -804,174 +804,26 @@ paths:
       - Webhooks
 components:
   schemas:
-    PrimaryNetworkBalanceThresholdFilter:
-      type: object
-      properties:
-        balanceType:
-          $ref: '#/components/schemas/CommonBalanceType'
-        balanceThreshold:
-          type: string
-          description: Threshold for balance corresponding to balanceType in nAVAX
-      required:
-      - balanceType
-      - balanceThreshold
-    Unauthorized:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 401
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Unauthorized
-      required:
-      - message
-      - statusCode
-      - error
-    AddressActivityMetadata:
-      type: object
-      properties:
-        eventSignatures:
-          description: Array of hexadecimal strings of the event signatures.
-          examples:
-          - - '0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64'
-          type: array
-          items:
-            type: string
-        addresses:
-          description: Ethereum address(es) for the address_activity event type. The maximum number of 'addresses' you can track depends  on the Data API plan you are subscribed to.
-          examples:
-          - - '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E'
-          type: array
-          items:
-            type: string
-      required:
-      - addresses
-    ValidatorActivityResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        chainId:
-          type: string
-        status:
-          $ref: '#/components/schemas/WebhookStatusType'
-        createdAt:
-          type: number
-        name:
-          type: string
-        description:
-          type: string
-        eventType:
-          $ref: '#/components/schemas/ValidatorActivityEventType'
-        metadata:
-          $ref: '#/components/schemas/ValidatorActivityMetadata'
-      required:
-      - id
-      - url
-      - chainId
-      - status
-      - createdAt
-      - name
-      - description
-      - eventType
-      - metadata
-    PrimaryNetworkType:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-    ListWebhooksResponse:
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        webhooks:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/EVMAddressActivityResponse'
-            - $ref: '#/components/schemas/PrimaryNetworkAddressActivityResponse'
-            - $ref: '#/components/schemas/ValidatorActivityResponse'
-      required:
-      - webhooks
-    ValidatorActivitySubEvents:
-      type: object
-      properties:
-        validatorActivitySubEvents:
-          type: array
-          description: Array of validator activity sub-event types
-          items:
-            type: string
-            enum:
-            - validator_stake
-            - delegator_stake
-            - reward_distribution
-            - l1_validator_balance_increased
-            - l1_validator_disabled
-            - l1_validator_removed
-            - l1_validator_balance_threshold
-      required:
-      - validatorActivitySubEvents
-    ValidatorActivityEventType:
-      type: string
-      enum:
-      - validator_activity
     ValidatorActivityKeyType:
       type: string
       description: The type of key to monitor for the validator activity event type.
       enum:
       - nodeId
       - subnetId
-    AddressesChangeRequest:
-      type: object
-      properties:
-        addresses:
-          description: Ethereum address(es) for the address_activity event type
-          examples:
-          - - '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E'
-          type: array
-          items:
-            type: string
-      required:
-      - addresses
-    UpdateWebhookRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        url:
-          type: string
-        status:
-          $ref: '#/components/schemas/WebhookStatusType'
-        includeInternalTxs:
-          type: boolean
-          description: Whether to include traces in the webhook payload. Traces are only available for C-Chain on chainId 43113 and 43114.
-        includeLogs:
-          type: boolean
-    SharedSecretsResponse:
-      type: object
-      properties:
-        secret:
-          type: string
-      required:
-      - secret
+    CommonBalanceType:
+      type: string
+      description: Type of balance to monitor
+      enum:
+      - unlockedUnstaked
+      - unlockedStaked
+      - lockedPlatform
+      - lockedStakeable
+      - lockedStaked
+      - pendingStaked
+      - unlocked
+      - locked
+      - atomicMemoryUnlocked
+      - atomicMemoryLocked
     InternalServerError:
       type: object
       properties:
@@ -996,38 +848,7 @@ components:
       - message
       - statusCode
       - error
-    PrimaryNetworkAddressActivityResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        chainId:
-          type: string
-        status:
-          $ref: '#/components/schemas/WebhookStatusType'
-        createdAt:
-          type: number
-        name:
-          type: string
-        description:
-          type: string
-        eventType:
-          $ref: '#/components/schemas/PrimaryNetworkAddressActivityEventType'
-        metadata:
-          $ref: '#/components/schemas/PrimaryNetworkAddressActivityMetadata'
-      required:
-      - id
-      - url
-      - chainId
-      - status
-      - createdAt
-      - name
-      - description
-      - eventType
-      - metadata
-    TooManyRequests:
+    ServiceUnavailable:
       type: object
       properties:
         message:
@@ -1041,103 +862,16 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 429
+          - 503
         error:
           type: string
           description: The type of error
           examples:
-          - Too Many Requests
+          - Service Unavailable
       required:
       - message
       - statusCode
       - error
-    AddressActivityEventType:
-      type: string
-      enum:
-      - address_activity
-    EVMAddressActivityResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        chainId:
-          type: string
-        status:
-          $ref: '#/components/schemas/WebhookStatusType'
-        createdAt:
-          type: number
-        name:
-          type: string
-        description:
-          type: string
-        eventType:
-          $ref: '#/components/schemas/AddressActivityEventType'
-        metadata:
-          $ref: '#/components/schemas/AddressActivityMetadata'
-        includeInternalTxs:
-          type: boolean
-          description: Whether to include traces in the webhook payload.
-        includeLogs:
-          type: boolean
-          description: Whether to include logs in the webhook payload.
-      required:
-      - id
-      - url
-      - chainId
-      - status
-      - createdAt
-      - name
-      - description
-      - eventType
-      - metadata
-    WebhookStatusType:
-      type: string
-      enum:
-      - active
-      - inactive
-    WebhookStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-    PrimaryNetworkAddressActivitySubEventType:
-      type: string
-      description: Array of address activity sub-event types
-      enum:
-      - balance_change
-      - balance_threshold
-      - reward_distribution
-    NotFound:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 404
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Not Found
-      required:
-      - message
-      - statusCode
-      - error
-    PlatformAddressActivityKeyType:
-      type: string
-      description: The type of key to monitor for the address activity event type.
-      enum:
-      - addresses
     ListWebhookAddressesResponse:
       type: object
       properties:
@@ -1153,125 +887,40 @@ components:
       required:
       - addresses
       - totalAddresses
-    PrimaryNetworkAddressActivityRequest:
+    WebhookStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    EVMAddressActivityRequest:
       type: object
       properties:
         eventType:
           type: string
           enum:
-          - primary_network_address_activity
+          - address_activity
         url:
           type: string
         name:
           type: string
         description:
           type: string
-        network:
-          $ref: '#/components/schemas/PrimaryNetworkType'
         chainId:
           type: string
         metadata:
-          description: Metadata for platform address activity event
           oneOf:
-          - $ref: '#/components/schemas/PrimaryNetworkAddressActivityMetadata'
-          allOf:
-          - $ref: '#/components/schemas/PrimaryNetworkAddressActivityMetadata'
+          - $ref: '#/components/schemas/AddressActivityMetadata'
+        includeInternalTxs:
+          type: boolean
+          description: Whether to include traces in the webhook payload. Traces are only available for C-Chain on chainId 43113 and 43114.
+        includeLogs:
+          type: boolean
+          description: Whether to include logs in the webhook payload.
       required:
       - eventType
       - url
-      - network
       - chainId
       - metadata
-    PrimaryNetworkAddressActivityEventType:
-      type: string
-      enum:
-      - primary_network_address_activity
-    PrimaryNetworkAddressActivityMetadata:
-      type: object
-      properties:
-        eventSignatures:
-          description: Array of hexadecimal strings of the event signatures.
-          examples:
-          - - '0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64'
-          type: array
-          items:
-            type: string
-        keyType:
-          $ref: '#/components/schemas/PlatformAddressActivityKeyType'
-        keys:
-          description: Array of keys like addresses corresponding to the keyType being monitored. For PrimaryNetworkAddressActivity event, an array of multiple addresses can be provided. The maximum number of 'addresses' you can track depends on the Data API plan you are subscribed to.
-          type: array
-          items:
-            type: string
-        subEvents:
-          description: Sub-events to monitor
-          allOf:
-          - $ref: '#/components/schemas/PrimaryNetworkAddressActivitySubEvents'
-        balanceThresholdFilter:
-          description: Balance threshold filter
-          allOf:
-          - $ref: '#/components/schemas/PrimaryNetworkBalanceThresholdFilter'
-      required:
-      - keyType
-      - keys
-      - subEvents
-    PrimaryNetworkAddressActivitySubEvents:
-      type: object
-      properties:
-        addressActivitySubEvents:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrimaryNetworkAddressActivitySubEventType'
-      required:
-      - addressActivitySubEvents
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    Forbidden:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 403
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Forbidden
-      required:
-      - message
-      - statusCode
-      - error
     ValidatorActivityMetadata:
       type: object
       properties:
@@ -1310,59 +959,24 @@ components:
       - keyType
       - keys
       - subEvents
-    EVMAddressActivityRequest:
+    ValidatorActivitySubEvents:
       type: object
       properties:
-        eventType:
-          type: string
-          enum:
-          - address_activity
-        url:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        chainId:
-          type: string
-        metadata:
-          oneOf:
-          - $ref: '#/components/schemas/AddressActivityMetadata'
-        includeInternalTxs:
-          type: boolean
-          description: Whether to include traces in the webhook payload. Traces are only available for C-Chain on chainId 43113 and 43114.
-        includeLogs:
-          type: boolean
-          description: Whether to include logs in the webhook payload.
+        validatorActivitySubEvents:
+          type: array
+          description: Array of validator activity sub-event types
+          items:
+            type: string
+            enum:
+            - validator_stake
+            - delegator_stake
+            - reward_distribution
+            - l1_validator_balance_increased
+            - l1_validator_disabled
+            - l1_validator_removed
+            - l1_validator_balance_threshold
       required:
-      - eventType
-      - url
-      - chainId
-      - metadata
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
+      - validatorActivitySubEvents
     ValidatorActivityRequest:
       type: object
       properties:
@@ -1389,21 +1003,61 @@ components:
       - url
       - network
       - metadata
-    CommonBalanceType:
+    PrimaryNetworkAddressActivitySubEventType:
       type: string
-      description: Type of balance to monitor
+      description: Array of address activity sub-event types
       enum:
-      - unlockedUnstaked
-      - unlockedStaked
-      - lockedPlatform
-      - lockedStakeable
-      - lockedStaked
-      - pendingStaked
-      - unlocked
-      - locked
-      - atomicMemoryUnlocked
-      - atomicMemoryLocked
-    ServiceUnavailable:
+      - balance_change
+      - balance_threshold
+      - reward_distribution
+    PrimaryNetworkAddressActivityEventType:
+      type: string
+      enum:
+      - primary_network_address_activity
+    ValidatorActivityResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        chainId:
+          type: string
+        status:
+          $ref: '#/components/schemas/WebhookStatusType'
+        createdAt:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        eventType:
+          $ref: '#/components/schemas/ValidatorActivityEventType'
+        metadata:
+          $ref: '#/components/schemas/ValidatorActivityMetadata'
+      required:
+      - id
+      - url
+      - chainId
+      - status
+      - createdAt
+      - name
+      - description
+      - eventType
+      - metadata
+    AddressesChangeRequest:
+      type: object
+      properties:
+        addresses:
+          description: Ethereum address(es) for the address_activity event type
+          examples:
+          - - '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E'
+          type: array
+          items:
+            type: string
+      required:
+      - addresses
+    BadGateway:
       type: object
       properties:
         message:
@@ -1417,16 +1071,362 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 503
+          - 502
         error:
           type: string
           description: The type of error
           examples:
-          - Service Unavailable
+          - Bad Gateway
       required:
       - message
       - statusCode
       - error
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    BadRequest:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
+      required:
+      - message
+      - statusCode
+      - error
+    ListWebhooksResponse:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        webhooks:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/EVMAddressActivityResponse'
+            - $ref: '#/components/schemas/PrimaryNetworkAddressActivityResponse'
+            - $ref: '#/components/schemas/ValidatorActivityResponse'
+      required:
+      - webhooks
+    SharedSecretsResponse:
+      type: object
+      properties:
+        secret:
+          type: string
+      required:
+      - secret
+    PrimaryNetworkType:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+    AddressActivityMetadata:
+      type: object
+      properties:
+        eventSignatures:
+          description: Array of hexadecimal strings of the event signatures.
+          examples:
+          - - '0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64'
+          type: array
+          items:
+            type: string
+        addresses:
+          description: Ethereum address(es) for the address_activity event type. The maximum number of 'addresses' you can track depends  on the Data API plan you are subscribed to.
+          examples:
+          - - '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E'
+          type: array
+          items:
+            type: string
+      required:
+      - addresses
+    Unauthorized:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 401
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Unauthorized
+      required:
+      - message
+      - statusCode
+      - error
+    ValidatorActivityEventType:
+      type: string
+      enum:
+      - validator_activity
+    AddressActivityEventType:
+      type: string
+      enum:
+      - address_activity
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
+    EVMAddressActivityResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        chainId:
+          type: string
+        status:
+          $ref: '#/components/schemas/WebhookStatusType'
+        createdAt:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        eventType:
+          $ref: '#/components/schemas/AddressActivityEventType'
+        metadata:
+          $ref: '#/components/schemas/AddressActivityMetadata'
+        includeInternalTxs:
+          type: boolean
+          description: Whether to include traces in the webhook payload.
+        includeLogs:
+          type: boolean
+          description: Whether to include logs in the webhook payload.
+      required:
+      - id
+      - url
+      - chainId
+      - status
+      - createdAt
+      - name
+      - description
+      - eventType
+      - metadata
+    PlatformAddressActivityKeyType:
+      type: string
+      description: The type of key to monitor for the address activity event type.
+      enum:
+      - addresses
+    PrimaryNetworkBalanceThresholdFilter:
+      type: object
+      properties:
+        balanceType:
+          $ref: '#/components/schemas/CommonBalanceType'
+        balanceThreshold:
+          type: string
+          description: Threshold for balance corresponding to balanceType in nAVAX
+      required:
+      - balanceType
+      - balanceThreshold
+    PrimaryNetworkAddressActivitySubEvents:
+      type: object
+      properties:
+        addressActivitySubEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrimaryNetworkAddressActivitySubEventType'
+      required:
+      - addressActivitySubEvents
+    PrimaryNetworkAddressActivityRequest:
+      type: object
+      properties:
+        eventType:
+          type: string
+          enum:
+          - primary_network_address_activity
+        url:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        network:
+          $ref: '#/components/schemas/PrimaryNetworkType'
+        chainId:
+          type: string
+        metadata:
+          description: Metadata for platform address activity event
+          oneOf:
+          - $ref: '#/components/schemas/PrimaryNetworkAddressActivityMetadata'
+          allOf:
+          - $ref: '#/components/schemas/PrimaryNetworkAddressActivityMetadata'
+      required:
+      - eventType
+      - url
+      - network
+      - chainId
+      - metadata
+    PrimaryNetworkAddressActivityResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        chainId:
+          type: string
+        status:
+          $ref: '#/components/schemas/WebhookStatusType'
+        createdAt:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        eventType:
+          $ref: '#/components/schemas/PrimaryNetworkAddressActivityEventType'
+        metadata:
+          $ref: '#/components/schemas/PrimaryNetworkAddressActivityMetadata'
+      required:
+      - id
+      - url
+      - chainId
+      - status
+      - createdAt
+      - name
+      - description
+      - eventType
+      - metadata
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    UpdateWebhookRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        status:
+          $ref: '#/components/schemas/WebhookStatusType'
+        includeInternalTxs:
+          type: boolean
+          description: Whether to include traces in the webhook payload. Traces are only available for C-Chain on chainId 43113 and 43114.
+        includeLogs:
+          type: boolean
+    PrimaryNetworkAddressActivityMetadata:
+      type: object
+      properties:
+        eventSignatures:
+          description: Array of hexadecimal strings of the event signatures.
+          examples:
+          - - '0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64'
+          type: array
+          items:
+            type: string
+        keyType:
+          $ref: '#/components/schemas/PlatformAddressActivityKeyType'
+        keys:
+          description: Array of keys like addresses corresponding to the keyType being monitored. For PrimaryNetworkAddressActivity event, an array of multiple addresses can be provided. The maximum number of 'addresses' you can track depends on the Data API plan you are subscribed to.
+          type: array
+          items:
+            type: string
+        subEvents:
+          description: Sub-events to monitor
+          allOf:
+          - $ref: '#/components/schemas/PrimaryNetworkAddressActivitySubEvents'
+        balanceThresholdFilter:
+          description: Balance threshold filter
+          allOf:
+          - $ref: '#/components/schemas/PrimaryNetworkBalanceThresholdFilter'
+      required:
+      - keyType
+      - keys
+      - subEvents
+    WebhookStatusType:
+      type: string
+      enum:
+      - active
+      - inactive
   securitySchemes:
     apiKey:
       type: apiKey

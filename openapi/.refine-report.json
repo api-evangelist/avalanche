@@ -27,9 +27,7 @@
     "avalanche-teleporter-api-openapi.yml",
     "avalanche-webhooks-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -37,8 +35,7 @@
     "data-api.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "data-api.json: tagged webhooks POST address_activity -> Data API",
     "data-api.json: declared missing tag: Data API",
-    "superseded outputs removed: avalanche-nf-ts-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 25 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "avalanche-avax-supply-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -51,7 +48,7 @@
     "avalanche-evm-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "avalanche-health-check-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "avalanche-interchain-messaging-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "avalanche-nf-ts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avalanche-nfts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "avalanche-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "avalanche-primary-network-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "avalanche-primary-network-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
