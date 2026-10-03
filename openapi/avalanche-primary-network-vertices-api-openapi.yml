@@ -325,95 +325,6 @@ paths:
       - Primary Network Vertices
 components:
   schemas:
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
-      required:
-      - message
-      - statusCode
-      - error
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    Network:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-      - testnet
-    SortOrder:
-      type: string
-      enum:
-      - asc
-      - desc
-    XChainId:
-      type: string
-      enum:
-      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
-      - x-chain
     PrimaryNetworkChainInfo:
       type: object
       properties:
@@ -424,12 +335,6 @@ components:
       required:
       - chainName
       - network
-    PrimaryNetworkChainName:
-      type: string
-      enum:
-      - p-chain
-      - x-chain
-      - c-chain
     Unauthorized:
       type: object
       properties:
@@ -478,6 +383,18 @@ components:
       - message
       - statusCode
       - error
+    XChainId:
+      type: string
+      enum:
+      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
+      - x-chain
+    Network:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+      - testnet
     XChainVertex:
       type: object
       properties:
@@ -510,7 +427,12 @@ components:
       - txCount
       - transactions
       - vertexSizeBytes
-    NotFound:
+    SortOrder:
+      type: string
+      enum:
+      - asc
+      - desc
+    BadGateway:
       type: object
       properties:
         message:
@@ -524,36 +446,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 404
+          - 502
         error:
           type: string
           description: The type of error
           examples:
-          - Not Found
-      required:
-      - message
-      - statusCode
-      - error
-    ServiceUnavailable:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 503
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Service Unavailable
+          - Bad Gateway
       required:
       - message
       - statusCode
@@ -593,6 +491,108 @@ components:
           description: The type of error
           examples:
           - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    PrimaryNetworkChainName:
+      type: string
+      enum:
+      - p-chain
+      - x-chain
+      - c-chain
+    ServiceUnavailable:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 503
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Service Unavailable
+      required:
+      - message
+      - statusCode
+      - error
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    BadRequest:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
       required:
       - message
       - statusCode

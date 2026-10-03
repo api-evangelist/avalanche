@@ -288,7 +288,7 @@ paths:
       - EVM Blocks
 components:
   schemas:
-    BadGateway:
+    Unauthorized:
       type: object
       properties:
         message:
@@ -302,60 +302,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 502
+          - 401
         error:
           type: string
           description: The type of error
           examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
-      required:
-      - message
-      - statusCode
-      - error
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
+          - Unauthorized
       required:
       - message
       - statusCode
@@ -429,12 +381,108 @@ components:
       - parentHash
       - feesSpent
       - cumulativeTransactions
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 500
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Internal Server Error
+      required:
+      - message
+      - statusCode
+      - error
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
     Network:
       type: string
       enum:
       - mainnet
       - fuji
       - testnet
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
     EvmBlock:
       type: object
       properties:
@@ -516,7 +564,7 @@ components:
             $ref: '#/components/schemas/EvmBlock'
       required:
       - blocks
-    Unauthorized:
+    ServiceUnavailable:
       type: object
       properties:
         message:
@@ -530,36 +578,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 401
+          - 503
         error:
           type: string
           description: The type of error
           examples:
-          - Unauthorized
-      required:
-      - message
-      - statusCode
-      - error
-    InternalServerError:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 500
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Internal Server Error
+          - Service Unavailable
       required:
       - message
       - statusCode
@@ -588,7 +612,7 @@ components:
       - message
       - statusCode
       - error
-    ServiceUnavailable:
+    BadRequest:
       type: object
       properties:
         message:
@@ -602,36 +626,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 503
+          - 400
         error:
           type: string
           description: The type of error
           examples:
-          - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
-    Forbidden:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 403
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Forbidden
+          - Bad Request
       required:
       - message
       - statusCode

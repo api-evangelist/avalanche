@@ -479,6 +479,30 @@ paths:
       - Primary Network UTXOs
 components:
   schemas:
+    PrimaryNetworkAssetType:
+      type: string
+      description: Type of asset like SECP256K1 or NFT.
+      enum:
+      - secp256k1
+      - nft
+    UtxoCredential:
+      type: object
+      properties:
+        signature:
+          type: string
+          description: Signature provided to consume the output.
+          examples:
+          - bWWoZUu0Z3STjuk/+2az7M4vP0oqc9NtiA7kOdqINCIE/2+5va5R1KNCWwEX5jE1xVHLvAxU2LHTN5gK8m84HwA
+        publicKey:
+          type: string
+          description: Public key associated with the signature.
+          examples:
+          - AdMQOtubgBFFJu++0faHPIIA6KmdZ2ERErMRGzyy6juI
+    SortOrder:
+      type: string
+      enum:
+      - asc
+      - desc
     Utxo:
       type: object
       properties:
@@ -572,81 +596,45 @@ components:
       - threshold
       - timestamp
       - utxoType
-    SortOrder:
-      type: string
-      enum:
-      - asc
-      - desc
-    PrimaryNetworkAssetType:
-      type: string
-      description: Type of asset like SECP256K1 or NFT.
-      enum:
-      - secp256k1
-      - nft
-    PrimaryNetworkChainName:
-      type: string
-      enum:
-      - p-chain
-      - x-chain
-      - c-chain
-    UtxoType:
-      type: string
-      description: Indicates whether the UTXO is staked or transferable
-      enum:
-      - STAKE
-      - TRANSFER
-    InternalServerError:
+    AssetAmount:
       type: object
       properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
+        assetId:
+          type: string
+          description: Unique ID for an asset.
+          examples:
+          - th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof
+        name:
+          type: string
+          description: Name of this asset.
+          examples:
+          - Avalanche
+        symbol:
+          type: string
+          description: Symbol for this asset (max 4 characters).
+          examples:
+          - AVAX
+        denomination:
           type: number
-          description: The HTTP status code of the response
+          description: Denomination of this asset to represent fungibility.
           examples:
-          - 500
-        error:
+          - 9
+        type:
+          examples:
+          - secp256k1
+          $ref: '#/components/schemas/PrimaryNetworkAssetType'
+        amount:
           type: string
-          description: The type of error
+          description: Amount of the asset.
           examples:
-          - Internal Server Error
+          - '5001000'
       required:
-      - message
-      - statusCode
-      - error
-    UtxoCredential:
-      type: object
-      properties:
-        signature:
-          type: string
-          description: Signature provided to consume the output.
-          examples:
-          - bWWoZUu0Z3STjuk/+2az7M4vP0oqc9NtiA7kOdqINCIE/2+5va5R1KNCWwEX5jE1xVHLvAxU2LHTN5gK8m84HwA
-        publicKey:
-          type: string
-          description: Public key associated with the signature.
-          examples:
-          - AdMQOtubgBFFJu++0faHPIIA6KmdZ2ERErMRGzyy6juI
-    ListUtxosResponse:
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        utxos:
-          type: array
-          items:
-            $ref: '#/components/schemas/Utxo'
-        chainInfo:
-          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
-      required:
-      - utxos
-      - chainInfo
+      - assetId
+      - name
+      - symbol
+      - denomination
+      - type
+      - amount
     ServiceUnavailable:
       type: object
       properties:
@@ -671,6 +659,189 @@ components:
       - message
       - statusCode
       - error
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    PrimaryNetworkType:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+    ListUtxosResponse:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        utxos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Utxo'
+        chainInfo:
+          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
+      required:
+      - utxos
+      - chainInfo
+    BlockchainId:
+      type: string
+      enum:
+      - 11111111111111111111111111111111LpoYY
+      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
+      - 2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5
+      - yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp
+      - p-chain
+      - x-chain
+      - c-chain
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    PrimaryNetworkChainName:
+      type: string
+      enum:
+      - p-chain
+      - x-chain
+      - c-chain
+    LastActivityTimestamp:
+      type: object
+      properties:
+        timestamp:
+          type: number
+          description: Unix timestamp in seconds at which the last activity occurred.
+        blockNumber:
+          type: string
+          description: Block height at which the last activity occurred.
+        txHash:
+          type: string
+          description: Transaction hash of the transaction that created or consumed the address' UTXOs.
+        utxoId:
+          type: string
+          description: UTXO ID of the UTXO that was created or consumed.
+        isConsumed:
+          type: boolean
+          description: Whether the last activity was a consumption of an existing UTXO.
+        chainName:
+          $ref: '#/components/schemas/PrimaryNetworkChainName'
+        network:
+          $ref: '#/components/schemas/PrimaryNetworkType'
+      required:
+      - timestamp
+      - blockNumber
+      - txHash
+      - utxoId
+      - isConsumed
+      - chainName
+      - network
+    UtxosSortByOption:
+      type: string
+      enum:
+      - timestamp
+      - amount
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
+    ListPChainUtxosResponse:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        utxos:
+          type: array
+          items:
+            $ref: '#/components/schemas/PChainUtxo'
+        chainInfo:
+          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
+      required:
+      - utxos
+      - chainInfo
     PChainUtxo:
       type: object
       properties:
@@ -762,98 +933,16 @@ components:
       - outputIndex
       - txHash
       - utxoType
-    Network:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-      - testnet
-    BadGateway:
+    PrimaryNetworkChainInfo:
       type: object
       properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
+        chainName:
+          $ref: '#/components/schemas/PrimaryNetworkChainName'
+        network:
+          $ref: '#/components/schemas/Network'
       required:
-      - message
-      - statusCode
-      - error
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
-      required:
-      - message
-      - statusCode
-      - error
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    PrimaryNetworkType:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-    PrimaryNetworkAddressesBodyDto:
-      type: object
-      properties:
-        addresses:
-          type: string
-          description: Comma-separated list of primary network addresses
-          example: P-avax1abc123,X-avax1def456,C-avax1ghi789
-      required:
-      - addresses
+      - chainName
+      - network
     Unauthorized:
       type: object
       properties:
@@ -878,48 +967,7 @@ components:
       - message
       - statusCode
       - error
-    LastActivityTimestamp:
-      type: object
-      properties:
-        timestamp:
-          type: number
-          description: Unix timestamp in seconds at which the last activity occurred.
-        blockNumber:
-          type: string
-          description: Block height at which the last activity occurred.
-        txHash:
-          type: string
-          description: Transaction hash of the transaction that created or consumed the address' UTXOs.
-        utxoId:
-          type: string
-          description: UTXO ID of the UTXO that was created or consumed.
-        isConsumed:
-          type: boolean
-          description: Whether the last activity was a consumption of an existing UTXO.
-        chainName:
-          $ref: '#/components/schemas/PrimaryNetworkChainName'
-        network:
-          $ref: '#/components/schemas/PrimaryNetworkType'
-      required:
-      - timestamp
-      - blockNumber
-      - txHash
-      - utxoId
-      - isConsumed
-      - chainName
-      - network
-    BlockchainId:
-      type: string
-      enum:
-      - 11111111111111111111111111111111LpoYY
-      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
-      - 2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5
-      - yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp
-      - p-chain
-      - x-chain
-      - c-chain
-    Forbidden:
+    InternalServerError:
       type: object
       properties:
         message:
@@ -933,92 +981,44 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 403
+          - 500
         error:
           type: string
           description: The type of error
           examples:
-          - Forbidden
+          - Internal Server Error
       required:
       - message
       - statusCode
       - error
-    AssetAmount:
+    Network:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+      - testnet
+    PrimaryNetworkAddressesBodyDto:
       type: object
       properties:
-        assetId:
+        addresses:
           type: string
-          description: Unique ID for an asset.
-          examples:
-          - th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof
-        name:
-          type: string
-          description: Name of this asset.
-          examples:
-          - Avalanche
-        symbol:
-          type: string
-          description: Symbol for this asset (max 4 characters).
-          examples:
-          - AVAX
-        denomination:
-          type: number
-          description: Denomination of this asset to represent fungibility.
-          examples:
-          - 9
-        type:
-          examples:
-          - secp256k1
-          $ref: '#/components/schemas/PrimaryNetworkAssetType'
-        amount:
-          type: string
-          description: Amount of the asset.
-          examples:
-          - '5001000'
+          description: Comma-separated list of primary network addresses
+          example: P-avax1abc123,X-avax1def456,C-avax1ghi789
       required:
-      - assetId
-      - name
-      - symbol
-      - denomination
-      - type
-      - amount
+      - addresses
+    UtxoType:
+      type: string
+      description: Indicates whether the UTXO is staked or transferable
+      enum:
+      - STAKE
+      - TRANSFER
     RewardType:
       type: string
       enum:
       - VALIDATOR
       - DELEGATOR
       - VALIDATOR_FEE
-    UtxosSortByOption:
-      type: string
-      enum:
-      - timestamp
-      - amount
-    ListPChainUtxosResponse:
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        utxos:
-          type: array
-          items:
-            $ref: '#/components/schemas/PChainUtxo'
-        chainInfo:
-          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
-      required:
-      - utxos
-      - chainInfo
-    PrimaryNetworkChainInfo:
-      type: object
-      properties:
-        chainName:
-          $ref: '#/components/schemas/PrimaryNetworkChainName'
-        network:
-          $ref: '#/components/schemas/Network'
-      required:
-      - chainName
-      - network
-    NotFound:
+    BadRequest:
       type: object
       properties:
         message:
@@ -1032,12 +1032,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 404
+          - 400
         error:
           type: string
           description: The type of error
           examples:
-          - Not Found
+          - Bad Request
       required:
       - message
       - statusCode

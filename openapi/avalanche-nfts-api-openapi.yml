@@ -300,54 +300,6 @@ paths:
       - NFTs
 components:
   schemas:
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
-      required:
-      - message
-      - statusCode
-      - error
     Erc721Token:
       type: object
       properties:
@@ -389,30 +341,6 @@ components:
       - tokenId
       - tokenUri
       - metadata
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
     Unauthorized:
       type: object
       properties:
@@ -433,6 +361,95 @@ components:
           description: The type of error
           examples:
           - Unauthorized
+      required:
+      - message
+      - statusCode
+      - error
+    Erc721TokenMetadata:
+      type: object
+      properties:
+        indexStatus:
+          examples:
+          - indexed
+          $ref: '#/components/schemas/NftTokenMetadataStatus'
+        metadataLastUpdatedTimestamp:
+          type: number
+        name:
+          type: string
+        symbol:
+          type: string
+        imageUri:
+          type: string
+        description:
+          type: string
+        animationUri:
+          type: string
+        externalUrl:
+          type: string
+        background:
+          type: string
+        attributes:
+          type: string
+      required:
+      - indexStatus
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 500
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Internal Server Error
+      required:
+      - message
+      - statusCode
+      - error
+    ListNftTokens:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        tokens:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/Erc721Token'
+            - $ref: '#/components/schemas/Erc1155Token'
+      required:
+      - tokens
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
       required:
       - message
       - statusCode
@@ -466,20 +483,69 @@ components:
           type: string
       required:
       - indexStatus
-    ListNftTokens:
+    Forbidden:
       type: object
       properties:
-        nextPageToken:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
           type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        tokens:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/Erc721Token'
-            - $ref: '#/components/schemas/Erc1155Token'
+          description: The type of error
+          examples:
+          - Forbidden
       required:
-      - tokens
+      - message
+      - statusCode
+      - error
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    NftTokenMetadataStatus:
+      type: string
+      description: The metadata indexing status of the nft.
+      enum:
+      - UNKNOWN
+      - MISSING_TOKEN
+      - INVALID_TOKEN_URI
+      - INVALID_TOKEN_URI_SCHEME
+      - UNREACHABLE_TOKEN_URI
+      - THROTTLED_TOKEN_URI
+      - METADATA_CONTENT_TOO_LARGE
+      - INVALID_METADATA
+      - INVALID_METADATA_JSON
+      - INDEXED
+      - UNINDEXED
     Erc1155Token:
       type: object
       properties:
@@ -504,7 +570,7 @@ components:
       - tokenId
       - tokenUri
       - metadata
-    InternalServerError:
+    ServiceUnavailable:
       type: object
       properties:
         message:
@@ -518,12 +584,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 500
+          - 503
         error:
           type: string
           description: The type of error
           examples:
-          - Internal Server Error
+          - Service Unavailable
       required:
       - message
       - statusCode
@@ -552,22 +618,7 @@ components:
       - message
       - statusCode
       - error
-    NftTokenMetadataStatus:
-      type: string
-      description: The metadata indexing status of the nft.
-      enum:
-      - UNKNOWN
-      - MISSING_TOKEN
-      - INVALID_TOKEN_URI
-      - INVALID_TOKEN_URI_SCHEME
-      - UNREACHABLE_TOKEN_URI
-      - THROTTLED_TOKEN_URI
-      - METADATA_CONTENT_TOO_LARGE
-      - INVALID_METADATA
-      - INVALID_METADATA_JSON
-      - INDEXED
-      - UNINDEXED
-    ServiceUnavailable:
+    BadRequest:
       type: object
       properties:
         message:
@@ -581,63 +632,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 503
+          - 400
         error:
           type: string
           description: The type of error
           examples:
-          - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
-    Erc721TokenMetadata:
-      type: object
-      properties:
-        indexStatus:
-          examples:
-          - indexed
-          $ref: '#/components/schemas/NftTokenMetadataStatus'
-        metadataLastUpdatedTimestamp:
-          type: number
-        name:
-          type: string
-        symbol:
-          type: string
-        imageUri:
-          type: string
-        description:
-          type: string
-        animationUri:
-          type: string
-        externalUrl:
-          type: string
-        background:
-          type: string
-        attributes:
-          type: string
-      required:
-      - indexStatus
-    Forbidden:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 403
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Forbidden
+          - Bad Request
       required:
       - message
       - statusCode

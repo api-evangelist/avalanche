@@ -257,29 +257,295 @@ paths:
       - Primary Network Rewards
 components:
   schemas:
-    CurrencyCode:
+    PrimaryNetworkAssetType:
       type: string
-      description: ISO 4217 currency code.
+      description: Type of asset like SECP256K1 or NFT.
       enum:
-      - usd
-      - eur
-      - aud
-      - cad
-      - chf
-      - clp
-      - cny
-      - czk
-      - dkk
-      - gbp
-      - hkd
-      - huf
-      - jpy
-      - nzd
+      - secp256k1
+      - nft
     SortOrder:
       type: string
       enum:
       - asc
       - desc
+    Money:
+      type: object
+      properties:
+        currencyCode:
+          examples:
+          - usd
+          $ref: '#/components/schemas/CurrencyCode'
+        value:
+          type: number
+          description: Monetary value in base 10 decimals.
+          examples:
+          - '42.42'
+      required:
+      - currencyCode
+      - value
+    AssetAmount:
+      type: object
+      properties:
+        assetId:
+          type: string
+          description: Unique ID for an asset.
+          examples:
+          - th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof
+        name:
+          type: string
+          description: Name of this asset.
+          examples:
+          - Avalanche
+        symbol:
+          type: string
+          description: Symbol for this asset (max 4 characters).
+          examples:
+          - AVAX
+        denomination:
+          type: number
+          description: Denomination of this asset to represent fungibility.
+          examples:
+          - 9
+        type:
+          examples:
+          - secp256k1
+          $ref: '#/components/schemas/PrimaryNetworkAssetType'
+        amount:
+          type: string
+          description: Amount of the asset.
+          examples:
+          - '5001000'
+      required:
+      - assetId
+      - name
+      - symbol
+      - denomination
+      - type
+      - amount
+    ServiceUnavailable:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 503
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Service Unavailable
+      required:
+      - message
+      - statusCode
+      - error
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    HistoricalReward:
+      type: object
+      properties:
+        addresses:
+          description: An array of P-Chain wallet addresses.
+          examples:
+          - - avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg
+          type: array
+          items:
+            type: string
+        txHash:
+          type: string
+        amountStaked:
+          type: string
+        nodeId:
+          type: string
+        startTimestamp:
+          type: number
+        endTimestamp:
+          type: number
+        rewardType:
+          $ref: '#/components/schemas/RewardType'
+        utxoId:
+          type: string
+        outputIndex:
+          type: number
+        reward:
+          $ref: '#/components/schemas/AssetWithPriceInfo'
+        rewardTxHash:
+          type: string
+      required:
+      - addresses
+      - txHash
+      - amountStaked
+      - nodeId
+      - startTimestamp
+      - endTimestamp
+      - rewardType
+      - utxoId
+      - outputIndex
+      - reward
+      - rewardTxHash
+    PendingReward:
+      type: object
+      properties:
+        addresses:
+          description: An array of P-Chain wallet addresses.
+          examples:
+          - - avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg
+          type: array
+          items:
+            type: string
+        txHash:
+          type: string
+        amountStaked:
+          type: string
+        nodeId:
+          type: string
+        startTimestamp:
+          type: number
+        endTimestamp:
+          type: number
+        rewardType:
+          $ref: '#/components/schemas/RewardType'
+        progress:
+          type: number
+        estimatedReward:
+          description: An object containing P-chain Asset basic info and the amount of that Asset ID.
+          allOf:
+          - $ref: '#/components/schemas/AssetAmount'
+      required:
+      - addresses
+      - txHash
+      - amountStaked
+      - nodeId
+      - startTimestamp
+      - endTimestamp
+      - rewardType
+      - progress
+      - estimatedReward
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    ListPendingRewardsResponse:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        pendingRewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/PendingReward'
+      required:
+      - pendingRewards
+    ListHistoricalRewardsResponse:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        historicalRewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricalReward'
+      required:
+      - historicalRewards
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
     AssetWithPriceInfo:
       type: object
       properties:
@@ -323,233 +589,6 @@ components:
       - denomination
       - type
       - amount
-    PrimaryNetworkAssetType:
-      type: string
-      description: Type of asset like SECP256K1 or NFT.
-      enum:
-      - secp256k1
-      - nft
-    InternalServerError:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 500
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Internal Server Error
-      required:
-      - message
-      - statusCode
-      - error
-    ServiceUnavailable:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 503
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
-    PendingReward:
-      type: object
-      properties:
-        addresses:
-          description: An array of P-Chain wallet addresses.
-          examples:
-          - - avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg
-          type: array
-          items:
-            type: string
-        txHash:
-          type: string
-        amountStaked:
-          type: string
-        nodeId:
-          type: string
-        startTimestamp:
-          type: number
-        endTimestamp:
-          type: number
-        rewardType:
-          $ref: '#/components/schemas/RewardType'
-        progress:
-          type: number
-        estimatedReward:
-          description: An object containing P-chain Asset basic info and the amount of that Asset ID.
-          allOf:
-          - $ref: '#/components/schemas/AssetAmount'
-      required:
-      - addresses
-      - txHash
-      - amountStaked
-      - nodeId
-      - startTimestamp
-      - endTimestamp
-      - rewardType
-      - progress
-      - estimatedReward
-    Network:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-      - testnet
-    HistoricalReward:
-      type: object
-      properties:
-        addresses:
-          description: An array of P-Chain wallet addresses.
-          examples:
-          - - avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg
-          type: array
-          items:
-            type: string
-        txHash:
-          type: string
-        amountStaked:
-          type: string
-        nodeId:
-          type: string
-        startTimestamp:
-          type: number
-        endTimestamp:
-          type: number
-        rewardType:
-          $ref: '#/components/schemas/RewardType'
-        utxoId:
-          type: string
-        outputIndex:
-          type: number
-        reward:
-          $ref: '#/components/schemas/AssetWithPriceInfo'
-        rewardTxHash:
-          type: string
-      required:
-      - addresses
-      - txHash
-      - amountStaked
-      - nodeId
-      - startTimestamp
-      - endTimestamp
-      - rewardType
-      - utxoId
-      - outputIndex
-      - reward
-      - rewardTxHash
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
-      required:
-      - message
-      - statusCode
-      - error
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    Money:
-      type: object
-      properties:
-        currencyCode:
-          examples:
-          - usd
-          $ref: '#/components/schemas/CurrencyCode'
-        value:
-          type: number
-          description: Monetary value in base 10 decimals.
-          examples:
-          - '42.42'
-      required:
-      - currencyCode
-      - value
     Unauthorized:
       type: object
       properties:
@@ -574,7 +613,25 @@ components:
       - message
       - statusCode
       - error
-    Forbidden:
+    CurrencyCode:
+      type: string
+      description: ISO 4217 currency code.
+      enum:
+      - usd
+      - eur
+      - aud
+      - cad
+      - chf
+      - clp
+      - cny
+      - czk
+      - dkk
+      - gbp
+      - hkd
+      - huf
+      - jpy
+      - nzd
+    InternalServerError:
       type: object
       properties:
         message:
@@ -588,86 +645,29 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 403
+          - 500
         error:
           type: string
           description: The type of error
           examples:
-          - Forbidden
+          - Internal Server Error
       required:
       - message
       - statusCode
       - error
-    ListPendingRewardsResponse:
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        pendingRewards:
-          type: array
-          items:
-            $ref: '#/components/schemas/PendingReward'
-      required:
-      - pendingRewards
-    AssetAmount:
-      type: object
-      properties:
-        assetId:
-          type: string
-          description: Unique ID for an asset.
-          examples:
-          - th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof
-        name:
-          type: string
-          description: Name of this asset.
-          examples:
-          - Avalanche
-        symbol:
-          type: string
-          description: Symbol for this asset (max 4 characters).
-          examples:
-          - AVAX
-        denomination:
-          type: number
-          description: Denomination of this asset to represent fungibility.
-          examples:
-          - 9
-        type:
-          examples:
-          - secp256k1
-          $ref: '#/components/schemas/PrimaryNetworkAssetType'
-        amount:
-          type: string
-          description: Amount of the asset.
-          examples:
-          - '5001000'
-      required:
-      - assetId
-      - name
-      - symbol
-      - denomination
-      - type
-      - amount
+    Network:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+      - testnet
     RewardType:
       type: string
       enum:
       - VALIDATOR
       - DELEGATOR
       - VALIDATOR_FEE
-    ListHistoricalRewardsResponse:
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        historicalRewards:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricalReward'
-      required:
-      - historicalRewards
-    NotFound:
+    BadRequest:
       type: object
       properties:
         message:
@@ -681,12 +681,12 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 404
+          - 400
         error:
           type: string
           description: The type of error
           examples:
-          - Not Found
+          - Bad Request
       required:
       - message
       - statusCode
