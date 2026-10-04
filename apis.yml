@@ -625,6 +625,9 @@ apis:
   - type: FinOps
     url: finops/data-api.yml
 common:
+- type: CapabilityMap
+  url: capabilities/avalanche-capability-edges.yml
+  name: Avalanche Business Capability Map
 - type: Website
   url: https://www.avacloud.io/
 - type: AgenticAccess
