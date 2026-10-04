@@ -325,17 +325,22 @@ paths:
       - Primary Network Vertices
 components:
   schemas:
-    PrimaryNetworkChainInfo:
+    ListXChainVerticesResponse:
       type: object
       properties:
-        chainName:
-          $ref: '#/components/schemas/PrimaryNetworkChainName'
-        network:
-          $ref: '#/components/schemas/Network'
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        vertices:
+          type: array
+          items:
+            $ref: '#/components/schemas/XChainVertex'
+        chainInfo:
+          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
       required:
-      - chainName
-      - network
-    Unauthorized:
+      - vertices
+      - chainInfo
+    BadGateway:
       type: object
       properties:
         message:
@@ -349,52 +354,21 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 401
+          - 502
         error:
           type: string
           description: The type of error
           examples:
-          - Unauthorized
+          - Bad Gateway
       required:
       - message
       - statusCode
       - error
-    InternalServerError:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 500
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Internal Server Error
-      required:
-      - message
-      - statusCode
-      - error
-    XChainId:
+    SortOrder:
       type: string
       enum:
-      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
-      - x-chain
-    Network:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-      - testnet
+      - asc
+      - desc
     XChainVertex:
       type: object
       properties:
@@ -427,12 +401,13 @@ components:
       - txCount
       - transactions
       - vertexSizeBytes
-    SortOrder:
+    Network:
       type: string
       enum:
-      - asc
-      - desc
-    BadGateway:
+      - mainnet
+      - fuji
+      - testnet
+    Unauthorized:
       type: object
       properties:
         message:
@@ -446,31 +421,110 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 502
+          - 401
         error:
           type: string
           description: The type of error
           examples:
-          - Bad Gateway
+          - Unauthorized
       required:
       - message
       - statusCode
       - error
-    ListXChainVerticesResponse:
+    PrimaryNetworkChainInfo:
       type: object
       properties:
-        nextPageToken:
-          type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        vertices:
-          type: array
-          items:
-            $ref: '#/components/schemas/XChainVertex'
-        chainInfo:
-          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
+        chainName:
+          $ref: '#/components/schemas/PrimaryNetworkChainName'
+        network:
+          $ref: '#/components/schemas/Network'
       required:
-      - vertices
-      - chainInfo
+      - chainName
+      - network
+    PrimaryNetworkChainName:
+      type: string
+      enum:
+      - p-chain
+      - x-chain
+      - c-chain
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    BadRequest:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
+      required:
+      - message
+      - statusCode
+      - error
+    XChainId:
+      type: string
+      enum:
+      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
+      - x-chain
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 500
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Internal Server Error
+      required:
+      - message
+      - statusCode
+      - error
     Forbidden:
       type: object
       properties:
@@ -519,12 +573,6 @@ components:
       - message
       - statusCode
       - error
-    PrimaryNetworkChainName:
-      type: string
-      enum:
-      - p-chain
-      - x-chain
-      - c-chain
     ServiceUnavailable:
       type: object
       properties:
@@ -545,54 +593,6 @@ components:
           description: The type of error
           examples:
           - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
-    NotFound:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 404
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Not Found
-      required:
-      - message
-      - statusCode
-      - error
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
       required:
       - message
       - statusCode
