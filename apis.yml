@@ -625,6 +625,12 @@ apis:
   - type: FinOps
     url: finops/data-api.yml
 common:
+- type: Plans
+  url: plans/data-api.yml
+- type: RateLimits
+  url: rate-limits/data-api.yml
+- type: FinOps
+  url: finops/data-api.yml
 - type: CapabilityMap
   url: capabilities/avalanche-capability-edges.yml
   name: Avalanche Business Capability Map
