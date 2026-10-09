@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: AvaCloud API Plans
 description: AvaCloud offers tiered subscription plans for access to the Glacier Data API, Metrics API, RPC API, and Webhooks API. Plans are differentiated by compute unit (CU) rate limits per minute and per day. Unauthenticated access is supported with reduced limits. Paid plans unlock higher throughput and L1 infrastructure features.
 url: https://docs.avacloud.io/getting-started/plans
@@ -111,3 +115,59 @@ plans:
       - Dedicated onboarding
       - Custom infrastructure sizing
       - Contact sales@avacloud.io
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Unauthenticated
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Base
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Growth
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise (L1 Starter)
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise (L1 Pro)
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise (Custom)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
