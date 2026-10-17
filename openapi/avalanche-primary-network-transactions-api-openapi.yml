@@ -548,6 +548,89 @@ paths:
       - Primary Network Transactions
 components:
   schemas:
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    BadRequest:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
+      required:
+      - message
+      - statusCode
+      - error
+    BlockchainId:
+      type: string
+      enum:
+      - 11111111111111111111111111111111LpoYY
+      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
+      - 2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5
+      - yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp
+      - p-chain
+      - x-chain
+      - c-chain
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
     PrimaryNetworkTxType:
       type: string
       enum:
@@ -574,124 +657,13 @@ components:
       - UNKNOWN
       - CreateAssetTx
       - OperationTx
-    PrimaryNetworkChainInfo:
-      type: object
-      properties:
-        chainName:
-          $ref: '#/components/schemas/PrimaryNetworkChainName'
-        network:
-          $ref: '#/components/schemas/Network'
-      required:
-      - chainName
-      - network
-    RewardType:
+    PrimaryNetworkAssetType:
       type: string
+      description: Type of asset like SECP256K1 or NFT.
       enum:
-      - VALIDATOR
-      - DELEGATOR
-      - VALIDATOR_FEE
-    XChainTransactionType:
-      type: string
-      description: Type of transaction.
-      enum:
-      - BaseTx
-      - CreateAssetTx
-      - OperationTx
-      - ImportTx
-      - ExportTx
-      - UNKNOWN
-    PChainUtxo:
-      type: object
-      properties:
-        addresses:
-          description: Addresses that are eligible to sign the consumption of this output.
-          examples:
-          - - avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw
-          type: array
-          items:
-            type: string
-        asset:
-          $ref: '#/components/schemas/AssetAmount'
-        consumedOnChainId:
-          type: string
-          description: Blockchain ID on which this output is consumed on.
-          examples:
-          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-        consumingTxHash:
-          type: string
-          description: Transaction ID that consumed this output.
-          examples:
-          - 3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c
-        createdOnChainId:
-          type: string
-          description: Blockchain ID on which this output is created on.
-          examples:
-          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-        utxoId:
-          type: string
-          description: UTXO ID for this output.
-          examples:
-          - 68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC
-        utxoBytes:
-          type: string
-          description: The bytes of the UTXO
-        amount:
-          type: string
-          deprecated: true
-        assetId:
-          type: string
-          deprecated: true
-        blockNumber:
-          type: string
-        blockTimestamp:
-          type: number
-        consumingBlockNumber:
-          type: string
-          description: Block height in which the transaction consuming this UTXO was included
-        consumingBlockTimestamp:
-          type: number
-          description: Timestamp in seconds at which this UTXO is used in a consuming transaction
-        platformLocktime:
-          type: number
-          description: Timestamp in seconds after which this UTXO can be consumed
-        outputIndex:
-          type: number
-          description: The index of the UTXO in the transaction
-        rewardType:
-          $ref: '#/components/schemas/RewardType'
-        stakeableLocktime:
-          type: number
-          description: Timestamp in seconds before which a UTXO can only be used for staking transactions. After stakeable locktime, a UTXO can be used for anything
-        staked:
-          type: boolean
-        threshold:
-          type: number
-          description: The minimum number of signatures required to spend this UTXO
-        txHash:
-          type: string
-          description: The hash of the transaction that created this UTXO
-        utxoEndTimestamp:
-          type: number
-          description: Timestamp in seconds after which the staked UTXO will be unlocked.
-        utxoStartTimestamp:
-          type: number
-          description: Timestamp in seconds at which the staked UTXO was locked.
-        utxoType:
-          $ref: '#/components/schemas/UtxoType'
-      required:
-      - addresses
-      - asset
-      - consumedOnChainId
-      - createdOnChainId
-      - utxoId
-      - amount
-      - assetId
-      - blockNumber
-      - blockTimestamp
-      - outputIndex
-      - txHash
-      - utxoType
-    ListXChainTransactionsResponse:
+      - secp256k1
+      - nft
+    ListPChainTransactionsResponse:
       type: object
       properties:
         nextPageToken:
@@ -700,62 +672,89 @@ components:
         transactions:
           type: array
           items:
-            anyOf:
-            - $ref: '#/components/schemas/XChainNonLinearTransaction'
-            - $ref: '#/components/schemas/XChainLinearTransaction'
+            $ref: '#/components/schemas/PChainTransaction'
         chainInfo:
           $ref: '#/components/schemas/PrimaryNetworkChainInfo'
       required:
       - transactions
       - chainInfo
-    EvmGenesisWarpConfigDto:
+    CChainImportTransaction:
       type: object
       properties:
-        blockTimestamp:
-          type: number
-          description: Block timestamp
-          example: 1690000000
-        quorumNumerator:
-          type: number
-          description: Quorum numerator
-          example: 67
-        requirePrimaryNetworkSigners:
-          type: boolean
-          description: Require primary network signers
-          example: true
-    BlsCredentials:
-      type: object
-      properties:
-        publicKey:
+        txHash:
           type: string
-        proofOfPossession:
-          type: string
-      required:
-      - publicKey
-      - proofOfPossession
-    TransactionVertexDetail:
-      type: object
-      properties:
-        hash:
-          type: string
-          description: Vertex ID of the vertex this transaction belongs to.
+          description: Unique ID for this transaction.
           examples:
-          - 82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S
-        height:
+          - 3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c
+        blockHeight:
           type: number
-          description: Vertex height of the vertex this transaction belongs to.
+          description: Height of the block this transaction belongs to.
           examples:
-          - 1961
+          - 1005
+        blockHash:
+          type: string
+          description: Hash of the block this transaction belongs to.
+          examples:
+          - '0x57a5cb7704561d1d59bd563b6421021b7563960c05ba3ae0e36fc36917c742ee'
         timestamp:
           type: number
-          description: Timestamp in seconds this vertex was accepted.
+          description: Latest timestamp in seconds this transaction was accepted.
           examples:
           - 1600762738
+        memo:
+          type: string
+          description: Hex encoded memo bytes for this transaction.
+          examples:
+          - '0x546865204176616c616e6368652050726f6a656374'
+        amountUnlocked:
+          description: Assets unlocked by inputs of this transaction.
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetAmount'
+        amountCreated:
+          description: Assets created by outputs of this transaction.
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetAmount'
+        sourceChain:
+          type: string
+          description: Source chain for an atomic transaction.
+          examples:
+          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+        destinationChain:
+          type: string
+          description: Destination chain for an atomic transaction.
+          examples:
+          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+        txType:
+          type: string
+          description: Type of transaction.
+          enum:
+          - ImportTx
+          examples:
+          - ImportTx
+        evmOutputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/EVMOutput'
+        consumedUtxos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Utxo'
       required:
-      - hash
-      - height
+      - txHash
+      - blockHeight
+      - blockHash
       - timestamp
-    XChainAssetDetails:
+      - memo
+      - amountUnlocked
+      - amountCreated
+      - sourceChain
+      - destinationChain
+      - txType
+      - evmOutputs
+      - consumedUtxos
+    AssetAmount:
       type: object
       properties:
         assetId:
@@ -782,141 +781,44 @@ components:
           examples:
           - secp256k1
           $ref: '#/components/schemas/PrimaryNetworkAssetType'
-        createdAtTimestamp:
-          type: number
-          description: Timestamp in seconds this asset was created on.
+        amount:
+          type: string
+          description: Amount of the asset.
           examples:
-          - 1675444720
-        cap:
-          examples:
-          - fixed
-          $ref: '#/components/schemas/PrimaryNetworkAssetCap'
+          - '5001000'
       required:
       - assetId
       - name
       - symbol
       - denomination
       - type
-      - createdAtTimestamp
-      - cap
-    InternalServerError:
+      - amount
+    BlsCredentials:
       type: object
       properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 500
-        error:
+        publicKey:
           type: string
-          description: The type of error
-          examples:
-          - Internal Server Error
+        proofOfPossession:
+          type: string
       required:
-      - message
-      - statusCode
-      - error
-    L1ValidatorManagerDetails:
+      - publicKey
+      - proofOfPossession
+    EvmGenesisAllocDto:
       type: object
       properties:
-        blockchainId:
+        balance:
           type: string
-        contractAddress:
+          description: Account balance in hex format
+          example: '0x295BE96E64066972000000'
+        code:
           type: string
-      required:
-      - blockchainId
-      - contractAddress
-    XChainLinearTransaction:
-      type: object
-      properties:
-        txHash:
-          type: string
-          description: Unique ID for this transaction.
-          examples:
-          - 3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c
-        chainFormat:
-          type: string
-          description: Represents chain format this transaction is included in.
-          enum:
-          - non-linear
-          - linear
-          examples:
-          - non-linear
-        timestamp:
-          type: number
-          description: Latest timestamp in seconds this transaction was accepted out of the same transaction accepted in other vertices.
-          examples:
-          - 1600762738
-        txType:
-          examples:
-          - BaseTx
-          $ref: '#/components/schemas/XChainTransactionType'
-        memo:
-          type: string
-          description: Hex encoded memo bytes for this transaction.
-          examples:
-          - '0x546865204176616c616e6368652050726f6a656374'
-        consumedUtxos:
-          type: array
-          items:
-            $ref: '#/components/schemas/Utxo'
-        emittedUtxos:
-          type: array
-          items:
-            $ref: '#/components/schemas/Utxo'
-        amountUnlocked:
-          description: Assets unlocked by inputs of this transaction.
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetAmount'
-        amountCreated:
-          description: Assets created by outputs of this transaction.
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetAmount'
-        sourceChain:
-          type: string
-          description: Source chain for an atomic transaction.
-          examples:
-          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-        destinationChain:
-          type: string
-          description: Destination chain for an atomic transaction.
-          examples:
-          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-        assetCreated:
-          description: AssetAmount details of the asset created in CreateAssetTx
-          allOf:
-          - $ref: '#/components/schemas/XChainAssetDetails'
-        blockHeight:
-          type: number
-          description: Height of the block this transaction belongs to.
-          examples:
-          - 1005
-        blockHash:
-          type: string
-          description: Hash of the block this transaction belongs to.
-          examples:
-          - 82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S
-      required:
-      - txHash
-      - chainFormat
-      - timestamp
-      - txType
-      - memo
-      - consumedUtxos
-      - emittedUtxos
-      - amountUnlocked
-      - amountCreated
-      - blockHeight
-      - blockHash
+          description: Contract bytecode in hex format
+          example: 0x6080604052...
+        storage:
+          type: object
+          description: Contract storage slots
+          additionalProperties:
+            type: string
     CChainExportTransaction:
       type: object
       properties:
@@ -993,17 +895,6 @@ components:
       - txType
       - evmInputs
       - emittedUtxos
-    BlockchainId:
-      type: string
-      enum:
-      - 11111111111111111111111111111111LpoYY
-      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
-      - 2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5
-      - yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp
-      - p-chain
-      - x-chain
-      - c-chain
     EvmGenesisConfigDto:
       type: object
       properties:
@@ -1095,83 +986,7 @@ components:
           description: Reward manager configuration
           allOf:
           - $ref: '#/components/schemas/EvmGenesisAllowListConfigDto'
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    EvmGenesisAllocDto:
-      type: object
-      properties:
-        balance:
-          type: string
-          description: Account balance in hex format
-          example: '0x295BE96E64066972000000'
-        code:
-          type: string
-          description: Contract bytecode in hex format
-          example: 0x6080604052...
-        storage:
-          type: object
-          description: Contract storage slots
-          additionalProperties:
-            type: string
-    PrimaryNetworkAssetType:
-      type: string
-      description: Type of asset like SECP256K1 or NFT.
-      enum:
-      - secp256k1
-      - nft
-    Unauthorized:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 401
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Unauthorized
-      required:
-      - message
-      - statusCode
-      - error
-    PrimaryNetworkChainName:
-      type: string
-      enum:
-      - p-chain
-      - x-chain
-      - c-chain
-    CChainImportTransaction:
+    XChainNonLinearTransaction:
       type: object
       properties:
         txHash:
@@ -1179,26 +994,36 @@ components:
           description: Unique ID for this transaction.
           examples:
           - 3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c
-        blockHeight:
-          type: number
-          description: Height of the block this transaction belongs to.
-          examples:
-          - 1005
-        blockHash:
+        chainFormat:
           type: string
-          description: Hash of the block this transaction belongs to.
+          description: Represents chain format this transaction is included in.
+          enum:
+          - non-linear
+          - linear
           examples:
-          - '0x57a5cb7704561d1d59bd563b6421021b7563960c05ba3ae0e36fc36917c742ee'
+          - non-linear
         timestamp:
           type: number
-          description: Latest timestamp in seconds this transaction was accepted.
+          description: Latest timestamp in seconds this transaction was accepted out of the same transaction accepted in other vertices.
           examples:
           - 1600762738
+        txType:
+          examples:
+          - BaseTx
+          $ref: '#/components/schemas/XChainTransactionType'
         memo:
           type: string
           description: Hex encoded memo bytes for this transaction.
           examples:
           - '0x546865204176616c616e6368652050726f6a656374'
+        consumedUtxos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Utxo'
+        emittedUtxos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Utxo'
         amountUnlocked:
           description: Assets unlocked by inputs of this transaction.
           type: array
@@ -1219,181 +1044,60 @@ components:
           description: Destination chain for an atomic transaction.
           examples:
           - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-        txType:
-          type: string
-          description: Type of transaction.
-          enum:
-          - ImportTx
-          examples:
-          - ImportTx
-        evmOutputs:
+        assetCreated:
+          description: AssetAmount details of the asset created in CreateAssetTx
+          allOf:
+          - $ref: '#/components/schemas/XChainAssetDetails'
+        vertices:
+          description: A transaction on X-Chain can be accepted over multiple vertices.
           type: array
           items:
-            $ref: '#/components/schemas/EVMOutput'
-        consumedUtxos:
-          type: array
-          items:
-            $ref: '#/components/schemas/Utxo'
+            $ref: '#/components/schemas/TransactionVertexDetail'
       required:
       - txHash
-      - blockHeight
-      - blockHash
+      - chainFormat
       - timestamp
+      - txType
       - memo
+      - consumedUtxos
+      - emittedUtxos
       - amountUnlocked
       - amountCreated
-      - sourceChain
-      - destinationChain
-      - txType
-      - evmOutputs
-      - consumedUtxos
-    PChainTransactionType:
-      type: string
-      enum:
-      - AddValidatorTx
-      - AddSubnetValidatorTx
-      - AddDelegatorTx
-      - CreateChainTx
-      - CreateSubnetTx
-      - ImportTx
-      - ExportTx
-      - AdvanceTimeTx
-      - RewardValidatorTx
-      - RemoveSubnetValidatorTx
-      - TransformSubnetTx
-      - AddPermissionlessValidatorTx
-      - AddPermissionlessDelegatorTx
-      - BaseTx
-      - TransferSubnetOwnershipTx
-      - ConvertSubnetToL1Tx
-      - RegisterL1ValidatorTx
-      - SetL1ValidatorWeightTx
-      - DisableL1ValidatorTx
-      - IncreaseL1ValidatorBalanceTx
-      - UNKNOWN
-    SubnetOwnershipInfo:
+      - vertices
+    UtxoCredential:
       type: object
       properties:
-        locktime:
-          type: number
-          description: Locktime in seconds after which Subnet owners can control this Subnet.
+        signature:
+          type: string
+          description: Signature provided to consume the output.
           examples:
-          - 0
-        threshold:
-          type: number
-          description: Minimum number of signatures required to sign the Subnet update transactions.
+          - bWWoZUu0Z3STjuk/+2az7M4vP0oqc9NtiA7kOdqINCIE/2+5va5R1KNCWwEX5jE1xVHLvAxU2LHTN5gK8m84HwA
+        publicKey:
+          type: string
+          description: Public key associated with the signature.
           examples:
-          - 1
-        addresses:
-          description: Addresses that are eligible to sign the Subnet update transactions.
-          examples:
-          - - avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw
-          type: array
-          items:
-            type: string
-      required:
-      - locktime
-      - threshold
-      - addresses
-    UtxoType:
+          - AdMQOtubgBFFJu++0faHPIIA6KmdZ2ERErMRGzyy6juI
+    PrimaryNetworkAssetCap:
       type: string
-      description: Indicates whether the UTXO is staked or transferable
+      description: Cap represents if an asset is a variable or fixed cap asset.
       enum:
-      - STAKE
-      - TRANSFER
-    Utxo:
+      - fixed
+      - variable
+    EvmGenesisWarpConfigDto:
       type: object
       properties:
-        addresses:
-          description: Addresses that are eligible to sign the consumption of this output.
-          examples:
-          - - avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw
-          type: array
-          items:
-            type: string
-        asset:
-          $ref: '#/components/schemas/AssetAmount'
-        consumedOnChainId:
-          type: string
-          description: Blockchain ID on which this output is consumed on.
-          examples:
-          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-        consumingTxHash:
-          type: string
-          description: Transaction ID that consumed this output.
-          examples:
-          - 3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c
-        createdOnChainId:
-          type: string
-          description: Blockchain ID on which this output is created on.
-          examples:
-          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-        utxoId:
-          type: string
-          description: UTXO ID for this output.
-          examples:
-          - 68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC
-        utxoBytes:
-          type: string
-          description: The bytes of the UTXO
-        consumingTxTimestamp:
+        blockTimestamp:
           type: number
-          description: Unix timestamp in seconds at which this output was consumed.
-          examples:
-          - 1599696000
-        creationTxHash:
-          type: string
-          description: Transaction ID that created this output.
-          examples:
-          - FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z
-        credentials:
-          description: Credentials that signed the transaction to consume this utxo
-          type: array
-          items:
-            $ref: '#/components/schemas/UtxoCredential'
-        groupId:
+          description: Block timestamp
+          example: 1690000000
+        quorumNumerator:
           type: number
-          description: Index representing the minting set for the NFT mint output.
-        locktime:
-          type: number
-          description: Locktime in seconds after which this output can be consumed.
-          examples:
-          - 0
-        outputIndex:
-          type: string
-          description: Postion of this output in a list of lexiographically sorted outputs of a transaction.
-          examples:
-          - '38'
-        payload:
-          type: string
-          description: Hex encoded data for NFT assets.
-        threshold:
-          type: number
-          description: Minimum number of signatures required to consume this output.
-          examples:
-          - 1
-        timestamp:
-          type: number
-          description: Unix timestamp in seconds at which this outptut was created.
-          examples:
-          - 1599696000
-        utxoType:
-          type: string
-          description: Type of output.
-          examples:
-          - mint
-      required:
-      - addresses
-      - asset
-      - consumedOnChainId
-      - createdOnChainId
-      - utxoId
-      - creationTxHash
-      - locktime
-      - outputIndex
-      - threshold
-      - timestamp
-      - utxoType
+          description: Quorum numerator
+          example: 67
+        requirePrimaryNetworkSigners:
+          type: boolean
+          description: Require primary network signers
+          example: true
     EvmGenesisDto:
       type: object
       properties:
@@ -1480,44 +1184,7 @@ components:
           type: string
           description: Block timestamp
           example: '0x64f0a000'
-    TooManyRequests:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 429
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Too Many Requests
-      required:
-      - message
-      - statusCode
-      - error
-    UtxoCredential:
-      type: object
-      properties:
-        signature:
-          type: string
-          description: Signature provided to consume the output.
-          examples:
-          - bWWoZUu0Z3STjuk/+2az7M4vP0oqc9NtiA7kOdqINCIE/2+5va5R1KNCWwEX5jE1xVHLvAxU2LHTN5gK8m84HwA
-        publicKey:
-          type: string
-          description: Public key associated with the signature.
-          examples:
-          - AdMQOtubgBFFJu++0faHPIIA6KmdZ2ERErMRGzyy6juI
-    ListPChainTransactionsResponse:
+    ListXChainTransactionsResponse:
       type: object
       properties:
         nextPageToken:
@@ -1526,54 +1193,153 @@ components:
         transactions:
           type: array
           items:
-            $ref: '#/components/schemas/PChainTransaction'
+            anyOf:
+            - $ref: '#/components/schemas/XChainNonLinearTransaction'
+            - $ref: '#/components/schemas/XChainLinearTransaction'
         chainInfo:
           $ref: '#/components/schemas/PrimaryNetworkChainInfo'
       required:
       - transactions
       - chainInfo
-    EvmGenesisFeeConfigDto:
+    L1ValidatorDetailsTransaction:
       type: object
       properties:
-        baseFeeChangeDenominator:
+        validationId:
+          type: string
+          description: Unique L1 validation ID used network-wide to identify L1 validation until its weight is reduced to 0 i.e. removed.
+        validationIdHex:
+          type: string
+          description: Unique L1 validation ID used network-wide to identify L1 validation until its weight is reduced to 0 i.e. removed. In hex format
+        nodeId:
+          type: string
+        subnetId:
+          type: string
+        weight:
           type: number
-          description: Base fee change denominator
-          example: 36
-        blockGasCostStep:
+          description: Weight of the L1 validator used while sampling validators within the L1. A zero-weight L1 validator means it has been removed from the L1, and the validationID is no longer valid
+        remainingBalance:
           type: number
-          description: Block gas cost step
-          example: 200000
-        gasLimit:
+          description: Remaining L1 validator balance in nAVAX until inactive. It can rejoin L1 sampling by increasing balance with IncreaseL1ValidatorBalanceTx
+        balanceChange:
           type: number
-          description: Gas limit
-          example: 12000000
-        maxBlockGasCost:
-          type: number
-          description: Maximum block gas cost
-          example: 1000000
-        minBaseFee:
-          type: number
-          description: Minimum base fee
-          example: 25000000000
-        minBlockGasCost:
-          type: number
-          description: Minimum block gas cost
-          example: 0
-        targetBlockRate:
-          type: number
-          description: Target block rate
-          example: 2
-        targetGas:
-          type: number
-          description: Target gas
-          example: 60000000
-    Network:
+          description: The increase in L1 validator balance (nAVAX) in the current transaction. When the balance is returned after the L1 validator is disabled or removed, this value is negative
+        blsCredentials:
+          type: object
+      required:
+      - validationId
+      - validationIdHex
+      - nodeId
+      - subnetId
+      - weight
+      - remainingBalance
+    PrimaryNetworkChainInfo:
+      type: object
+      properties:
+        chainName:
+          $ref: '#/components/schemas/PrimaryNetworkChainName'
+        network:
+          $ref: '#/components/schemas/Network'
+      required:
+      - chainName
+      - network
+    XChainId:
       type: string
       enum:
-      - mainnet
-      - fuji
-      - testnet
-    XChainNonLinearTransaction:
+      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
+      - x-chain
+    PChainUtxo:
+      type: object
+      properties:
+        addresses:
+          description: Addresses that are eligible to sign the consumption of this output.
+          examples:
+          - - avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw
+          type: array
+          items:
+            type: string
+        asset:
+          $ref: '#/components/schemas/AssetAmount'
+        consumedOnChainId:
+          type: string
+          description: Blockchain ID on which this output is consumed on.
+          examples:
+          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+        consumingTxHash:
+          type: string
+          description: Transaction ID that consumed this output.
+          examples:
+          - 3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c
+        createdOnChainId:
+          type: string
+          description: Blockchain ID on which this output is created on.
+          examples:
+          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+        utxoId:
+          type: string
+          description: UTXO ID for this output.
+          examples:
+          - 68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC
+        utxoBytes:
+          type: string
+          description: The bytes of the UTXO
+        amount:
+          type: string
+          deprecated: true
+        assetId:
+          type: string
+          deprecated: true
+        blockNumber:
+          type: string
+        blockTimestamp:
+          type: number
+        consumingBlockNumber:
+          type: string
+          description: Block height in which the transaction consuming this UTXO was included
+        consumingBlockTimestamp:
+          type: number
+          description: Timestamp in seconds at which this UTXO is used in a consuming transaction
+        platformLocktime:
+          type: number
+          description: Timestamp in seconds after which this UTXO can be consumed
+        outputIndex:
+          type: number
+          description: The index of the UTXO in the transaction
+        rewardType:
+          $ref: '#/components/schemas/RewardType'
+        stakeableLocktime:
+          type: number
+          description: Timestamp in seconds before which a UTXO can only be used for staking transactions. After stakeable locktime, a UTXO can be used for anything
+        staked:
+          type: boolean
+        threshold:
+          type: number
+          description: The minimum number of signatures required to spend this UTXO
+        txHash:
+          type: string
+          description: The hash of the transaction that created this UTXO
+        utxoEndTimestamp:
+          type: number
+          description: Timestamp in seconds after which the staked UTXO will be unlocked.
+        utxoStartTimestamp:
+          type: number
+          description: Timestamp in seconds at which the staked UTXO was locked.
+        utxoType:
+          $ref: '#/components/schemas/UtxoType'
+      required:
+      - addresses
+      - asset
+      - consumedOnChainId
+      - createdOnChainId
+      - utxoId
+      - amount
+      - assetId
+      - blockNumber
+      - blockTimestamp
+      - outputIndex
+      - txHash
+      - utxoType
+    XChainLinearTransaction:
       type: object
       properties:
         txHash:
@@ -1635,11 +1401,16 @@ components:
           description: AssetAmount details of the asset created in CreateAssetTx
           allOf:
           - $ref: '#/components/schemas/XChainAssetDetails'
-        vertices:
-          description: A transaction on X-Chain can be accepted over multiple vertices.
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionVertexDetail'
+        blockHeight:
+          type: number
+          description: Height of the block this transaction belongs to.
+          examples:
+          - 1005
+        blockHash:
+          type: string
+          description: Hash of the block this transaction belongs to.
+          examples:
+          - 82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S
       required:
       - txHash
       - chainFormat
@@ -1650,76 +1421,92 @@ components:
       - emittedUtxos
       - amountUnlocked
       - amountCreated
-      - vertices
-    XChainId:
+      - blockHeight
+      - blockHash
+    EvmGenesisFeeConfigDto:
+      type: object
+      properties:
+        baseFeeChangeDenominator:
+          type: number
+          description: Base fee change denominator
+          example: 36
+        blockGasCostStep:
+          type: number
+          description: Block gas cost step
+          example: 200000
+        gasLimit:
+          type: number
+          description: Gas limit
+          example: 12000000
+        maxBlockGasCost:
+          type: number
+          description: Maximum block gas cost
+          example: 1000000
+        minBaseFee:
+          type: number
+          description: Minimum base fee
+          example: 25000000000
+        minBlockGasCost:
+          type: number
+          description: Minimum block gas cost
+          example: 0
+        targetBlockRate:
+          type: number
+          description: Target block rate
+          example: 2
+        targetGas:
+          type: number
+          description: Target gas
+          example: 60000000
+    Unauthorized:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 401
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Unauthorized
+      required:
+      - message
+      - statusCode
+      - error
+    UtxoType:
       type: string
+      description: Indicates whether the UTXO is staked or transferable
       enum:
-      - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
-      - 2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm
-      - x-chain
-    BadRequest:
+      - STAKE
+      - TRANSFER
+    BlockchainInfo:
       type: object
       properties:
-        message:
-          description: The error message describing the reason for the exception
+        chainName:
+          type: string
+        vmId:
+          type: string
+        genesisData:
+          description: The genesis data of the blockchain.  Present for CreateChainTx. EVM based chains will return the genesis data as an object. Non-EVM based chains will return the genesis data as an encoded string. The encoding depends on the VM
           oneOf:
+          - $ref: '#/components/schemas/EvmGenesisDto'
           - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
+            example: '{"chainId": 43114}'
           examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
+            config:
+              chainId: 43114
       required:
-      - message
-      - statusCode
-      - error
-    Forbidden:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 403
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Forbidden
-      required:
-      - message
-      - statusCode
-      - error
-    EVMOutput:
-      type: object
-      properties:
-        toAddress:
-          type: string
-          description: EVM address to which the asset is imported in ImportTx
-          examples:
-          - '0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c'
-        asset:
-          description: AssetAmount details for the asset being transferred.
-          allOf:
-          - $ref: '#/components/schemas/AssetAmount'
-      required:
-      - toAddress
-      - asset
+      - chainName
+      - vmId
     PChainTransaction:
       type: object
       properties:
@@ -1866,6 +1653,218 @@ components:
       - fromAddress
       - asset
       - credentials
+    ListCChainAtomicTransactionsResponse:
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+        transactions:
+          type: array
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/CChainExportTransaction'
+            - $ref: '#/components/schemas/CChainImportTransaction'
+        chainInfo:
+          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
+      required:
+      - transactions
+      - chainInfo
+    TransactionVertexDetail:
+      type: object
+      properties:
+        hash:
+          type: string
+          description: Vertex ID of the vertex this transaction belongs to.
+          examples:
+          - 82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S
+        height:
+          type: number
+          description: Vertex height of the vertex this transaction belongs to.
+          examples:
+          - 1961
+        timestamp:
+          type: number
+          description: Timestamp in seconds this vertex was accepted.
+          examples:
+          - 1600762738
+      required:
+      - hash
+      - height
+      - timestamp
+    EVMOutput:
+      type: object
+      properties:
+        toAddress:
+          type: string
+          description: EVM address to which the asset is imported in ImportTx
+          examples:
+          - '0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c'
+        asset:
+          description: AssetAmount details for the asset being transferred.
+          allOf:
+          - $ref: '#/components/schemas/AssetAmount'
+      required:
+      - toAddress
+      - asset
+    RewardType:
+      type: string
+      enum:
+      - VALIDATOR
+      - DELEGATOR
+      - VALIDATOR_FEE
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 500
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Internal Server Error
+      required:
+      - message
+      - statusCode
+      - error
+    SubnetOwnershipInfo:
+      type: object
+      properties:
+        locktime:
+          type: number
+          description: Locktime in seconds after which Subnet owners can control this Subnet.
+          examples:
+          - 0
+        threshold:
+          type: number
+          description: Minimum number of signatures required to sign the Subnet update transactions.
+          examples:
+          - 1
+        addresses:
+          description: Addresses that are eligible to sign the Subnet update transactions.
+          examples:
+          - - avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw
+          type: array
+          items:
+            type: string
+      required:
+      - locktime
+      - threshold
+      - addresses
+    SortOrder:
+      type: string
+      enum:
+      - asc
+      - desc
+    PrimaryNetworkChainName:
+      type: string
+      enum:
+      - p-chain
+      - x-chain
+      - c-chain
+    Utxo:
+      type: object
+      properties:
+        addresses:
+          description: Addresses that are eligible to sign the consumption of this output.
+          examples:
+          - - avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw
+          type: array
+          items:
+            type: string
+        asset:
+          $ref: '#/components/schemas/AssetAmount'
+        consumedOnChainId:
+          type: string
+          description: Blockchain ID on which this output is consumed on.
+          examples:
+          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+        consumingTxHash:
+          type: string
+          description: Transaction ID that consumed this output.
+          examples:
+          - 3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c
+        createdOnChainId:
+          type: string
+          description: Blockchain ID on which this output is created on.
+          examples:
+          - 2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM
+        utxoId:
+          type: string
+          description: UTXO ID for this output.
+          examples:
+          - 68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC
+        utxoBytes:
+          type: string
+          description: The bytes of the UTXO
+        consumingTxTimestamp:
+          type: number
+          description: Unix timestamp in seconds at which this output was consumed.
+          examples:
+          - 1599696000
+        creationTxHash:
+          type: string
+          description: Transaction ID that created this output.
+          examples:
+          - FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z
+        credentials:
+          description: Credentials that signed the transaction to consume this utxo
+          type: array
+          items:
+            $ref: '#/components/schemas/UtxoCredential'
+        groupId:
+          type: number
+          description: Index representing the minting set for the NFT mint output.
+        locktime:
+          type: number
+          description: Locktime in seconds after which this output can be consumed.
+          examples:
+          - 0
+        outputIndex:
+          type: string
+          description: Postion of this output in a list of lexiographically sorted outputs of a transaction.
+          examples:
+          - '38'
+        payload:
+          type: string
+          description: Hex encoded data for NFT assets.
+        threshold:
+          type: number
+          description: Minimum number of signatures required to consume this output.
+          examples:
+          - 1
+        timestamp:
+          type: number
+          description: Unix timestamp in seconds at which this outptut was created.
+          examples:
+          - 1599696000
+        utxoType:
+          type: string
+          description: Type of output.
+          examples:
+          - mint
+      required:
+      - addresses
+      - asset
+      - consumedOnChainId
+      - createdOnChainId
+      - utxoId
+      - creationTxHash
+      - locktime
+      - outputIndex
+      - threshold
+      - timestamp
+      - utxoType
     ServiceUnavailable:
       type: object
       properties:
@@ -1890,51 +1889,7 @@ components:
       - message
       - statusCode
       - error
-    SortOrder:
-      type: string
-      enum:
-      - asc
-      - desc
-    AssetAmount:
-      type: object
-      properties:
-        assetId:
-          type: string
-          description: Unique ID for an asset.
-          examples:
-          - th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof
-        name:
-          type: string
-          description: Name of this asset.
-          examples:
-          - Avalanche
-        symbol:
-          type: string
-          description: Symbol for this asset (max 4 characters).
-          examples:
-          - AVAX
-        denomination:
-          type: number
-          description: Denomination of this asset to represent fungibility.
-          examples:
-          - 9
-        type:
-          examples:
-          - secp256k1
-          $ref: '#/components/schemas/PrimaryNetworkAssetType'
-        amount:
-          type: string
-          description: Amount of the asset.
-          examples:
-          - '5001000'
-      required:
-      - assetId
-      - name
-      - symbol
-      - denomination
-      - type
-      - amount
-    NotFound:
+    TooManyRequests:
       type: object
       properties:
         message:
@@ -1948,35 +1903,79 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 404
+          - 429
         error:
           type: string
           description: The type of error
           examples:
-          - Not Found
+          - Too Many Requests
       required:
       - message
       - statusCode
       - error
-    BlockchainInfo:
+    L1ValidatorManagerDetails:
       type: object
       properties:
-        chainName:
+        blockchainId:
           type: string
-        vmId:
+        contractAddress:
           type: string
-        genesisData:
-          description: The genesis data of the blockchain.  Present for CreateChainTx. EVM based chains will return the genesis data as an object. Non-EVM based chains will return the genesis data as an encoded string. The encoding depends on the VM
-          oneOf:
-          - $ref: '#/components/schemas/EvmGenesisDto'
-          - type: string
-            example: '{"chainId": 43114}'
-          examples:
-            config:
-              chainId: 43114
       required:
-      - chainName
-      - vmId
+      - blockchainId
+      - contractAddress
+    PChainId:
+      type: string
+      enum:
+      - 11111111111111111111111111111111LpoYY
+      - p-chain
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
+      required:
+      - message
+      - statusCode
+      - error
+    PChainTransactionType:
+      type: string
+      enum:
+      - AddValidatorTx
+      - AddSubnetValidatorTx
+      - AddDelegatorTx
+      - CreateChainTx
+      - CreateSubnetTx
+      - ImportTx
+      - ExportTx
+      - AdvanceTimeTx
+      - RewardValidatorTx
+      - RemoveSubnetValidatorTx
+      - TransformSubnetTx
+      - AddPermissionlessValidatorTx
+      - AddPermissionlessDelegatorTx
+      - BaseTx
+      - TransferSubnetOwnershipTx
+      - ConvertSubnetToL1Tx
+      - RegisterL1ValidatorTx
+      - SetL1ValidatorWeightTx
+      - DisableL1ValidatorTx
+      - IncreaseL1ValidatorBalanceTx
+      - UNKNOWN
     EvmGenesisAllowListConfigDto:
       type: object
       properties:
@@ -2005,65 +2004,66 @@ components:
           type: array
           items:
             type: string
-    ListCChainAtomicTransactionsResponse:
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-        transactions:
-          type: array
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/CChainExportTransaction'
-            - $ref: '#/components/schemas/CChainImportTransaction'
-        chainInfo:
-          $ref: '#/components/schemas/PrimaryNetworkChainInfo'
-      required:
-      - transactions
-      - chainInfo
-    PrimaryNetworkAssetCap:
+    XChainTransactionType:
       type: string
-      description: Cap represents if an asset is a variable or fixed cap asset.
+      description: Type of transaction.
       enum:
-      - fixed
-      - variable
-    L1ValidatorDetailsTransaction:
-      type: object
-      properties:
-        validationId:
-          type: string
-          description: Unique L1 validation ID used network-wide to identify L1 validation until its weight is reduced to 0 i.e. removed.
-        validationIdHex:
-          type: string
-          description: Unique L1 validation ID used network-wide to identify L1 validation until its weight is reduced to 0 i.e. removed. In hex format
-        nodeId:
-          type: string
-        subnetId:
-          type: string
-        weight:
-          type: number
-          description: Weight of the L1 validator used while sampling validators within the L1. A zero-weight L1 validator means it has been removed from the L1, and the validationID is no longer valid
-        remainingBalance:
-          type: number
-          description: Remaining L1 validator balance in nAVAX until inactive. It can rejoin L1 sampling by increasing balance with IncreaseL1ValidatorBalanceTx
-        balanceChange:
-          type: number
-          description: The increase in L1 validator balance (nAVAX) in the current transaction. When the balance is returned after the L1 validator is disabled or removed, this value is negative
-        blsCredentials:
-          type: object
-      required:
-      - validationId
-      - validationIdHex
-      - nodeId
-      - subnetId
-      - weight
-      - remainingBalance
-    PChainId:
+      - BaseTx
+      - CreateAssetTx
+      - OperationTx
+      - ImportTx
+      - ExportTx
+      - UNKNOWN
+    Network:
       type: string
       enum:
-      - 11111111111111111111111111111111LpoYY
-      - p-chain
+      - mainnet
+      - fuji
+      - testnet
+    XChainAssetDetails:
+      type: object
+      properties:
+        assetId:
+          type: string
+          description: Unique ID for an asset.
+          examples:
+          - th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof
+        name:
+          type: string
+          description: Name of this asset.
+          examples:
+          - Avalanche
+        symbol:
+          type: string
+          description: Symbol for this asset (max 4 characters).
+          examples:
+          - AVAX
+        denomination:
+          type: number
+          description: Denomination of this asset to represent fungibility.
+          examples:
+          - 9
+        type:
+          examples:
+          - secp256k1
+          $ref: '#/components/schemas/PrimaryNetworkAssetType'
+        createdAtTimestamp:
+          type: number
+          description: Timestamp in seconds this asset was created on.
+          examples:
+          - 1675444720
+        cap:
+          examples:
+          - fixed
+          $ref: '#/components/schemas/PrimaryNetworkAssetCap'
+      required:
+      - assetId
+      - name
+      - symbol
+      - denomination
+      - type
+      - createdAtTimestamp
+      - cap
   securitySchemes:
     apiKey:
       type: apiKey

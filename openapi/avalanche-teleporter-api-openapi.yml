@@ -336,7 +336,158 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PendingTeleporterMessage:
+    NotFound:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 404
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Not Found
+      required:
+      - message
+      - statusCode
+      - error
+    TeleporterRewardDetails:
+      type: object
+      properties:
+        address:
+          type: string
+          description: A wallet or contract address in mixed-case checksum encoding.
+          examples:
+          - '0x71C7656EC7ab88b098defB751B7401B5f6d8976F'
+        name:
+          type: string
+          description: The contract name.
+          examples:
+          - Wrapped AVAX
+        symbol:
+          type: string
+          description: The contract symbol.
+          examples:
+          - WAVAX
+        decimals:
+          type: number
+          description: The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.
+          examples:
+          - 18
+        logoUri:
+          type: string
+          description: The logo uri for the address.
+          examples:
+          - https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg
+        ercType:
+          type: string
+          enum:
+          - ERC-20
+        price:
+          description: The token price, if available.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        value:
+          type: string
+      required:
+      - address
+      - name
+      - symbol
+      - decimals
+      - ercType
+      - value
+    BadRequest:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 400
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Request
+      required:
+      - message
+      - statusCode
+      - error
+    BadGateway:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 502
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Bad Gateway
+      required:
+      - message
+      - statusCode
+      - error
+    TeleporterDestinationTransaction:
+      type: object
+      properties:
+        txHash:
+          type: string
+        timestamp:
+          type: number
+        gasSpent:
+          type: string
+        rewardRedeemer:
+          type: string
+        delivererAddress:
+          type: string
+      required:
+      - txHash
+      - timestamp
+      - gasSpent
+      - rewardRedeemer
+      - delivererAddress
+    Money:
+      type: object
+      properties:
+        currencyCode:
+          examples:
+          - usd
+          $ref: '#/components/schemas/CurrencyCode'
+        value:
+          type: number
+          description: Monetary value in base 10 decimals.
+          examples:
+          - '42.42'
+      required:
+      - currencyCode
+      - value
+    DeliveredTeleporterMessage:
       type: object
       properties:
         messageId:
@@ -371,10 +522,12 @@ components:
           $ref: '#/components/schemas/TeleporterRewardDetails'
         sourceTransaction:
           $ref: '#/components/schemas/TeleporterSourceTransaction'
+        destinationTransaction:
+          $ref: '#/components/schemas/TeleporterDestinationTransaction'
         status:
           type: string
           enum:
-          - pending
+          - delivered
       required:
       - messageId
       - teleporterContractAddress
@@ -390,46 +543,26 @@ components:
       - receiptDelivered
       - rewardDetails
       - sourceTransaction
+      - destinationTransaction
       - status
-    InternalServerError:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 500
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Internal Server Error
-      required:
-      - message
-      - statusCode
-      - error
-    Money:
-      type: object
-      properties:
-        currencyCode:
-          examples:
-          - usd
-          $ref: '#/components/schemas/CurrencyCode'
-        value:
-          type: number
-          description: Monetary value in base 10 decimals.
-          examples:
-          - '42.42'
-      required:
-      - currencyCode
-      - value
+    CurrencyCode:
+      type: string
+      description: ISO 4217 currency code.
+      enum:
+      - usd
+      - eur
+      - aud
+      - cad
+      - chf
+      - clp
+      - cny
+      - czk
+      - dkk
+      - gbp
+      - hkd
+      - huf
+      - jpy
+      - nzd
     ListTeleporterMessagesResponse:
       type: object
       properties:
@@ -451,86 +584,6 @@ components:
                 delivered_source_not_indexed: '#/components/schemas/DeliveredSourceNotIndexedIcmMessage'
       required:
       - messages
-    IcmDestinationTransaction:
-      type: object
-      properties:
-        txHash:
-          type: string
-        timestamp:
-          type: number
-        gasSpent:
-          type: string
-        rewardRedeemer:
-          type: string
-        delivererAddress:
-          type: string
-      required:
-      - txHash
-      - timestamp
-      - gasSpent
-      - rewardRedeemer
-      - delivererAddress
-    BadGateway:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 502
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Gateway
-      required:
-      - message
-      - statusCode
-      - error
-    Unauthorized:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 401
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Unauthorized
-      required:
-      - message
-      - statusCode
-      - error
-    TeleporterSourceTransaction:
-      type: object
-      properties:
-        txHash:
-          type: string
-        timestamp:
-          type: number
-        gasSpent:
-          type: string
-      required:
-      - txHash
-      - timestamp
-      - gasSpent
     IcmRewardDetails:
       type: object
       properties:
@@ -576,7 +629,49 @@ components:
       - decimals
       - ercType
       - value
-    TooManyRequests:
+    TeleporterSourceTransaction:
+      type: object
+      properties:
+        txHash:
+          type: string
+        timestamp:
+          type: number
+        gasSpent:
+          type: string
+      required:
+      - txHash
+      - timestamp
+      - gasSpent
+    TeleporterReceipt:
+      type: object
+      properties:
+        receivedMessageNonce:
+          type: string
+        relayerRewardAddress:
+          type: string
+      required:
+      - receivedMessageNonce
+      - relayerRewardAddress
+    IcmDestinationTransaction:
+      type: object
+      properties:
+        txHash:
+          type: string
+        timestamp:
+          type: number
+        gasSpent:
+          type: string
+        rewardRedeemer:
+          type: string
+        delivererAddress:
+          type: string
+      required:
+      - txHash
+      - timestamp
+      - gasSpent
+      - rewardRedeemer
+      - delivererAddress
+    Unauthorized:
       type: object
       properties:
         message:
@@ -590,12 +685,36 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 429
+          - 401
         error:
           type: string
           description: The type of error
           examples:
-          - Too Many Requests
+          - Unauthorized
+      required:
+      - message
+      - statusCode
+      - error
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 500
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Internal Server Error
       required:
       - message
       - statusCode
@@ -665,113 +784,7 @@ components:
       required:
       - receivedMessageNonce
       - relayerRewardAddress
-    CurrencyCode:
-      type: string
-      description: ISO 4217 currency code.
-      enum:
-      - usd
-      - eur
-      - aud
-      - cad
-      - chf
-      - clp
-      - cny
-      - czk
-      - dkk
-      - gbp
-      - hkd
-      - huf
-      - jpy
-      - nzd
-    Network:
-      type: string
-      enum:
-      - mainnet
-      - fuji
-      - testnet
-    TeleporterReceipt:
-      type: object
-      properties:
-        receivedMessageNonce:
-          type: string
-        relayerRewardAddress:
-          type: string
-      required:
-      - receivedMessageNonce
-      - relayerRewardAddress
-    BadRequest:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 400
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Bad Request
-      required:
-      - message
-      - statusCode
-      - error
-    Forbidden:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 403
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Forbidden
-      required:
-      - message
-      - statusCode
-      - error
-    ServiceUnavailable:
-      type: object
-      properties:
-        message:
-          description: The error message describing the reason for the exception
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-        statusCode:
-          type: number
-          description: The HTTP status code of the response
-          examples:
-          - 503
-        error:
-          type: string
-          description: The type of error
-          examples:
-          - Service Unavailable
-      required:
-      - message
-      - statusCode
-      - error
-    DeliveredTeleporterMessage:
+    PendingTeleporterMessage:
       type: object
       properties:
         messageId:
@@ -806,12 +819,10 @@ components:
           $ref: '#/components/schemas/TeleporterRewardDetails'
         sourceTransaction:
           $ref: '#/components/schemas/TeleporterSourceTransaction'
-        destinationTransaction:
-          $ref: '#/components/schemas/TeleporterDestinationTransaction'
         status:
           type: string
           enum:
-          - delivered
+          - pending
       required:
       - messageId
       - teleporterContractAddress
@@ -827,28 +838,8 @@ components:
       - receiptDelivered
       - rewardDetails
       - sourceTransaction
-      - destinationTransaction
       - status
-    TeleporterDestinationTransaction:
-      type: object
-      properties:
-        txHash:
-          type: string
-        timestamp:
-          type: number
-        gasSpent:
-          type: string
-        rewardRedeemer:
-          type: string
-        delivererAddress:
-          type: string
-      required:
-      - txHash
-      - timestamp
-      - gasSpent
-      - rewardRedeemer
-      - delivererAddress
-    NotFound:
+    ServiceUnavailable:
       type: object
       properties:
         message:
@@ -862,12 +853,60 @@ components:
           type: number
           description: The HTTP status code of the response
           examples:
-          - 404
+          - 503
         error:
           type: string
           description: The type of error
           examples:
-          - Not Found
+          - Service Unavailable
+      required:
+      - message
+      - statusCode
+      - error
+    TooManyRequests:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 429
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Too Many Requests
+      required:
+      - message
+      - statusCode
+      - error
+    Forbidden:
+      type: object
+      properties:
+        message:
+          description: The error message describing the reason for the exception
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        statusCode:
+          type: number
+          description: The HTTP status code of the response
+          examples:
+          - 403
+        error:
+          type: string
+          description: The type of error
+          examples:
+          - Forbidden
       required:
       - message
       - statusCode
@@ -927,51 +966,12 @@ components:
       - rewardDetails
       - destinationTransaction
       - status
-    TeleporterRewardDetails:
-      type: object
-      properties:
-        address:
-          type: string
-          description: A wallet or contract address in mixed-case checksum encoding.
-          examples:
-          - '0x71C7656EC7ab88b098defB751B7401B5f6d8976F'
-        name:
-          type: string
-          description: The contract name.
-          examples:
-          - Wrapped AVAX
-        symbol:
-          type: string
-          description: The contract symbol.
-          examples:
-          - WAVAX
-        decimals:
-          type: number
-          description: The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.
-          examples:
-          - 18
-        logoUri:
-          type: string
-          description: The logo uri for the address.
-          examples:
-          - https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg
-        ercType:
-          type: string
-          enum:
-          - ERC-20
-        price:
-          description: The token price, if available.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        value:
-          type: string
-      required:
-      - address
-      - name
-      - symbol
-      - decimals
-      - ercType
-      - value
+    Network:
+      type: string
+      enum:
+      - mainnet
+      - fuji
+      - testnet
   securitySchemes:
     apiKey:
       type: apiKey
