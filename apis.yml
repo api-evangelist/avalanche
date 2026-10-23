@@ -625,6 +625,8 @@ apis:
   - type: FinOps
     url: finops/data-api.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/avalanche/overview
 - type: Plans
   url: plans/data-api.yml
 - type: RateLimits
