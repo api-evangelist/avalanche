@@ -1,739 +1,733 @@
 {
+  "info": {
+    "_postman_id": "c9c1a185-a75e-4019-9d41-968d76417869",
+    "name": "Data Primary Network Balances API",
+    "description": "The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:17:01.000Z",
+    "updatedAt": "2026-10-22T02:17:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c9c1a185-a75e-4019-9d41-968d76417869"
+  },
   "item": [
     {
-      "id": "de49e14f-4805-4c16-aa4b-b5c2d067ef32",
-      "name": "Primary Network Balances",
-      "description": {
-        "content": "Find information about balances on Avalanche's Primary Network Chains - the P-Chain, the X-Chain, and the C-Chain.",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "3e58d547-9960-41e2-8a77-76f65d164737",
-          "name": "Get balances",
-          "request": {
-            "name": "Get balances",
-            "description": {
-              "content": "Gets primary network balances for one of the Primary Network chains for the supplied addresses.\n\nC-Chain balances returned are only the shared atomic memory balance. For EVM balance, use the `/v1/chains/:chainId/addresses/:addressId/balances:getNative` endpoint.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "networks",
-                ":network",
-                "blockchains",
-                ":blockchainId",
-                "balances"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "blockTimestamp",
-                  "value": "<integer>",
-                  "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp."
-                },
-                {
-                  "disabled": false,
-                  "key": "addresses",
-                  "value": "<string>",
-                  "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\"."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "blockchainId",
-                  "description": "(Required) A primary network blockchain id or alias."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "network",
-                  "description": "(Required) Either mainnet or testnet/fuji."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "networks",
+          "item": [
             {
-              "id": "9d854146-8523-44e7-b4b2-46088580baa2",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{network}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "blockchains",
+                  "item": [
+                    {
+                      "name": "{blockchainId}",
+                      "item": [
+                        {
+                          "name": "balances",
+                          "item": [
+                            {
+                              "name": "Get balances",
+                              "id": "c3f8fb68-4a09-412a-bc73-36f3b419573a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "networks",
+                                    ":network",
+                                    "blockchains",
+                                    ":blockchainId",
+                                    "balances"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                      "key": "blockTimestamp",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                      "key": "addresses",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "52c8ef10-0955-4e94-87ee-bd95af25087c",
+                                      "key": "network",
+                                      "value": "mainnet",
+                                      "description": "(Required) Either mainnet or testnet/fuji."
+                                    },
+                                    {
+                                      "id": "e64e09cc-2599-4294-bd17-493c7db169ac",
+                                      "key": "blockchainId",
+                                      "value": "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
+                                      "description": "(Required) A primary network blockchain id or alias."
+                                    }
+                                  ]
+                                },
+                                "description": "Gets primary network balances for one of the Primary Network chains for the supplied addresses.\n\nC-Chain balances returned are only the shared atomic memory balance. For EVM balance, use the `/v1/chains/:chainId/addresses/:addressId/balances:getNative` endpoint."
+                              },
+                              "response": [
+                                {
+                                  "id": "76bc6a12-9b31-4911-ba25-ada6a545576d",
+                                  "name": "Successful response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"balances\": {\n    \"unlockedUnstaked\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"secp256k1\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      }\n    ],\n    \"unlockedStaked\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"secp256k1\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"secp256k1\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      }\n    ],\n    \"lockedPlatform\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      }\n    ],\n    \"lockedStakeable\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"secp256k1\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      }\n    ],\n    \"lockedStaked\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"secp256k1\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      }\n    ],\n    \"pendingStaked\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"secp256k1\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\"\n      }\n    ],\n    \"atomicMemoryUnlocked\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\",\n        \"sharedWithChainId\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\",\n        \"sharedWithChainId\": \"<string>\",\n        \"status\": \"<string>\"\n      }\n    ],\n    \"atomicMemoryLocked\": [\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\",\n        \"sharedWithChainId\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      {\n        \"assetId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"symbol\": \"<string>\",\n        \"denomination\": \"<number>\",\n        \"type\": \"nft\",\n        \"amount\": \"<string>\",\n        \"utxoCount\": \"<number>\",\n        \"sharedWithChainId\": \"<string>\",\n        \"status\": \"<string>\"\n      }\n    ]\n  },\n  \"chainInfo\": {\n    \"chainName\": \"p-chain\",\n    \"network\": \"mainnet\"\n  }\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-76bc6a12-9b31-4911-ba25-ada6a545576d"
+                                },
+                                {
+                                  "id": "d9392da4-cc6e-4c88-95b9-447f4bae0e85",
+                                  "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-d9392da4-cc6e-4c88-95b9-447f4bae0e85"
+                                },
+                                {
+                                  "id": "b2054fa1-aa5d-471c-94d4-38f6ea0a34d0",
+                                  "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-b2054fa1-aa5d-471c-94d4-38f6ea0a34d0"
+                                },
+                                {
+                                  "id": "09b2f7d3-c33f-4a2a-84a3-d8213fe4e77d",
+                                  "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-09b2f7d3-c33f-4a2a-84a3-d8213fe4e77d"
+                                },
+                                {
+                                  "id": "913c947b-aebd-4c36-91fd-61644ea61f4f",
+                                  "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-913c947b-aebd-4c36-91fd-61644ea61f4f"
+                                },
+                                {
+                                  "id": "6433676b-8d4b-4d44-a86f-0b59963cb5ce",
+                                  "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-6433676b-8d4b-4d44-a86f-0b59963cb5ce"
+                                },
+                                {
+                                  "id": "5a6eb79e-a936-40b0-a30c-ce0ba336e257",
+                                  "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-5a6eb79e-a936-40b0-a30c-ce0ba336e257"
+                                },
+                                {
+                                  "id": "41687112-4eb7-488e-89ea-677c282043ce",
+                                  "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Gateway",
+                                  "code": 502,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-41687112-4eb7-488e-89ea-677c282043ce"
+                                },
+                                {
+                                  "id": "2a2a865f-6061-481c-9055-452ede875b83",
+                                  "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-glacier-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/networks/:network/blockchains/:blockchainId/balances?blockTimestamp=<integer>&addresses=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "networks",
+                                        ":network",
+                                        "blockchains",
+                                        ":blockchainId",
+                                        "balances"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "An epoch timestamp in seconds. Balance will be calculated at this timestamp.",
+                                          "key": "blockTimestamp",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A comma separated list of X-Chain or P-Chain wallet addresses, starting with \"avax\"/\"fuji\", \"P-avax\"/\"P-fuji\" or \"X-avax\"/\"X-fuji\".",
+                                          "key": "addresses",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "network"
+                                        },
+                                        {
+                                          "key": "blockchainId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Service Unavailable",
+                                  "code": 503,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T02:17:01.000Z",
+                                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                                  "uid": "35240-2a2a865f-6061-481c-9055-452ede875b83"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T02:17:01.000Z",
+                              "updatedAt": "2026-10-22T02:17:01.000Z",
+                              "uid": "35240-c3f8fb68-4a09-412a-bc73-36f3b419573a"
+                            }
+                          ],
+                          "id": "0a6b61d4-ffb1-4898-949b-8c1902a37eeb",
+                          "createdAt": "2026-10-22T02:17:01.000Z",
+                          "updatedAt": "2026-10-22T02:17:01.000Z",
+                          "uid": "35240-0a6b61d4-ffb1-4898-949b-8c1902a37eeb"
+                        }
+                      ],
+                      "id": "a6c315df-ae74-417a-b47d-9ac2d75c7767",
+                      "createdAt": "2026-10-22T02:17:01.000Z",
+                      "updatedAt": "2026-10-22T02:17:01.000Z",
+                      "uid": "35240-a6c315df-ae74-417a-b47d-9ac2d75c7767"
+                    }
+                  ],
+                  "id": "8c8b23e4-c788-4088-afc4-f2492e359815",
+                  "createdAt": "2026-10-22T02:17:01.000Z",
+                  "updatedAt": "2026-10-22T02:17:01.000Z",
+                  "uid": "35240-8c8b23e4-c788-4088-afc4-f2492e359815"
                 }
               ],
-              "body": "{\n  \"balances\": {\n    \"unlockedUnstaked\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      }\n    ],\n    \"unlockedStaked\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      }\n    ],\n    \"lockedPlatform\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      }\n    ],\n    \"lockedStakeable\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      }\n    ],\n    \"lockedStaked\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      }\n    ],\n    \"pendingStaked\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1\n      }\n    ],\n    \"atomicMemoryUnlocked\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1,\n        \"sharedWithChainId\": \"2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM\",\n        \"status\": \"string\"\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1,\n        \"sharedWithChainId\": \"2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM\",\n        \"status\": \"string\"\n      }\n    ],\n    \"atomicMemoryLocked\": [\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1,\n        \"sharedWithChainId\": \"2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM\",\n        \"status\": \"string\"\n      },\n      {\n        \"assetId\": \"th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof\",\n        \"name\": \"Avalanche\",\n        \"symbol\": \"AVAX\",\n        \"denomination\": 9,\n        \"type\": \"secp256k1\",\n        \"amount\": \"5001000\",\n        \"utxoCount\": 1,\n        \"sharedWithChainId\": \"2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM\",\n        \"status\": \"string\"\n      }\n    ]\n  },\n  \"chainInfo\": {\n    \"chainName\": \"p-chain\",\n    \"network\": \"fuji\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7a64f702-7572-4324-bb5f-460762c47565",
-              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2f80e93f-75fc-4ee6-b0bd-d7820b4ac9f1",
-              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f3e90769-ee86-4023-8f47-cdcd2266bc13",
-              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "42e59260-1097-4bf0-af8c-8b330bbfc035",
-              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f492175c-863a-4c41-848f-166a11a88df0",
-              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "049cd916-1f8d-45f6-8b40-7b3f4f22d344",
-              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "83a39a75-ef7f-41e3-af80-cc9fb6efd260",
-              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Gateway",
-              "code": 502,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b7fa3656-1bfe-490c-8066-aefa081bb5b0",
-              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "networks",
-                    ":network",
-                    "blockchains",
-                    ":blockchainId",
-                    "balances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "blockTimestamp",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "addresses",
-                      "value": "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "blockchainId",
-                      "description": "(Required) A primary network blockchain id or alias."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "network",
-                      "description": "(Required) Either mainnet or testnet/fuji."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Service Unavailable",
-              "code": 503,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5f2647ea-3f12-4db2-9a0d-7be668aeed27",
+              "createdAt": "2026-10-22T02:17:01.000Z",
+              "updatedAt": "2026-10-22T02:17:01.000Z",
+              "uid": "35240-5f2647ea-3f12-4db2-9a0d-7be668aeed27"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d6fa1034-55c8-4ebe-83f3-5560fe262021",
+          "createdAt": "2026-10-22T02:17:01.000Z",
+          "updatedAt": "2026-10-22T02:17:01.000Z",
+          "uid": "35240-d6fa1034-55c8-4ebe-83f3-5560fe262021"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://data-api.avax.network",
-      "key": "baseUrl"
+      "id": "96de3e07-b5e9-4b32-9607-1a0617ddbaac",
+      "createdAt": "2026-10-22T02:17:01.000Z",
+      "updatedAt": "2026-10-22T02:17:01.000Z",
+      "uid": "35240-96de3e07-b5e9-4b32-9607-1a0617ddbaac"
     }
   ],
   "auth": {
@@ -741,25 +735,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-glacier-api-key"
+        "value": "x-glacier-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "63e93511-6eed-4f0f-a6aa-5d52e2ece3e4",
-    "name": "Data AVAX Supply Primary Network Balances API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href=\"https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api\">here</a>. Bug reports can be submitted <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform\">here</a>, and any potential security issues can be reported <a href=\"https://immunefi.com/bounty/avalabs\">here</a>.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://data-api.avax.network"
     }
-  }
+  ]
 }

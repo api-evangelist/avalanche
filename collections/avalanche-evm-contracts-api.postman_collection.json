@@ -1,635 +1,594 @@
 {
+  "info": {
+    "_postman_id": "21ab3e84-c56f-44fe-967f-d9d66cff06dc",
+    "name": "Data EVM Contracts API",
+    "description": "The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:16:18.000Z",
+    "updatedAt": "2026-10-22T02:16:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-21ab3e84-c56f-44fe-967f-d9d66cff06dc"
+  },
   "item": [
     {
-      "id": "d4a7d68a-34c8-4a8b-bc71-2d63df91bedd",
-      "name": "EVM Contracts",
-      "description": {
-        "content": "Find information about contracts on EVM-compatible chains, such as the Avalanche C-Chain.",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "48ab1a6b-0283-4e77-9c9b-5ef87af61de6",
-          "name": "Get contract metadata",
-          "request": {
-            "name": "Get contract metadata",
-            "description": {
-              "content": "Gets metadata about the contract at the given address.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "chains",
-                ":chainId",
-                "addresses",
-                ":address"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "chainId",
-                  "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "address",
-                  "description": "(Required) Contract address on the relevant chain."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "chains",
+          "item": [
             {
-              "id": "3f4a74ae-6529-44e3-87dc-f133e339e2da",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{chainId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "addresses",
+                  "item": [
+                    {
+                      "name": "{address}",
+                      "item": [
+                        {
+                          "name": "Get contract metadata",
+                          "id": "91d0fbc3-20ba-4f00-9fc7-bdf391a61901",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "chains",
+                                ":chainId",
+                                "addresses",
+                                ":address"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a38dd312-2d80-49c2-91f6-30e97336ae6d",
+                                  "key": "chainId",
+                                  "value": "<string>",
+                                  "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
+                                },
+                                {
+                                  "id": "bb940c0c-a1a3-470f-bbda-fb6e4ba6526e",
+                                  "key": "address",
+                                  "value": "<string>",
+                                  "description": "(Required) Contract address on the relevant chain."
+                                }
+                              ]
+                            },
+                            "description": "Gets metadata about the contract at the given address."
+                          },
+                          "response": [
+                            {
+                              "id": "2ba05475-ddb9-423b-a176-1ac3d5a89e5c",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"address\": \"<string>\",\n  \"ercType\": \"ERC-721\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"officialSite\": \"<string>\",\n  \"email\": \"<string>\",\n  \"logoAsset\": {\n    \"assetId\": \"<string>\",\n    \"imageUri\": \"<string>\"\n  },\n  \"bannerAsset\": {\n    \"assetId\": \"<string>\",\n    \"imageUri\": \"<string>\"\n  },\n  \"color\": \"<string>\",\n  \"resourceLinks\": [\n    {\n      \"type\": \"Discord\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"type\": \"Discord\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"deploymentDetails\": {\n    \"txHash\": \"<string>\",\n    \"deployerAddress\": \"<string>\",\n    \"deployerContractAddress\": \"<string>\"\n  },\n  \"symbol\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-2ba05475-ddb9-423b-a176-1ac3d5a89e5c"
+                            },
+                            {
+                              "id": "0d9b8228-e1c2-411b-8a5f-2b241ea38802",
+                              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-0d9b8228-e1c2-411b-8a5f-2b241ea38802"
+                            },
+                            {
+                              "id": "de96c9f4-5c30-43a6-933d-fab0cec912a1",
+                              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-de96c9f4-5c30-43a6-933d-fab0cec912a1"
+                            },
+                            {
+                              "id": "f646f5d1-b582-49e5-8729-08b85d9e1066",
+                              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-f646f5d1-b582-49e5-8729-08b85d9e1066"
+                            },
+                            {
+                              "id": "49eace5f-73df-4baa-a5be-a93a4377ed3f",
+                              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-49eace5f-73df-4baa-a5be-a93a4377ed3f"
+                            },
+                            {
+                              "id": "0f403bc7-0fa7-4e00-8934-b52614fda3dd",
+                              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-0f403bc7-0fa7-4e00-8934-b52614fda3dd"
+                            },
+                            {
+                              "id": "920613da-d06f-42ab-8f8c-23b8b685bf46",
+                              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-920613da-d06f-42ab-8f8c-23b8b685bf46"
+                            },
+                            {
+                              "id": "f3ea19f3-f61d-4e4d-b795-d268241e5c7b",
+                              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Gateway",
+                              "code": 502,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-f3ea19f3-f61d-4e4d-b795-d268241e5c7b"
+                            },
+                            {
+                              "id": "bade0cc2-ca9b-492e-a1cd-db354d402fb4",
+                              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-glacier-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/chains/:chainId/addresses/:address",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "chains",
+                                    ":chainId",
+                                    "addresses",
+                                    ":address"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "chainId"
+                                    },
+                                    {
+                                      "key": "address"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Service Unavailable",
+                              "code": 503,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"statusCode\": \"<number>\",\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:16:18.000Z",
+                              "updatedAt": "2026-10-22T02:16:18.000Z",
+                              "uid": "35240-bade0cc2-ca9b-492e-a1cd-db354d402fb4"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T02:16:18.000Z",
+                          "updatedAt": "2026-10-22T02:16:18.000Z",
+                          "uid": "35240-91d0fbc3-20ba-4f00-9fc7-bdf391a61901"
+                        }
+                      ],
+                      "id": "506745a5-5a5b-4123-8617-b449399ee0dd",
+                      "createdAt": "2026-10-22T02:16:18.000Z",
+                      "updatedAt": "2026-10-22T02:16:18.000Z",
+                      "uid": "35240-506745a5-5a5b-4123-8617-b449399ee0dd"
+                    }
+                  ],
+                  "id": "94344bcc-484f-4320-915d-7eca1e96c8e6",
+                  "createdAt": "2026-10-22T02:16:18.000Z",
+                  "updatedAt": "2026-10-22T02:16:18.000Z",
+                  "uid": "35240-94344bcc-484f-4320-915d-7eca1e96c8e6"
                 }
               ],
-              "body": "{\n  \"address\": \"0x71C7656EC7ab88b098defB751B7401B5f6d8976F\",\n  \"ercType\": \"ERC-721\",\n  \"name\": \"Wrapped AVAX\",\n  \"description\": \"string\",\n  \"officialSite\": \"string\",\n  \"email\": \"string\",\n  \"logoAsset\": {\n    \"assetId\": \"string\",\n    \"imageUri\": \"string\"\n  },\n  \"bannerAsset\": {\n    \"assetId\": \"string\",\n    \"imageUri\": \"string\"\n  },\n  \"color\": \"string\",\n  \"resourceLinks\": [\n    {\n      \"type\": \"Medium\",\n      \"url\": \"string\"\n    },\n    {\n      \"type\": \"TikTok\",\n      \"url\": \"string\"\n    }\n  ],\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"deploymentDetails\": {\n    \"txHash\": \"string\",\n    \"deployerAddress\": \"string\",\n    \"deployerContractAddress\": \"string\"\n  },\n  \"symbol\": \"WAVAX\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4b1a21e4-3b69-498a-9512-0713eca10d34",
-              "name": "Bad requests generally mean the client has passed invalid \n    or malformed parameters. Error messages in the response could help in \n    evaluating the error.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "37f64e0c-f1dd-4b0e-a297-5007bcda2940",
-              "name": "When a client attempts to access resources that require \n    authorization credentials but the client lacks proper authentication \n    in the request, the server responds with 401.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "11492821-4c6a-43eb-bc35-23c9f6412125",
-              "name": "When a client attempts to access resources with valid\n    credentials but doesn't have the privilege to perform that action, \n    the server responds with 403.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 403,\n  \"error\": \"Forbidden\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bde293ca-e2fa-4abd-b5d4-0cf9f534128b",
-              "name": "The error is mostly returned when the client requests\n    with either mistyped URL, or the passed resource is moved or deleted, \n    or the resource doesn't exist.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 404,\n  \"error\": \"Not Found\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d2ad590c-71ac-4a87-8e12-0d971d3eefad",
-              "name": "This error is returned when the client has sent too many,\n    and has hit the rate limit.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5ed46102-fc58-46e6-a0eb-f816bfe5e9a1",
-              "name": "The error is a generic server side error that is \n    returned for any uncaught and unexpected issues on the server side. \n    This should be very rare, and you may reach out to us if the problem \n    persists for a longer duration.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 500,\n  \"error\": \"Internal Server Error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ce95d11c-8e9b-4487-98bb-ce875aebbb2b",
-              "name": "This is an internal error indicating invalid response \n      received by the client-facing proxy or gateway from the upstream server.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Gateway",
-              "code": 502,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 502,\n  \"error\": \"Bad Gateway\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7878af7f-be56-4162-9d4a-4180c715ea30",
-              "name": "The error is returned for certain routes on a particular\n    Subnet. This indicates an internal problem with our Subnet node, and may \n    not necessarily mean the Subnet is down or affected.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "chains",
-                    ":chainId",
-                    "addresses",
-                    ":address"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "chainId",
-                      "description": "(Required) A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "address",
-                      "description": "(Required) Contract address on the relevant chain."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-glacier-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Service Unavailable",
-              "code": 503,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"statusCode\": 503,\n  \"error\": \"Service Unavailable\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "4e8b0cc2-3092-4ddb-9e57-f80ba5349c61",
+              "createdAt": "2026-10-22T02:16:18.000Z",
+              "updatedAt": "2026-10-22T02:16:18.000Z",
+              "uid": "35240-4e8b0cc2-3092-4ddb-9e57-f80ba5349c61"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "df39311e-ecca-452e-ac10-34f762ae00b7",
+          "createdAt": "2026-10-22T02:16:18.000Z",
+          "updatedAt": "2026-10-22T02:16:18.000Z",
+          "uid": "35240-df39311e-ecca-452e-ac10-34f762ae00b7"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://data-api.avax.network",
-      "key": "baseUrl"
+      "id": "8e822c5d-3ed3-41be-a8a4-5cf57c355a3d",
+      "createdAt": "2026-10-22T02:16:18.000Z",
+      "updatedAt": "2026-10-22T02:16:18.000Z",
+      "uid": "35240-8e822c5d-3ed3-41be-a8a4-5cf57c355a3d"
     }
   ],
   "auth": {
@@ -637,25 +596,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-glacier-api-key"
+        "value": "x-glacier-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "497dcda4-d085-4dfa-867a-c38f3e2c0b90",
-    "name": "Data AVAX Supply EVM Contracts API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Data API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href=\"https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api\">here</a>. Bug reports can be submitted <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform\">here</a>, and any potential security issues can be reported <a href=\"https://immunefi.com/bounty/avalabs\">here</a>.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://data-api.avax.network"
     }
-  }
+  ]
 }
